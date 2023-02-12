@@ -21,6 +21,7 @@ cmake -GNinja .. -DCMAKE_INSTALL_PREFIX=./
 ninja -j 4
 ninja install
 
-# Moving build directory
+#Making directory for this build and moving
+#mkdir builds/x86-liboqs-linux
 cd ../
-mv x86-liboqs-linux ../Builds
+mv x86-liboqs-linux ../builds/
