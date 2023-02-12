@@ -17,9 +17,6 @@
 #define SPEED_USE_ARM_PMU
 #endif
 
-//Global Variables
-int run_count = 0;
-
 /*Function for performing the benchmarking KEM algorithms included in liboqs */
 static OQS_STATUS kem_speed_wrapper(const char *method_name, uint64_t duration, bool printInfo) {
 
@@ -81,7 +78,7 @@ static OQS_STATUS kem_speed_wrapper(const char *method_name, uint64_t duration, 
 		return ret;
 }
 
-// /*Function for performing the benchmarking Digital Signature Algorithms included in liboqs */
+/*Function for performing the benchmarking Digital Signature Algorithms included in liboqs */
 static OQS_STATUS sig_speed_wrapper(const char *method_name, uint64_t duration, bool printInfo) {
 
     //Setup
@@ -99,13 +96,13 @@ static OQS_STATUS sig_speed_wrapper(const char *method_name, uint64_t duration, 
  		return OQS_SUCCESS;
  	}
 
-     //Allocating the memory to the algorithm components
+    //Allocating the memory to the algorithm components
  	public_key = malloc(sig->length_public_key);
  	secret_key = malloc(sig->length_secret_key);
  	message = malloc(message_len);
  	signature = malloc(sig->length_signature);
 
-     //Checking to see if memory allocation was sucssesful
+    //Checking to see if memory allocation was sucssesful
  	if ((public_key == NULL) || (secret_key == NULL) || (message == NULL) || (signature == NULL)) {
  		fprintf(stderr, "ERROR: malloc failed\n");
  		goto err;
