@@ -170,8 +170,6 @@ int print_algs(void) {
     return 0;
 }
 
-printf("Running KEM and Digital Signature CPU Speed Tests\n");
-
 /*The main fucntion of the testing code */
 int main(int argc, char* argv[]) {
 
@@ -195,6 +193,8 @@ int main(int argc, char* argv[]) {
             exit(1);
         }
     }
+
+    printf("Running KEM and Digital Signature CPU Speed Tests\n");
 
     /*Performing the Kem Algorithm Tests*/
     //Looping throuhg all the kem algorithms based on the specified number of runs
