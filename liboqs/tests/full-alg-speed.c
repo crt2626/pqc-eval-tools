@@ -194,14 +194,15 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    
+    //Printing out system information and running test notice to terminla
+    print_system_info();
+    printf("\n************************************************\n");
+    printf("Running KEM and Digital Signature CPU Speed Tests\n");
+    printf("************************************************\n");
 
     /*Performing the Kem Algorithm Tests*/
     //Looping throuhg all the kem algorithms based on the specified number of runs
-    print_system_info();
-    printf("\n\nRunning KEM and Digital Signature CPU Speed Tests\n");
-    
-    for (int z = 0; z <= 1; z++) {
+    for (int z = 0; z <= 14; z++) {
 
         //operations
         char filename[100];
@@ -225,7 +226,7 @@ int main(int argc, char* argv[]) {
 
     /*Performing the Digital Signature Tests*/
     //Looping throuhg all the sig algorithms based on the specified number of runs
-    for (int y = 0; y <= 1; y++) {
+    for (int y = 0; y <= 14; y++) {
     
         char filename[100];
         sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-sig-speed-", y+1);
