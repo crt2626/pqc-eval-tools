@@ -194,12 +194,12 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    printf("Running KEM and Digital Signature CPU Speed Tests\n");
+    
 
     /*Performing the Kem Algorithm Tests*/
     //Looping throuhg all the kem algorithms based on the specified number of runs
     print_system_info();
-    printf("\n");
+    printf("\n\nRunning KEM and Digital Signature CPU Speed Tests\n");
     
     for (int z = 0; z <= 1; z++) {
 
