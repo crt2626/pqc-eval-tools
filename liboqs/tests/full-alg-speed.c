@@ -217,7 +217,7 @@ int main(int argc, char* argv[]) {
                 }
             }
 
-        PRINT_TIMER_FOOTER
+        // PRINT_TIMER_FOOTER
         fclose(stdout);
         fflush(stdout); 
 
@@ -242,7 +242,7 @@ int main(int argc, char* argv[]) {
                 }
             }
 
-        PRINT_TIMER_FOOTER
+        // PRINT_TIMER_FOOTER
         fclose(stdout);
         fflush(stdout);
 
