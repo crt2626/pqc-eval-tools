@@ -67,6 +67,7 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 			goto err;
 		}
 		if (oqs_fstore("pk", method_name, public_key, kem->length_public_key) != OQS_SUCCESS) {
+			printf("\nnot working\n");
 			goto err;
 		}
 		if (oqs_fstore("sk", method_name, secret_key, kem->length_secret_key) != OQS_SUCCESS) {

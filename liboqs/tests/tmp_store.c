@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 #include <sys/stat.h>
 
-#define OQS_STORE_DIR "tmp"
+#define OQS_STORE_DIR "./tmp"
 #define OQS_STORE_PREFIX "/oqs-temp-file-"
 #define MAXPATHLEN 128
 
