@@ -27,7 +27,7 @@ make
 make install 
 
 # Setting up directory and building liboqs
-cd ../liboqs
+cd ../../liboqs
 mkdir arm-liboqs-linux
 cd arm-liboqs-linux
 cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./
