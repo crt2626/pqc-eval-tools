@@ -288,7 +288,6 @@ static void _bench_init_perfcounters(void) {
 
 #define PRINT_TIMER_HEADER                                                                                                                                                                          \
     printf("%-36s | %10s | %14s | %15s | %10s | %25s | %10s\n", "Operation                           ", "Iterations", "Total time (s)", "Time (us): mean", "pop. stdev", HIGH_PREC_HEADER, "pop. stdev"); \
-    printf("%-36s | %10s:| %14s:| %15s:| %10s:| %25s:| %10s:\n", "------------------------------------", "----------", "--------------", "---------------", "----------", "-------------------------", "----------");
 /* colons are used in above to right-align cell contents in Markdown */
 
 #define PRINT_TIMER_FOOTER \
