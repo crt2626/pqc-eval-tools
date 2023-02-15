@@ -169,6 +169,7 @@ int print_algs(void) {
 
 /*The main fucntion of the testing code */
 int main(int argc, char* argv[]) {
+    int run_count = 0;
 
     //Setting 
 	OQS_randombytes_switch_algorithm(OQS_RAND_alg_openssl);
@@ -200,7 +201,8 @@ int main(int argc, char* argv[]) {
     /*Performing the Kem Algorithm Tests*/
     //Looping throuhg all the kem algorithms based on the specified number of runs
     for (int z = 0; z <= 14; z++) {
-
+        run_count = run_count + 1;
+        fprintf("Starting Run - %d", run_count);
         //operations
         char filename[100];
         sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-kem-speed-", z+1);
@@ -216,7 +218,8 @@ int main(int argc, char* argv[]) {
 
         // PRINT_TIMER_FOOTER
         fclose(stdout);
-        fflush(stdout); 
+        fflush(stdout);
+        fprintf("Run %d completed", run_count); 
 
     }
     /*---------------------------------------*/
