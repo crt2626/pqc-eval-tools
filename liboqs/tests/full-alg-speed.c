@@ -198,62 +198,53 @@ int main(int argc, char* argv[]) {
     printf("Running KEM and Digital Signature CPU Speed Tests\n");
     printf("************************************************\n");
 
-
-    // sprintf("test.txt");
-    freopen("test.txt","w", stdout);
-    for (int x = 0; x <= 3; x++) {
-        printf("test - %d\n", x);
-    }
-
-
     /*Performing the Kem Algorithm Tests*/
     //Looping throuhg all the kem algorithms based on the specified number of runs
-    // for (int z = 0; z <= 14; z++) {
+    for (int z = 0; z <= 14; z++) {
 
-    //     //Operations loop
-    //     char filename[100];
-    //     sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-kem-speed-", z+1);
-    //     freopen(filename, "w", stdout);
-    //     PRINT_TIMER_HEADER
+        //Operations loop
+        char filename[100];
+        sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-kem-speed-", z+1);
+        freopen(filename, "w", stdout);
+        
+        PRINT_TIMER_HEADER
 
-    //         for (size_t i = 0; i < OQS_KEM_algs_length; i++) {
-    //             rc = kem_speed_wrapper(OQS_KEM_alg_identifier(i), duration, printKemInfo);
-    //             if (rc != OQS_SUCCESS) {
-    //                 // ret = EXIT_FAILURE;
-    //             }
-    //         }
+            for (size_t i = 0; i < OQS_KEM_algs_length; i++) {
+                rc = kem_speed_wrapper(OQS_KEM_alg_identifier(i), duration, printKemInfo);
+                if (rc != OQS_SUCCESS) {
+                    // ret = EXIT_FAILURE;
+                }
+            }
 
-    //     // PRINT_TIMER_FOOTER
-    //     fclose(stdout);
-    //     fflush(stdout);
+        fclose(stdout);
+        fflush(stdout);
 
-    // }
+    }
     /*---------------------------------------*/
 
     /*Performing the Digital Signature Tests*/
     //Looping throuhg all the sig algorithms based on the specified number of runs
-    // for (int y = 0; y <= 14; y++) {
+    for (int y = 0; y <= 14; y++) {
     
-    //     //Operations loop
-    //     char filename[100];
-    //     sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-sig-speed-", y+1);
-    //     freopen(filename, "w", stdout);
-    //     PRINT_TIMER_HEADER
+        //Operations loop
+        char filename[100];
+        sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-sig-speed-", y+1);
+        freopen(filename, "w", stdout);
+        PRINT_TIMER_HEADER
 
-    //         for (size_t i = 0; i < OQS_SIG_algs_length; i++) {
-    //             //Doing CPU metric tests for SIG
-    //             rc = sig_speed_wrapper(OQS_SIG_alg_identifier(i), duration, printSigInfo);
+            for (size_t i = 0; i < OQS_SIG_algs_length; i++) {
+                //Doing CPU metric tests for SIG
+                rc = sig_speed_wrapper(OQS_SIG_alg_identifier(i), duration, printSigInfo);
 
-    //             if (rc != OQS_SUCCESS) {
-    //                 // ret = EXIT_FAILURE;
-    //             }
-    //         }
+                if (rc != OQS_SUCCESS) {
+                    // ret = EXIT_FAILURE;
+                }
+            }
 
-    //     // PRINT_TIMER_FOOTER
-    //     fclose(stdout);
-    //     fflush(stdout);
+        fclose(stdout);
+        fflush(stdout);
 
-    // }
+    }
 
     return 0;
 }
