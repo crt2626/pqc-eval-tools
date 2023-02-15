@@ -22,12 +22,12 @@ if grep -q "Raspberry Pi" /proc/device-tree/model; then
 fi
 
 #enabling user acces to ARM PMU kernel header
-cd ../pqax/enable_ccr
+cd ../dependency-libs/pqax/enable_ccr
 make
 make install 
 
 # Setting up directory and building liboqs
-cd ../../liboqs
+cd ../../../liboqs
 mkdir arm-liboqs-linux
 cd arm-liboqs-linux
 cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./
