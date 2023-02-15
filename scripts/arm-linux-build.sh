@@ -14,7 +14,9 @@ if [[ ${#not_installed[@]} -ne 0 ]]; then
 fi
 
 #enabling user acces to ARM PMU kernel header
-cd ../pqax/enab
+cd ../pqax/enable_ccr
+make
+make install
 
 # Setting up directory and building liboqs
 cd ../liboqs
