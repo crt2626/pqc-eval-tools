@@ -13,18 +13,21 @@ if [[ ${#not_installed[@]} -ne 0 ]]; then
     sudo apt-get install "${not_installed[@]}"
 fi
 
-# Checking if ARM system is a Raspberry and if true checking if kernel headers are needed
+# Enabling ARM_PMU
 if grep -q "Raspberry Pi" /proc/device-tree/model; then
+
+    # Checking if the system is a Pi and installing kernel-headers
     if ! dpkg -s "raspberrypi-kernel-headers" >/dev/null 2>&1; then
         sudo apt-get update
         sudo apt-get install raspberrypi-kernel-headers
     fi
-fi
 
-#enabling user acces to ARM PMU kernel header
-cd ../dependency-libs/pqax/enable_ccr
-make
-make install 
+    #Enabling user access PMU
+    cd ../dependency-libs/pqax/enable_ccr
+    make
+    make install 
+    
+fi
 
 # Setting up directory and building liboqs
 cd ../../../liboqs
