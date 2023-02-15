@@ -13,10 +13,18 @@ if [[ ${#not_installed[@]} -ne 0 ]]; then
     sudo apt-get install "${not_installed[@]}"
 fi
 
+# Checking if ARM system is a Raspberry and if true checking if kernel headers are needed
+if grep -q "Raspberry Pi" /proc/device-tree/model; then
+    if ! dpkg -s "raspberrypi-kernel-headers" >/dev/null 2>&1; then
+        sudo apt-get update
+        sudo apt-get install raspberrypi-kernel-headers
+    fi
+fi
+
 #enabling user acces to ARM PMU kernel header
 cd ../pqax/enable_ccr
 make
-make install
+make install 
 
 # Setting up directory and building liboqs
 cd ../liboqs
@@ -26,7 +34,6 @@ cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./
 ninja -j 4
 ninja install
 
-#Making directory for this build and moving
-#mkdir builds/x86-liboqs-linux
+# Making directory for this build and moving
 cd ../
 mv arm-liboqs-linux ../builds/
