@@ -201,9 +201,8 @@ int main(int argc, char* argv[]) {
     /*Performing the Kem Algorithm Tests*/
     //Looping throuhg all the kem algorithms based on the specified number of runs
     for (int z = 0; z <= 14; z++) {
-        run_count = run_count + 1;
-        fprintf("Starting Run - %d", run_count);
-        //operations
+
+        //Operations loop
         char filename[100];
         sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-kem-speed-", z+1);
         freopen(filename, "w", stdout);
@@ -219,7 +218,6 @@ int main(int argc, char* argv[]) {
         // PRINT_TIMER_FOOTER
         fclose(stdout);
         fflush(stdout);
-        fprintf("Run %d completed", run_count); 
 
     }
     /*---------------------------------------*/
@@ -228,6 +226,7 @@ int main(int argc, char* argv[]) {
     //Looping throuhg all the sig algorithms based on the specified number of runs
     for (int y = 0; y <= 14; y++) {
     
+        //Operations loop
         char filename[100];
         sprintf(filename, "..%sresults%s%s%d.csv", PATH_SEPARATOR, PATH_SEPARATOR, "test-sig-speed-", y+1);
         freopen(filename, "w", stdout);
