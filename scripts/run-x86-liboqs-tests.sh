@@ -97,17 +97,22 @@ op_sig=("Keygen" "Sign" "Verify")
 : '
 Performing memory tests
 '
+echo -e "***************************\n"
 echo -e "Performing Memory Tests:-\n"
+echo -e "***************************\n\n"
 
 # Performing the memorry tests 15 times each
 for run_count in {1..15}
 do
+    echo -e "Memory Test Run - $run_count\n\n"
+    
     # Creating filenames and outputing headers
     kem_filename="$kem_mem_prefix-$run_count.csv"
     sig_filename="$sig_mem_prefix-$run_count.csv"
     echo $mem_metrics_headers > "$kem_filename"
     echo $mem_metrics_headers > "$sig_filename"
 
+    echo -e "KEM Memory Tests\n"
     # KEM memory tests
     for kem_alg in "${kem_algs[@]}"
     do
@@ -131,6 +136,7 @@ do
 
     done
 
+    echo -e "\nDigital Signature Memory Tests\n"
     # Digital signature memory tests
     for sig_alg in "${sig_algs[@]}"
     do

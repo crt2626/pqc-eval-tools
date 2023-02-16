@@ -18,7 +18,7 @@ static void OQS_print_hex_string(const char *label, const uint8_t *str, size_t l
 	}
 	printf("\n");
 }
-
+  
 typedef struct magic_s {
 	uint8_t val[32];
 } magic_t;

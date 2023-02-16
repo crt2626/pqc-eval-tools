@@ -10,7 +10,7 @@
 
 #include <oqs/oqs.h>
 
-#include "system_info.c"
+//#include "system_info.c"
 #include "tmp_store.c"
 
 typedef enum sig_ops {
@@ -38,9 +38,8 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 
 	switch (op) {
 	case SIG_KEYGEN:
-		printf("================================================================================\n");
-		printf("Executing keygen for SIGALG %s\n", sig->method_name);
-		printf("================================================================================\n");
+
+		printf("\n%s - Key Generation Test\n", sig->method_name);
 
 		public_key = malloc(sig->length_public_key);
 		secret_key = malloc(sig->length_secret_key);
@@ -63,9 +62,8 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 		goto cleanup;
 
 	case SIG_SIGN:
-		printf("================================================================================\n");
-		printf("Executing sign for SIGALG %s\n", sig->method_name);
-		printf("================================================================================\n");
+
+		printf("\n%s - Signing Test\n", sig->method_name);
 
 		public_key = malloc(sig->length_public_key);
 		secret_key = malloc(sig->length_secret_key);
@@ -100,9 +98,8 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 		goto cleanup;
 
 	case SIG_VERIFY:
-		printf("================================================================================\n");
-		printf("Executing verify for SIGALG %s\n", sig->method_name);
-		printf("================================================================================\n");
+
+		printf("\n%s - Verifying Test\n", sig->method_name);
 
 		public_key = malloc(sig->length_public_key);
 		secret_key = malloc(sig->length_secret_key);
@@ -177,7 +174,7 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	print_system_info();
+	//print_system_info();
 
 	char *alg_name = argv[1];
 	if (!OQS_SIG_alg_is_enabled(alg_name)) {
