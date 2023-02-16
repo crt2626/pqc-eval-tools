@@ -1,6 +1,7 @@
 #!/bin/bash
-#Algorithm Lists
 
+# Algorithm Lists
+kem_alg_array=() 
 
 # Speed test
 cd ../builds/x86-liboqs-linux/tests
