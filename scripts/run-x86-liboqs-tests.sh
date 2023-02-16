@@ -2,26 +2,17 @@
 
 # Initial Setup
 cd ../builds/x86-liboqs-linux/tests
+echo -e "\n\n"
 pwd
+echo -e "\n\n"
+
 echo -e "Performing Directory Clearing and Structuring:-\n"
 
 : '
-Setting up directories and creating variables and arrays
+Creating needed variables and arrays
 '
-#Creating directories and clearing previous results
 
-# Creating memory directory
-if [ -d ../mem-results ];
-then
-    sudo rm ../mem-results/*
-else
-    mkdir ../mem-results
-fi
-
-#Clearing previous speed results
-sudo rm ../results/*
-
-# Declaring memory variables and alg arrays
+# Declaring algorithm arrays
 kem_algs=(
   "BIKE-L1"
   "BIKE-L3"
@@ -86,11 +77,12 @@ sig_algs=(
   "SPHINCS+-SHA256-256f-robust"
 )
 
-kem_mem_prefix="../results/mem-results/kem-mem-metrics-"
-sig_mem_prefix="../results/mem-results/sig-mem-metrics-"
+# Creating prefix varibles
+kem_mem_prefix="../results/mem-results/kem-mem-metrics"
+sig_mem_prefix="../results/mem-results/sig-mem-metrics"
 mem_metrics_headers="Algorithm, Operation, Heap (bytes), Stack (bytes), Total (bytes)"
 
-# Operation arrays
+# Creating operation arrays
 op_kem=("Keygen" "Encaps" "Decaps")
 op_sig=("Keygen" "Sign" "Verify")
 
