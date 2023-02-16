@@ -153,7 +153,7 @@ int print_algs(void) {
             printf("%s\n", OQS_KEM_alg_identifier(alg_id_kem));
     }
     fclose(stdout);
-    //fflush(stdout);   
+    //fflush(stdout);    
 
     //Printing out a list of the algorithms Sig
     freopen("SIG-Algs.txt", "w", stdout);
