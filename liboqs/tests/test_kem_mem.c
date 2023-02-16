@@ -7,7 +7,7 @@
 
 #include <oqs/oqs.h>
 
-#include "system_info.c"
+//#include "system_info.c"
 #include "tmp_store.c"
 
 /* Displays hexadecimal strings */
@@ -49,9 +49,7 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 
 	switch (op) {
 	case KEM_KEYGEN:
-		printf("================================================================================\n");
-		printf("Executing keygen for KEM %s\n", kem->method_name);
-		printf("================================================================================\n");
+		printf("\n%s - Key Geneartion Test\n", kem->method_name);
 
 		public_key = malloc(kem->length_public_key);
 		secret_key = malloc(kem->length_secret_key);
@@ -77,9 +75,8 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 		goto cleanup;
 
 	case KEM_ENCAPS:
-		printf("================================================================================\n");
-		printf("Executing encaps for KEM %s\n", kem->method_name);
-		printf("================================================================================\n");
+
+		printf("\n%s - Encapsulation Test\n", kem->method_name);
 
 		public_key = malloc(kem->length_public_key);
 		secret_key = malloc(kem->length_secret_key);
@@ -112,9 +109,8 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 		goto cleanup;
 
 	case KEM_DECAPS:
-		printf("================================================================================\n");
-		printf("Executing decaps for KEM %s\n", kem->method_name);
-		printf("================================================================================\n");
+
+		printf("\n%s - Decapsulation Test\n", kem->method_name);
 
 		public_key = malloc(kem->length_public_key);
 		secret_key = malloc(kem->length_secret_key);
@@ -198,7 +194,7 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	print_system_info();
+	//print_system_info();
 
 	char *alg_name = argv[1];
 	if (!OQS_KEM_alg_is_enabled(alg_name)) {
