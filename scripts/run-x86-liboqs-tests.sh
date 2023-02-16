@@ -2,6 +2,7 @@
 
 # Initial Setup
 cd ../builds/x86-liboqs-linux/tests
+pwd
 echo -e "Performing Directory Clearing and Structuring:-\n"
 
 : '
