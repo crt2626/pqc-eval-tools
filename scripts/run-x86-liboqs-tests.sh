@@ -116,10 +116,13 @@ do
             op_kem_str=${op_kem[operation_1]}
 
             # Running valgrind and getting the required metrics
-            valgrind --tool=massif --massif-out-file=massif.out ./test_sig_mem "$kem_alg" "$operation_1"
-            heap_bytes=$(grep -oP 'heap=.*B' massif.out | sed 's/heap=\(.*\)B/\1/')
-            stack_bytes=$(grep -oP 'stack=.*B' massif.out | sed 's/stack=\(.*\)B/\1/')
-            total_bytes=$(grep -oP 'mem_heap_B=.*' massif.out | sed 's/mem_heap_B=\(.*\)/\1/')
+            valgrind --tool=massif --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
+            #heap_bytes=$(grep -oP 'heap=.*B' massif.out | sed 's/heap=\(.*\)B/\1/')
+            heap_bytes=$(grep 'mem_heap_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
+
+            #stack_bytes=$(grep -oP 'stack=.*B' massif.out | sed 's/stack=\(.*\)B/\1/')
+            
+            #total_bytes=$(grep -oP 'mem_heap_B=.*' massif.out | sed 's/mem_heap_B=\(.*\)/\1/')
             rm massif.out
 
             # Outputing metric information to csv file
