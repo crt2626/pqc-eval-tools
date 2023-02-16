@@ -78,8 +78,8 @@ sig_algs=(
 )
 
 # Creating prefix varibles
-kem_mem_prefix="../results/mem-results/kem-mem-metrics"
-sig_mem_prefix="../results/mem-results/sig-mem-metrics"
+kem_mem_prefix="../mem-results/kem-mem-metrics"
+sig_mem_prefix="../mem-results/sig-mem-metrics"
 mem_metrics_headers="Algorithm, Operation, Heap (bytes), Stack (bytes), Total (bytes)"
 
 # Creating operation arrays
@@ -116,10 +116,10 @@ do
             op_kem_str=${op_kem[operation_1]}
 
             # Running valgrind and getting the required metrics
-            valgrind --tool=massif --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-            heap_bytes=$(ms_print massif.out | grep -oP "heap=([0-9]+)" | grep -oP "([0-9]+)")
-            stack_bytes=$(ms_print massif.out | grep -oP "stack=([0-9]+)" | grep -oP "([0-9]+)")
-            total_bytes=$(ms_print massif.out | grep -oP "mem_heap_B=[0-9]+" | grep -oP "[0-9]+")
+            valgrind --tool=massif --massif-out-file=massif.out ./test_sig_mem "$kem_alg" "$operation_1"
+            heap_bytes=$(grep -oP 'heap=.*B' massif.out | sed 's/heap=\(.*\)B/\1/')
+            stack_bytes=$(grep -oP 'stack=.*B' massif.out | sed 's/stack=\(.*\)B/\1/')
+            total_bytes=$(grep -oP 'mem_heap_B=.*' massif.out | sed 's/mem_heap_B=\(.*\)/\1/')
             rm massif.out
 
             # Outputing metric information to csv file
@@ -141,10 +141,11 @@ do
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
-            heap_bytes=$(ms_print massif.out | grep -oP "heap=([0-9]+)" | grep -oP "([0-9]+)")
-            stack_bytes=$(ms_print massif.out | grep -oP "stack=([0-9]+)" | grep -oP "([0-9]+)")
-            total_bytes=$(ms_print massif.out | grep -oP "mem_heap_B=[0-9]+" | grep -oP "[0-9]+")
+            heap_bytes=$(grep -oP 'heap=.*B' massif.out | sed 's/heap=\(.*\)B/\1/')
+            stack_bytes=$(grep -oP 'stack=.*B' massif.out | sed 's/stack=\(.*\)B/\1/')
+            total_bytes=$(grep -oP 'mem_heap_B=.*' massif.out | sed 's/mem_heap_B=\(.*\)/\1/')
             rm massif.out
+
 
             # Outputing metric information to csv file
             echo "$sig_alg, $op_sig_str, $heap_bytes, $stack_bytes, $total_bytes" >> "$sig_filename"
