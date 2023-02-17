@@ -86,83 +86,111 @@ mem_metrics_headers="Algorithm, Operation, maxHeap (bytes), maxStack (bytes)"
 op_kem=("Keygen" "Encaps" "Decaps")
 op_sig=("Keygen" "Sign" "Verify")
 
-#*************************************************************************
-: '
-Performing memory tests
-'
-echo -e "***************************\n"
-echo -e "Performing Memory Tests:-\n"
-echo -e "***************************\n\n"
 
-# Performing the memorry tests 15 times each
-for run_count in {1..15}
-do
-    echo -e "Memory Test Run - $run_count\n\n"
-    
-    # Creating filenames and outputing headers
-    kem_filename="$kem_mem_prefix-$run_count.csv"
-    sig_filename="$sig_mem_prefix-$run_count.csv"
-    echo $mem_metrics_headers > "$kem_filename"
-    echo $mem_metrics_headers > "$sig_filename"
 
-    echo -e "KEM Memory Tests\n"
-    # KEM memory tests
-    for kem_alg in "${kem_algs[@]}"
+function parse_metrics() {
+    : '
+    Parsing the memory metrics from the valgrind massif.out file
+    '
+
+    #Going through summary and getting 
+    ms_print_output=$(ms_print massif.out)
+
+    #Looping through output to get peak metrics
+    while read -r line;
+    do 
+        #checking 
+        if [[ "$line" == *"Detailed snapshots: [" ]];
+        then
+            echo $line
+        fi
+    done <<< "$ms_print_output"
+
+}
+
+
+function memory_tests() {
+    : '
+    Performing memory tests
+    '
+    echo -e "***************************\n"
+    echo -e "Performing Memory Tests:-\n"
+    echo -e "***************************\n\n"
+
+    # Performing the memorry tests 15 times each
+    for run_count in {1..15}
     do
-        # Testing memory metrics for each operation
-        for operation_1 in {0..2}
+        echo -e "Memory Test Run - $run_count\n\n"
+        
+        # Creating filenames and outputing headers
+        kem_filename="$kem_mem_prefix-$run_count.csv"
+        sig_filename="$sig_mem_prefix-$run_count.csv"
+        echo $mem_metrics_headers > "$kem_filename"
+        echo $mem_metrics_headers > "$sig_filename"
+
+        echo -e "KEM Memory Tests\n"
+        # KEM memory tests
+        for kem_alg in "${kem_algs[@]}"
         do
-            # Getting operation string and outputing to terminal
-            op_kem_str=${op_kem[operation_1]}
-            echo -e "$kem_alg - $op_kem_str Test\n"
+            # Testing memory metrics for each operation
+            for operation_1 in {0..2}
+            do
+                # Getting operation string and outputing to terminal
+                op_kem_str=${op_kem[operation_1]}
+                echo -e "$kem_alg - $op_kem_str Test\n"
 
-            # Running valgrind and getting the required metrics
-            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-            heap_bytes=$(grep 'mem_heap_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
-            stack_bytes=$(grep 'mem_stacks_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
-            rm massif.out
+                # Running valgrind and getting the required metrics
+                valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
+                parse_metrics()
+                rm massif.out
 
-            # Outputing metric information to csv file
-            echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes" >> $kem_filename
+                # Outputing metric information to csv file
+                echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes" >> $kem_filename
+
+            done
+
+            # Clearing the tmp direcotry
+            cd ./tmp && rm * && cd ../
 
         done
 
-        # Clearing the tmp direcotry
-        cd ./tmp && rm * && cd ../
-
-    done
-
-    echo -e "\nDigital Signature Memory Tests\n"
-    # Digital signature memory tests
-    for sig_alg in "${sig_algs[@]}"
-    do
-        # Testing memory metrics for each operation
-        for operation_2 in {0..2}
+        echo -e "\nDigital Signature Memory Tests\n"
+        # Digital signature memory tests
+        for sig_alg in "${sig_algs[@]}"
         do
-            # Getting operation string and outputing to terminal
-            op_sig_str=${op_sig[operation_2]}
-            echo -e "$sig_alg - $op_sig_str Test\n"
+            # Testing memory metrics for each operation
+            for operation_2 in {0..2}
+            do
+                # Getting operation string and outputing to terminal
+                op_sig_str=${op_sig[operation_2]}
+                echo -e "$sig_alg - $op_sig_str Test\n"
 
-            # Running valgrind and getting the required metrics
-            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
-            heap_bytes=$(grep 'mem_heap_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
-            stack_bytes=$(grep 'mem_stacks_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
-            rm massif.out
+                # Running valgrind and getting the required metrics
+                valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
+                parse_metrics()
+                rm massif.out
 
 
-            # Outputing metric information to csv file
-            echo "$sig_alg, $op_sig_str, $heap_bytes, $stack_bytes, $total_bytes" >> $sig_filename
+                # Outputing metric information to csv file
+                echo "$sig_alg, $op_sig_str, $heap_bytes, $stack_bytes, $total_bytes" >> $sig_filename
 
+            done
+
+            # Clearing the tmp directory
+            cd ./tmp && rm * && cd ../
         done
 
-        # Clearing the tmp directory
-        cd ./tmp && rm * && cd ../
     done
 
-done
+    echo -e "\nMemory Tests Comeplete\n"
+}
 
-echo -e "\nMemory Tests Comeplete\n"
-#************************************************************************************************
+memory_tests()
 
 # Doing Speed tests
 #./full-alg-speed 
+
+
+
+# heap_bytes=$(grep 'mem_heap_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
+# stack_bytes=$(grep 'mem_stacks_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
