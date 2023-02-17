@@ -6,18 +6,12 @@ S3FOLDER=/tmp/s3dir
 
 ARCH=-`uname -m`
 
-echo "outputting some system information first"
-cat /etc/os-release
-uname -a
-hostname
-
-cd /opt/test
-mkdir -p results
+mkdir -p ./results
 # echo "Starting liboqs speed tests..."
 # ./liboqs-test.sh
 
 echo "Starting liboqs memory tests..."
-python3 run_mem.py test_kem_mem && mv test_kem_mem.json results/mem_kem.json
+python3 run_mem.py /opt/oqssa/bin/test_kem_mem && mv /opt/oqssa/bin/test_kem_mem.json ./results/mem_kem.json
 # python3 run_mem.py test_sig_mem && mv test_sig_mem.json results/mem_sig.json
 
 # echo "Starting openssl speed tests..."
@@ -48,18 +42,18 @@ python3 run_mem.py test_kem_mem && mv test_kem_mem.json results/mem_kem.json
 
 # About 1100 tests: Multiply with test runtime set by second parameter:
 # Save away previous test results
-mv results/handshakes.json results/handshakes.json-port
-echo "Starting openssl handshake tests..."
-# python3 handshakes.py /opt/oqssa 1
-# correct filenames again:
-mv results/handshakes.json results/handshakes-ref.json
+# mv results/handshakes.json results/handshakes.json-port
+# echo "Starting openssl handshake tests..."
+# # python3 handshakes.py /opt/oqssa 1
+# # correct filenames again:
+# mv results/handshakes.json results/handshakes-ref.json
 
 # echo "Starting nonportable tests..."
 # ./liboqs-test.sh -noport
 # echo "Exchanging oqs lib..."
 # cp /opt/oqssa/oqs-noport/lib/liboqs.so.0.* /opt/oqssa/lib/
 # Don't repeat version check here: It would have failed with -ref already
-echo "Done."
+# echo "Done."
 # echo "Starting openssl speed tests (noport)..."
 # ./openssl-test.sh -noport
 
@@ -72,19 +66,19 @@ echo "Done."
 # echo "Starting openssl handshake tests..."
 # python3 handshakes.py /opt/oqssa 1
 # correct filenames again:
-mv results/handshakes.json results/handshakes-noport.json
+# mv results/handshakes.json results/handshakes-noport.json
 
-mv results/handshakes.json-port results/handshakes.json
+# mv results/handshakes.json-port results/handshakes.json
 
-echo "All tests complete. Results in results folder."
-echo "Trying to mount S3..."
-./mount_s3.sh ${S3FOLDER}
-if [ $? -eq 0 ]; then
-    echo "Copy test results to S3"
-    today=`date +%Y-%m-%d-%H_%M_%S`
-    tar czvf ${S3FOLDER}/${today}${ARCH}.tgz results/*.json
-    ./gen_website.sh ${S3FOLDER} ${ARCH}
-    echo "Copy complete: ${S3FOLDER}/${today}${ARCH}.tgz"
-else
-    echo "Couldn't mount S3 bucket. Not copying out test results."
-fi
+# echo "All tests complete. Results in results folder."
+# echo "Trying to mount S3..."
+# ./mount_s3.sh ${S3FOLDER}
+# if [ $? -eq 0 ]; then
+#     echo "Copy test results to S3"
+#     today=`date +%Y-%m-%d-%H_%M_%S`
+#     tar czvf ${S3FOLDER}/${today}${ARCH}.tgz results/*.json
+#     ./gen_website.sh ${S3FOLDER} ${ARCH}
+#     echo "Copy complete: ${S3FOLDER}/${today}${ARCH}.tgz"
+# else
+#     echo "Couldn't mount S3 bucket. Not copying out test results."
+# fi

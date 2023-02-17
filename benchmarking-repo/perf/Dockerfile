@@ -30,9 +30,10 @@ RUN git clone --depth 1 --branch main https://github.com/open-quantum-safe/liboq
 WORKDIR /opt/liboqs
 RUN mkdir build && cd build && cmake .. ${LIBOQS_BUILD_DEFINES} -DCMAKE_INSTALL_PREFIX=${INSTALLDIR} && make ${MAKE_DEFINES} && make install
 
-# Copy required executables to INSTALLDIR
-RUN cp build/tests/test_kem ${INSTALLDIR}/bin/ && \
-    cp build/tests/test_sig ${INSTALLDIR}/bin/ && \
+# Create bin directory in INSTALLDIR
+RUN mkdir -p ${INSTALLDIR}/bin && \
+    cp build/tests/speed_kem ${INSTALLDIR}/bin/ && \
+    cp build/tests/speed_sig ${INSTALLDIR}/bin/ && \
     cp build/tests/test_kem_mem ${INSTALLDIR}/bin/ && \
     cp build/tests/test_sig_mem ${INSTALLDIR}/bin/
 
