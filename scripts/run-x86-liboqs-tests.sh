@@ -122,7 +122,7 @@ do
             rm massif.out
 
             # Outputing metric information to csv file
-            echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes >> "$kem_filename""
+            echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes" >> "$kem_filename"
 
         done
 
