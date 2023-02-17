@@ -29,7 +29,7 @@ RUN apt-get update && \
     valgrind \
     vim \
     nano \
-    ip \
+    iproute2 \
     python3 \
     xsltproc \
     doxygen
