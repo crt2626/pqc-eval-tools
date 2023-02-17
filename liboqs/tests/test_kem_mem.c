@@ -49,7 +49,6 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 
 	switch (op) {
 	case KEM_KEYGEN:
-		printf("\n%s - Key Geneartion Test\n", kem->method_name);
 
 		public_key = malloc(kem->length_public_key);
 		secret_key = malloc(kem->length_secret_key);
@@ -75,8 +74,6 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 		goto cleanup;
 
 	case KEM_ENCAPS:
-
-		printf("\n%s - Encapsulation Test\n", kem->method_name);
 
 		public_key = malloc(kem->length_public_key);
 		secret_key = malloc(kem->length_secret_key);
@@ -109,9 +106,7 @@ static OQS_STATUS kem_test_correctness(const char *method_name, KEM_OPS op) {
 		goto cleanup;
 
 	case KEM_DECAPS:
-
-		printf("\n%s - Decapsulation Test\n", kem->method_name);
-
+	
 		public_key = malloc(kem->length_public_key);
 		secret_key = malloc(kem->length_secret_key);
 		ciphertext = malloc(kem->length_ciphertext);

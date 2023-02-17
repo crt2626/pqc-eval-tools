@@ -112,8 +112,9 @@ do
         # Testing memory metrics for each operation
         for operation_1 in {0..2}
         do
-            # Getting operation string
+            # Getting operation string and outputing to terminal
             op_kem_str=${op_kem[operation_1]}
+            echo -e "$kem_alg - $op_kem_str Test\n"
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
@@ -138,8 +139,9 @@ do
         # Testing memory metrics for each operation
         for operation_2 in {0..2}
         do
-            # Getting operation string
+            # Getting operation string and outputing to terminal
             op_sig_str=${op_sig[operation_2]}
+            echo -e "$sig_alg - $op_sig_str Test\n"
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"

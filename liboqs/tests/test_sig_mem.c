@@ -39,8 +39,6 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 	switch (op) {
 	case SIG_KEYGEN:
 
-		printf("\n%s - Key Generation Test\n", sig->method_name);
-
 		public_key = malloc(sig->length_public_key);
 		secret_key = malloc(sig->length_secret_key);
 		if ((public_key == NULL) || (secret_key == NULL)) {
@@ -62,8 +60,6 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 		goto cleanup;
 
 	case SIG_SIGN:
-
-		printf("\n%s - Signing Test\n", sig->method_name);
 
 		public_key = malloc(sig->length_public_key);
 		secret_key = malloc(sig->length_secret_key);
@@ -98,8 +94,6 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 		goto cleanup;
 
 	case SIG_VERIFY:
-
-		printf("\n%s - Verifying Test\n", sig->method_name);
 
 		public_key = malloc(sig->length_public_key);
 		secret_key = malloc(sig->length_secret_key);
