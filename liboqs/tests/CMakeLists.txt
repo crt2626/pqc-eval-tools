@@ -6,6 +6,8 @@ include_directories(/usr/include/malloc)
 # Create results directory in the build directory
 file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/results")
 file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/mem-results")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/mem-results/kem-mem-metrics/")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/mem-results/sig-mem-metrics/")
 
 option(OQS_ENABLE_TEST_CONSTANT_TIME "Build test suite with support for Valgrind-based detection of non-constant time behaviour." OFF)
 

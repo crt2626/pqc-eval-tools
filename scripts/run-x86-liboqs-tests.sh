@@ -2,11 +2,6 @@
 
 # Initial Setup
 cd ../builds/x86-liboqs-linux/tests
-echo -e "\n\n"
-pwd
-echo -e "\n\n"
-
-echo -e "Performing Directory Clearing and Structuring:-\n"
 
 : '
 Creating needed variables and arrays
@@ -78,9 +73,8 @@ sig_algs=(
 )
 
 # Creating prefix varibles
-kem_mem_prefix="../mem-results/kem-mem-metrics"
-sig_mem_prefix="../mem-results/sig-mem-metrics"
-#mem_metrics_headers="Algorithm, Operation, maxHeap (bytes), maxStack (bytes)"
+kem_mem_prefix="../mem-results/kem-mem-metrics/"
+sig_mem_prefix="../mem-results/sig-mem-metrics/"
 
 # Creating operation arrays
 op_kem=("Keygen" "Encaps" "Decaps")
@@ -99,12 +93,6 @@ for run_count in {1..15}
 do
     echo -e "Memory Test Run - $run_count\n\n"
     
-    # Creating filenames and outputing headers
-    kem_filename="$kem_mem_prefix-$run_count.csv"
-    sig_filename="$sig_mem_prefix-$run_count.csv"
-    echo $mem_metrics_headers > "$kem_filename"
-    echo $mem_metrics_headers > "$sig_filename"
-
     echo -e "KEM Memory Tests\n"
     # KEM memory tests
     for kem_alg in "${kem_algs[@]}"
@@ -116,13 +104,12 @@ do
             op_kem_str=${op_kem[operation_1]}
             echo -e "$kem_alg - $op_kem_str Test\n"
 
-            # Running valgrind and getting the required metrics
+            # Running valgrind and outputing metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-            
+            filename="$kem_mem_dir/$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
+            ms_print massif.out > $filename
             rm massif.out
-
-            # Outputing metric information to csv file
-            #echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes" >> $kem_filename
+            echo -e "\n"
 
         done
 
@@ -142,14 +129,12 @@ do
             op_sig_str=${op_sig[operation_2]}
             echo -e "$sig_alg - $op_sig_str Test\n"
 
-            # Running valgrind and getting the required metrics
+            # Running valgrind and outputing metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
-            
+            filename="$sig_mem_dir/$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
+            ms_print massif.out > $filename
             rm massif.out
-
-
-            # Outputing metric information to csv file
-            #echo "$sig_alg, $op_sig_str, $heap_bytes, $stack_bytes, $total_bytes" >> $sig_filename
+            echo -e "\n"
 
         done
 
