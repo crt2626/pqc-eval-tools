@@ -96,6 +96,7 @@ static OQS_STATUS sig_speed_wrapper(const char *method_name, uint64_t duration, 
  		return OQS_SUCCESS;
  	}
 
+
     //Allocating the memory to the algorithm components
  	public_key = malloc(sig->length_public_key);
  	secret_key = malloc(sig->length_secret_key);
