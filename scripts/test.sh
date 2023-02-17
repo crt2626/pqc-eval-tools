@@ -80,8 +80,11 @@ sig_algs=(
 )
 
 # Creating prefix varibles
-kem_mem_prefix="../mem-results/kem-mem-metrics/"
-sig_mem_prefix="../mem-results/sig-mem-metrics/"
+kem_mem_dir="../mem-results/kem-mem-metrics/"
+sig_mem_dir="../mem-results/sig-mem-metrics/"
+kem_mem_prefix="kem-mem-metrics"
+sig_mem_prefix="sig-mem-metrics"
+
 #mem_metrics_headers="Algorithm, Operation, maxHeap (bytes), maxStack (bytes)"
 
 # Creating operation arrays
@@ -122,7 +125,7 @@ do
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
             ms_output=$(ms_print massif.out)
             filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
-            echo $ms_output > $filename
+            echo $ms_output > $kem_mem_dir"/"$filename
             rm massif.out
 
             # Outputing metric information to csv file
@@ -150,7 +153,7 @@ do
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
             ms_output=$(ms_print massif.out)
             filename="$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
-            echo $ms_output > $filename
+            echo $ms_output > $sig_mem_dir"/"$filename
             rm massif.out
 
             # Outputing metric information to csv file
