@@ -14,12 +14,25 @@ ENV DEBIAN_FRONTEND noninteractive
 # Get all software packages required for building liboqs
 RUN apt-get update && \
     apt-get install -y \
+    astyle \
     build-essential \
     cmake \
-    git \
+    gcc \
+    graphviz \
     libssl-dev \
     ninja-build \
-    sudo
+    python3-pytest \
+    python3-pytest-xdist \
+    python3-yaml \
+    sudo \
+    unzip \
+    valgrind \
+    vim \
+    nano \
+    ip \
+    python3 \
+    xsltproc \
+    doxygen
 
 #Setting root password
 RUN echo 'root:password' | chpasswd
