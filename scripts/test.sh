@@ -3,7 +3,7 @@
 # Initial Setup
 cd ../builds/x86-liboqs-linux/tests
 mkdir ../mem-results/kem-mem-metrics/
-mkdir ../sig-mem-metrics/
+mkdir ../mem-results/sig-mem-metrics/
 echo -e "\n\n"
 pwd
 echo -e "\n\n"
@@ -123,9 +123,8 @@ do
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-            ms_output=$(ms_print massif.out)
-            filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
-            echo $ms_output > $kem_mem_dir"/"$filename
+            filename="$kem_mem_dir/$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
+            ms_print massif.out > $filename
             rm massif.out
 
             # Outputing metric information to csv file
@@ -151,9 +150,8 @@ do
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
-            ms_output=$(ms_print massif.out)
-            filename="$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
-            echo $ms_output > $sig_mem_dir"/"$filename
+            filename="$sig_mem_dir/$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
+            ms_print massif.out > $filename
             rm massif.out
 
             # Outputing metric information to csv file
