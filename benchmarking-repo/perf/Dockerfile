@@ -18,7 +18,11 @@ RUN apt-get update && \
     cmake \
     git \
     libssl-dev \
-    ninja-build
+    ninja-build \
+    sudo
+
+#Setting root password
+RUN echo 'root:password' | chpasswd
 
 # Clone the liboqs repository and build the library
 WORKDIR /opt
@@ -26,6 +30,23 @@ RUN git clone --depth 1 --branch main https://github.com/open-quantum-safe/liboq
 WORKDIR /opt/liboqs
 RUN mkdir build && cd build && cmake .. ${LIBOQS_BUILD_DEFINES} -DCMAKE_INSTALL_PREFIX=${INSTALLDIR} && make ${MAKE_DEFINES} && make install
 
-# Copy the test script to the container
-COPY test.sh /opt/test.sh
+# Copy required executables to INSTALLDIR
+RUN cp build/tests/test_kem ${INSTALLDIR}/bin/ && \
+    cp build/tests/test_sig ${INSTALLDIR}/bin/ && \
+    cp build/tests/test_kem_mem ${INSTALLDIR}/bin/ && \
+    cp build/tests/test_sig_mem ${INSTALLDIR}/bin/
+
+
+WORKDIR /repo
+RUN git clone --depth 1 --branch main https://github.com/40428470/pqc-eval-tools.git
+
+
+# create a user with root privileges
+RUN useradd --no-log-init --system --uid 1000 --create-home testuser
+
+# switch to the new user
+USER testuser
+
+# set working directory
+WORKDIR /home/testuser
 
