@@ -80,7 +80,7 @@ sig_algs=(
 # Creating prefix varibles
 kem_mem_prefix="../mem-results/kem-mem-metrics"
 sig_mem_prefix="../mem-results/sig-mem-metrics"
-mem_metrics_headers="Algorithm, Operation, Heap (bytes), Stack (bytes), Total (bytes)"
+mem_metrics_headers="Algorithm, Operation, maxHeap (bytes), maxStack (bytes)"
 
 # Creating operation arrays
 op_kem=("Keygen" "Encaps" "Decaps")
@@ -122,10 +122,12 @@ do
             rm massif.out
 
             # Outputing metric information to csv file
-            echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes, $total_bytes" >> "$kem_filename"
+            echo "$kem_alg, $op_kem_str, $heap_bytes, $stack_bytes >> "$kem_filename""
 
         done
-        rm /
+
+        # Clearing the tmp direcotry
+        cd ./tmp && rm * && cd ../
 
     done
 
@@ -151,6 +153,8 @@ do
 
         done
 
+        # Clearing the tmp directory
+        cd ./tmp && rm * && cd ../
     done
 
 done
