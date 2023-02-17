@@ -2,6 +2,8 @@
 
 # Initial Setup
 cd ../builds/x86-liboqs-linux/tests
+mkdir ../mem-results/kem-mem-metrics/
+mkdir ../sig-mem-metrics/
 echo -e "\n\n"
 pwd
 echo -e "\n\n"
@@ -78,8 +80,8 @@ sig_algs=(
 )
 
 # Creating prefix varibles
-kem_mem_prefix="../mem-results/kem-mem-metrics"
-sig_mem_prefix="../mem-results/sig-mem-metrics"
+kem_mem_prefix="../mem-results/kem-mem-metrics/"
+sig_mem_prefix="../mem-results/sig-mem-metrics/"
 #mem_metrics_headers="Algorithm, Operation, maxHeap (bytes), maxStack (bytes)"
 
 # Creating operation arrays
@@ -100,10 +102,10 @@ do
     echo -e "Memory Test Run - $run_count\n\n"
     
     # Creating filenames and outputing headers
-    kem_filename="$kem_mem_prefix-$run_count.csv"
-    sig_filename="$sig_mem_prefix-$run_count.csv"
-    echo $mem_metrics_headers > "$kem_filename"
-    echo $mem_metrics_headers > "$sig_filename"
+    # kem_filename="$kem_mem_prefix-$run_count.csv"
+    # sig_filename="$sig_mem_prefix-$run_count.csv"
+    # echo $mem_metrics_headers > "$kem_filename"
+    # echo $mem_metrics_headers > "$sig_filename"
 
     echo -e "KEM Memory Tests\n"
     # KEM memory tests
@@ -118,7 +120,9 @@ do
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-            
+            ms_output=$(ms_print massif.out)
+            filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
+            echo $ms_output > $filename
             rm massif.out
 
             # Outputing metric information to csv file
@@ -144,9 +148,10 @@ do
 
             # Running valgrind and getting the required metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
-            
+            ms_output=$(ms_print massif.out)
+            filename="$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
+            echo $ms_output > $filename
             rm massif.out
-
 
             # Outputing metric information to csv file
             #echo "$sig_alg, $op_sig_str, $heap_bytes, $stack_bytes, $total_bytes" >> $sig_filename
