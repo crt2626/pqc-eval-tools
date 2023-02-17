@@ -32,7 +32,8 @@ RUN apt-get update && \
     iproute2 \
     python3 \
     xsltproc \
-    doxygen
+    doxygen \ 
+    git
 
 #Setting root password
 RUN echo 'root:password' | chpasswd
