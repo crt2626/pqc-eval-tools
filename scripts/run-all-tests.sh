@@ -29,7 +29,7 @@ then
 else
     mkdir -p "$root_dir"/up-results/liboqs/speed-results
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/
-    mkdir "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics/ && "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
+    mkdir -p "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics/ && mkdir -p "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
 fi
 
 # configuring scripts
