@@ -34,13 +34,12 @@ if grep -q "Raspberry Pi" /proc/device-tree/model; then
 fi
 
 # Setting up directory and building liboqs
-cd "$root_dir"/liboqs
-mkdir arm-liboqs-linux
-cd arm-liboqs-linux
+cd "$root_dir"/liboqs && mkdir "$build_dir" && cd "$build_dir"
 cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./
 ninja -j 4
 ninja install
 
 # Making directory for this build and moving
-cd ../
-mv arm-liboqs-linux ../builds/
+cd .. 
+mv "$root_dir"/liboqs/"$build_dir" "$root_dir"/builds/.
+cd "$root_dir"/scripts

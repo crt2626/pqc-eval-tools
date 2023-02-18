@@ -8,16 +8,16 @@ then
     # Moving direcotory and clearing old results
     build_dir="builds/x86-liboqs-linux"
     cd "$root_dir"/"$build_dir"/tests
-    sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/*
-    sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/*
+    sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/./*
+    sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/./*
 
 elif [ -d "../builds/arm-linux-build.sh" ];
 then
   # Moving direcotory and clearing old results
   build_dir="builds/arm-linux-build"
   cd "$root_dir"/"$build_dir"/tests
-  sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/*
-  sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/*
+  sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/./*
+  sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/./*
 
 fi
 
