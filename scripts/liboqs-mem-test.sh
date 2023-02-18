@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Declaring directory path variables
 root_dir="/pqc/pqc-eval-tools"
 
 # Initial Setup

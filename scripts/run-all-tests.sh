@@ -50,5 +50,9 @@ chmod +x *.sh
 Conducting liboqs benchmarking tests
 '
 cd "$root_dir"/scripts
+
 # Memory tests
 ./liboqs-mem-test.sh
+
+# CPU speed tests
+./liboqs-speed-test.sh
