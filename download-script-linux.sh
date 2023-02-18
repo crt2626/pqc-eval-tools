@@ -1,14 +1,12 @@
 #!/bin/bash
-: '
-Downloading and confiuring repo
-'
-function download() {
 
+# Downloading and configuring repo
+function download() {
     # Function for setting up the repo
     sudo mkdir /pqc && cd /pqc && git clone https://github.com/crt2626/pqc-eval-tools.git
+    sudo chown $USER:$USER /pqc
     cd /pqc/pqc-eval-tools/scripts
-    chmod +x /pqc/pqc-eval-tools/*.sh
-
+    sudo chmod +x /pqc/pqc-eval-tools/*.sh
 }
 
 # Checking if the directory is already there
@@ -20,4 +18,4 @@ else
     download
 fi
 
-echo -e "\nRepo has been setup in the /pqc direcotry\n"
+echo -e "\nRepo has been setup in the /pqc directory\n"
