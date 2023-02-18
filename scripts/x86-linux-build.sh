@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_dir="/pqc/pqc-eval-tools"
+root_dir="/pqc/pqc-eval-tools/"
 
 # Check for and install required packages
 packages=(astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind)

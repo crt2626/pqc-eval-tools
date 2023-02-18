@@ -1,5 +1,5 @@
 #!/bin/bash
-root_dir="/pqc/pqc-eval-tools"
+root_dir="/pqc/pqc-eval-tools/"
 
 : '
 Performing setup of test suite
