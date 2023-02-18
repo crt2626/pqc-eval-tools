@@ -1,7 +1,19 @@
 #!/bin/bash
 
+root_dir="../../../"
+
 # Initial Setup
-cd ../builds/x86-liboqs-linux/tests
+if [ -d "../builds/x86-liboqs-linux" ]; 
+then
+
+    cd ../builds/x86-liboqs-linux/tests
+
+elif [ -d "../builds/x86-liboqs-linux" ];
+then
+
+  cd ../builds/arm-liboqs-linux/tests
+
+fi
 
 : '
 Creating needed variables and arrays
@@ -145,13 +157,9 @@ do
 done
 
 echo -e "\nMemory Tests Comeplete\n"
+
+# Moving final results
+mv ../mem-results/sig-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics
+mv ../mem-results/sig-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics
+cd "$root_dir"/scripts
 #****************************************************************
-
-
-# Doing Speed tests
-#./full-alg-speed 
-
-
-
-# heap_bytes=$(grep 'mem_heap_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
-# stack_bytes=$(grep 'mem_stacks_B=' massif.out | awk -F= '{sum+=$2} END {print sum}')
