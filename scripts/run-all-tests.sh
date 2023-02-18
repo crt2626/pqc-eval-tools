@@ -25,10 +25,11 @@ fi
 # Creating unparsed results directory and clearing old results if present
 if [ -d "../up-results" ];
 then 
-    sudo rm -r up-results/
+    sudo rm -r "$root_dir"/up-results/
 else
-    mkdir -p ../up-results/liboqs/speed-results && mkdir -p ../up-results/liboqs/mem-results/
-    mkdir ../up-results/liboqs/mem-results/kem-mem-metrics/ && ../up-results/liboqs/mem-results/kem-mem-metrics/
+    mkdir -p "$root_dir"/up-results/liboqs/speed-results
+    mkdir -p "$root_dir"/up-results/liboqs/mem-results/
+    mkdir "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics/ && "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
 fi
 
 # configuring scripts
