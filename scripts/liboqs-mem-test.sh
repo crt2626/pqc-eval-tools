@@ -7,19 +7,18 @@ if [ -d "$root_dir/builds/x86-liboqs-linux" ];
 then
     # Moving direcotory and clearing old results
     build_dir="builds/x86-liboqs-linux"
-    cd "$root_dir"/"$build_dir"/tests
-    cd ./mem-results/kem-mem-metrics && sudo rm * && cd ../
-    cd ./mem-results/sig-mem-metrics && sudo rm *
+    cd "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics && sudo rm *
+    cd "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics && sudo rm *
     cd "$root_dir"/"$build_dir"/tests
 
 elif [ -d "$root_dir/builds/arm-linux-build.sh" ];
 then
   # Moving direcotory and clearing old results
   build_dir="builds/arm-linux-build"
+  cd "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics && sudo rm *
+  cd "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics && sudo rm *
   cd "$root_dir"/"$build_dir"/tests
-  cd ./mem-results/kem-mem-metrics && sudo rm * && cd ../
-  cd ./mem-results/sig-mem-metrics && sudo rm *
-  cd "$root_dir"/"$build_dir"/tests
+
 fi
 
 : '
@@ -108,9 +107,9 @@ echo -e "Performing Memory Tests:-\n"
 echo -e "***************************\n\n"
 
 # Performing the memorry tests 15 times each
-#for run_count in {1..15}
-#do
-#    echo -e "Memory Test Run - $run_count\n\n"
+for run_count in {1..15}
+do
+    echo -e "Memory Test Run - $run_count\n\n"
     
     echo -e "KEM Memory Tests\n"
     # KEM memory tests
@@ -161,12 +160,13 @@ echo -e "***************************\n\n"
         cd ./tmp && rm * && cd ../
     done
 
-#done
+done
 
 echo -e "\nMemory Tests Comeplete\n"
 
 # Moving final results
-mv "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/
-mv "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/
+mv "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics "$root_dir"/up-results/liboqs/mem-results/
+mv "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/
+mkdir -p "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics && mkdir -p "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics
 cd "$root_dir"/scripts
 #****************************************************************
