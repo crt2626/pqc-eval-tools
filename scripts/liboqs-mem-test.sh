@@ -163,7 +163,7 @@ done
 echo -e "\nMemory Tests Comeplete\n"
 
 # Moving final results
-mv ../mem-results/sig-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics
+mv ../mem-results/kem-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics
 mv ../mem-results/sig-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics
 cd "$root_dir"/scripts
 #****************************************************************
