@@ -12,8 +12,10 @@ import sys
 import os
 
 # Declaring gloabl
-kem_algs=[]
-sig_algs=[]
+kem_algs = []
+sig_algs = []
+root_dir = "/pqc/pqc-eval-tools"
+
 
 
 def get_algs():

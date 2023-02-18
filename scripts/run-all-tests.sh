@@ -1,6 +1,6 @@
 #!/bin/bash
 root_dir="/pqc/pqc-eval-tools"
-
+b_txt="build-type.txt"
 : '
 Performing setup of test suite
 '
@@ -14,12 +14,16 @@ else
         # x86 Linux
         echo -e "x86-Linux Detected - creating relevant build\n"
         ./x86-linux-build.sh
+        build_filename="$root_dir/result-processing/$b_txt"
+        echo "x86-linux-build" > $build_filename
 
     elif [ "$(uname -m)" = arm* ]; 
     then
         # ARM
         echo -e "ARM Linux Detected - creating relevant build\n"
         ./arm-linux-build.sh
+        build_filename="$root_dir/result-processing/$b_txt"
+        echo "arm-linux-build" > $build_filename
 
     else
         # Unsupported system
