@@ -4,23 +4,30 @@ root_dir="/pqc/pqc-eval-tools"
 : '
 Performing setup of test suite
 '
-#Checking system type and building
-if [ "$(uname -m)" = "x86_64" ] && [ "$(uname -s)" = "Linux" ]; 
+# Checking if the build directories already exist
+if [ -d "/pqc/pqc-eval-tools/builds/x86-liboqs-linux" ] || [ -d "/pqc/pqc-eval-tools/builds/arm-liboqs-linux" ]; 
 then
-    # x86 Linux
-    echo
-    ./x86-linux-build.sh
-
-elif [ "$(uname -m)" = arm* ]; 
-then
-  # ARM
-  ./arm-linux-build.sh
-
+    echo -e "There is current build available - skipping build\n"
 else
-    #Unsuppoutred system
-    echo "Unsupported architecture or operating system for this script"
-    exit 1
+    if [ "$(uname -m)" = "x86_64" ] && [ "$(uname -s)" = "Linux" ]; 
+    then
+        # x86 Linux
+        echo -e "x86-Linux Detected - creating relevant build\n"
+        ./x86-linux-build.sh
+
+    elif [ "$(uname -m)" = arm* ]; 
+    then
+        # ARM
+        echo -e "ARM Linux Detected - creating relevant build\n"
+        ./arm-linux-build.sh
+
+    else
+        # Unsupported system
+        echo "Unsupported System Detected - Manual Build Required!\n"
+        exit 1
+    fi
 fi
+
 
 # Creating unparsed results directory and clearing old results if present
 if [ -d "$root_dir/up-results" ];
@@ -39,6 +46,6 @@ chmod +x *.sh
 : '
 Conducting liboqs benchmarking tests
 '
-
+cd "$root_dir"/scripts
 # Memory tests
 ./liboqs-mem-tests.sh
