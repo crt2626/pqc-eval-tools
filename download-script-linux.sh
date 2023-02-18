@@ -10,7 +10,7 @@ function download() {
     chmod +x /pqc/pqc-eval-tools/*.sh
 
 }
-
+dfd
 # Checking if the directory is already there
 if [ -d "/pqc" ];
 then 
