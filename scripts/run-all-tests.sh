@@ -11,11 +11,11 @@ then
     # x86 Linux
     ./x86-linux-build.sh
 
-elif [ "$(uname -m)" = "armv7l" ]; 
+elif [ "$(uname -m)" = arm* ]; 
 then
   # ARM
   ./arm-linux-build.sh
-  
+
 else
     #Unsuppoutred system
     echo "Unsupported architecture or operating system for this script"
