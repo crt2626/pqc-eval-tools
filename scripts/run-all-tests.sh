@@ -2,12 +2,9 @@
 : '
 Performing setup of test suite
 '
-# Creating the direcotry 
-mkdir /pqc
-git clone https://github.com/crt2626/pqc-eval-tools.git
-
-# configuring scripts
-cd /pqc/
+# Working 
+mkdir /pqc && cd /pqc && git clone https://github.com/crt2626/pqc-eval-tools.git
+cd /pqc/pqc-eval-tools/scripts
 chmod +x *.sh
 
 #Checking system type and building
