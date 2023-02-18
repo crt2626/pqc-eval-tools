@@ -59,4 +59,3 @@ def speed_processing():
             temp_df = temp_df.drop(0)
             filename_sig = type_dir + sig_prefix + str(file_count) + ".csv"
             temp_df.to_csv(filename_sig, index=False)
-
