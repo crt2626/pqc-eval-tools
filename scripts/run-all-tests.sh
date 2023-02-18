@@ -2,10 +2,12 @@
 : '
 Performing setup of test suite
 '
-# Creating 
-
+# Creating the direcotry 
+mkdir /pqc
+git clone https://github.com/crt2626/pqc-eval-tools.git
 
 # configuring scripts
+cd /pqc/
 chmod +x *.sh
 
 #Checking system type and building
@@ -25,7 +27,6 @@ else
     echo "Unsupported architecture or operating system for this script"
     exit 1
 fi
-
 
 # Creating unparsed results directory and clearing old results if present
 if [ -d "../up-results" ];
