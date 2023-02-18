@@ -60,3 +60,5 @@ cd "$root_dir"/scripts
 
 # CPU speed tests
 ./liboqs-speed-test.sh
+
+ADD IN SECTION FOR ASKING IF THE USER IS TETSING ACROSS MULTPLE MACHINES AND A TYPE NUMBER
