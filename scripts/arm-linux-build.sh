@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Declaring direcotry path varibales
+root_dir="/pqc/pqc-eval-tools"
+build_dir="arm-liboqs-linux"
+
 # Check for and install required packages
 packages=(astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind)
 not_installed=()
@@ -23,14 +27,14 @@ if grep -q "Raspberry Pi" /proc/device-tree/model; then
     fi
 
     #Enabling user access PMU
-    cd ../dependency-libs/pqax/enable_ccr
+    cd "$root_dir"/dependency-libs/pqax/enable_ccr
     make
     make install 
     
 fi
 
 # Setting up directory and building liboqs
-cd ../../../liboqs
+cd "$root_dir"/liboqs
 mkdir arm-liboqs-linux
 cd arm-liboqs-linux
 cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./
