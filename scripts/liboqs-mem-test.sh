@@ -3,7 +3,7 @@
 root_dir="/pqc/pqc-eval-tools"
 
 # Initial Setup
-if [ -d "../builds/x86-liboqs-linux" ]; 
+if [ -d "$root_dir/builds/x86-liboqs-linux" ]; 
 then
     # Moving direcotory and clearing old results
     build_dir="builds/x86-liboqs-linux"
@@ -11,7 +11,7 @@ then
     sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/./*
     sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/./*
 
-elif [ -d "../builds/arm-linux-build.sh" ];
+elif [ -d "$root_dir/builds/arm-linux-build.sh" ];
 then
   # Moving direcotory and clearing old results
   build_dir="builds/arm-linux-build"
@@ -107,9 +107,9 @@ echo -e "Performing Memory Tests:-\n"
 echo -e "***************************\n\n"
 
 # Performing the memorry tests 15 times each
-for run_count in {1..15}
-do
-    echo -e "Memory Test Run - $run_count\n\n"
+#for run_count in {1..15}
+#do
+#    echo -e "Memory Test Run - $run_count\n\n"
     
     echo -e "KEM Memory Tests\n"
     # KEM memory tests
@@ -160,12 +160,12 @@ do
         cd ./tmp && rm * && cd ../
     done
 
-done
+#done
 
 echo -e "\nMemory Tests Comeplete\n"
 
 # Moving final results
-mv "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/./* "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/kem-mem-metrics/
-mv "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/./* "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
+mv "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/./* "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/kem-mem-metrics/./
+mv "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/./* "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/sig-mem-metrics/./
 cd "$root_dir"/scripts
 #****************************************************************
