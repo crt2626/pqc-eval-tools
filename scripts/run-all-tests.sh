@@ -48,4 +48,4 @@ Conducting liboqs benchmarking tests
 '
 cd "$root_dir"/scripts
 # Memory tests
-./liboqs-mem-tests.sh
+./liboqs-mem-test.sh
