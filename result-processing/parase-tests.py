@@ -33,9 +33,6 @@ def get_algs():
             sig_algs.append(line)
 
 
-
-
-
 def speed_processing():
     """Importing and processing result files"""
     # Declaring initial variables
