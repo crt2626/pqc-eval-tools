@@ -9,6 +9,7 @@ chmod +x *.sh
 if [ "$(uname -m)" = "x86_64" ] && [ "$(uname -s)" = "Linux" ]; 
 then
     # x86 Linux
+    echo
     ./x86-linux-build.sh
 
 elif [ "$(uname -m)" = arm* ]; 
@@ -30,7 +31,7 @@ then
 else
     mkdir -p ../up-results/liboqs/speed-results && mkdir -p ../up-results/liboqs/mem-results/
     mkdir ../up-results/liboqs/mem-results/kem-mem-metrics/ && ../up-results/liboqs/mem-results/kem-mem-metrics/
-done
+fi
 
 # configuring scripts
 chmod +x *.sh

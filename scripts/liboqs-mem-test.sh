@@ -5,13 +5,17 @@ root_dir="../../../"
 # Initial Setup
 if [ -d "../builds/x86-liboqs-linux" ]; 
 then
-
+    # Moving direcotory and clearing old results
     cd ../builds/x86-liboqs-linux/tests
+    sudo rm ../mem-results/kem-mem-metrics/*
+    sudo rm ../mem-results/sig-mem-metrics/*
 
 elif [ -d "../builds/x86-liboqs-linux" ];
 then
-
+  # Moving direcotory and clearing old results
   cd ../builds/arm-liboqs-linux/tests
+  sudo rm ../mem-results/kem-mem-metrics/*
+  sudo rm ../mem-results/sig-mem-metrics/*
 
 fi
 
@@ -85,8 +89,8 @@ sig_algs=(
 )
 
 # Creating prefix varibles
-kem_mem_prefix="../mem-results/kem-mem-metrics/"
-sig_mem_prefix="../mem-results/sig-mem-metrics/"
+kem_mem_prefix="../mem-results/kem-mem-metrics/kem-mem-metrics"
+sig_mem_prefix="../mem-results/sig-mem-metrics/sig-mem-metrics"
 
 # Creating operation arrays
 op_kem=("Keygen" "Encaps" "Decaps")
@@ -118,7 +122,7 @@ do
 
             # Running valgrind and outputing metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-            filename="$kem_mem_dir/$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
+            filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
             ms_print massif.out > $filename
             rm massif.out
             echo -e "\n"
@@ -143,7 +147,7 @@ do
 
             # Running valgrind and outputing metrics
             valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
-            filename="$sig_mem_dir/$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
+            filename="$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
             ms_print massif.out > $filename
             rm massif.out
             echo -e "\n"
