@@ -20,4 +20,4 @@ else
     download
 fi
 
-
+echo -e "\nRepo has been setup in the /pqc direcotry\n"

@@ -23,7 +23,7 @@ else
 fi
 
 # Creating unparsed results directory and clearing old results if present
-if [ -d "../up-results" ];
+if [ -d "$root_dir/up-results" ];
 then 
     sudo rm -r "$root_dir"/up-results/
 else

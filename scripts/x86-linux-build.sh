@@ -16,14 +16,10 @@ if [[ ${#not_installed[@]} -ne 0 ]]; then
 fi
 
 # Setting up directory and building liboqs
-cd ../liboqs
-mkdir x86-liboqs-linux
-cd x86-liboqs-linux
-cmake -GNinja .. -DCMAKE_INSTALL_PREFIX=./
+mkdir "$root_dir"/liboqs/x86-liboqs-linux
+cmake -GNinja "$root_dir"/liboqs/. -DCMAKE_INSTALL_PREFIX="$root_dir"/liboqs/x86-liboqs-linux/.
 ninja -j 4
 ninja install
 
 #Making directory for this build and moving
-#mkdir builds/x86-liboqs-linux
-cd ../
-mv x86-liboqs-linux ../builds/
+mv "$root_dir"/liboqs/x86-liboqs-linux "$root_dir"/builds/.

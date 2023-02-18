@@ -6,16 +6,18 @@ root_dir="/pqc/pqc-eval-tools"
 if [ -d "../builds/x86-liboqs-linux" ]; 
 then
     # Moving direcotory and clearing old results
-    cd ../builds/x86-liboqs-linux/tests
-    sudo rm ../mem-results/kem-mem-metrics/*
-    sudo rm ../mem-results/sig-mem-metrics/*
+    build_dir="builds/x86-liboqs-linux"
+    cd "$root_dir"/"$build_dir"/tests
+    sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/*
+    sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/*
 
-elif [ -d "../builds/x86-liboqs-linux" ];
+elif [ -d "../builds/arm-linux-build.sh" ];
 then
   # Moving direcotory and clearing old results
-  cd ../builds/arm-liboqs-linux/tests
-  sudo rm ../mem-results/kem-mem-metrics/*
-  sudo rm ../mem-results/sig-mem-metrics/*
+  build_dir="builds/arm-linux-build"
+  cd "$root_dir"/"$build_dir"/tests
+  sudo rm "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/*
+  sudo rm "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/*
 
 fi
 
@@ -89,8 +91,8 @@ sig_algs=(
 )
 
 # Creating prefix varibles
-kem_mem_prefix="../mem-results/kem-mem-metrics/kem-mem-metrics"
-sig_mem_prefix="../mem-results/sig-mem-metrics/sig-mem-metrics"
+kem_mem_prefix="$root_dir/$build_dir/mem-results/kem-mem-metrics/kem-mem-metrics"
+sig_mem_prefix="$root_dir/$build_dir/mem-results/sig-mem-metrics/sig-mem-metrics"
 
 # Creating operation arrays
 op_kem=("Keygen" "Encaps" "Decaps")
@@ -163,7 +165,7 @@ done
 echo -e "\nMemory Tests Comeplete\n"
 
 # Moving final results
-mv ../mem-results/kem-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics
-mv ../mem-results/sig-mem-metrics/* "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics
+mv "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics/* "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/kem-mem-metrics
+mv "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics/* "$root_dir"/"$build_dir"/up-results/liboqs/mem-results/sig-mem-metrics
 cd "$root_dir"/scripts
 #****************************************************************
