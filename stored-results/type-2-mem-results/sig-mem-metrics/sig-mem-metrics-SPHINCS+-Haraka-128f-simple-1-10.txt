@@ -1,0 +1,171 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem SPHINCS+-Haraka-128f-simple 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+40.54^   ##                                                                   
+     |   #  ::                                                                
+     |   # :: :::::@::::::@::::::::::@@:::::@::::::@::::::::::::::::::::  @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: ::@:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+     |   # :: ::: :@: :: :@: : : ::: @ ::: :@: :: :@: :: : ::::: :::::: : @:::
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   50.23
+
+Number of snapshots: 54
+ Detailed snapshots: [3 (peak), 10, 15, 22, 27, 32, 49]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        725,082            1,464                0             0        1,464
+  2      1,715,397            1,464                0             0        1,464
+  3      2,342,387           41,512           21,924            84       19,504
+52.81% (21,924B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->41.16% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->09.87% (4,096B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->09.87% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->09.87% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->09.87% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|       ->09.87% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|         ->09.87% (4,096B) 0x10AFB7: OQS_randombytes_system (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | ->09.87% (4,096B) 0x143B34: PQCLEAN_SPHINCSHARAKA128FSIMPLE_AESNI_crypto_sign_signature (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | | ->09.87% (4,096B) 0x10C1FD: OQS_SIG_sign (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | |   ->09.87% (4,096B) 0x10A763: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | |     
+|         | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|         | 
+|         ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|         
+->01.14% (472B) 0x4BB9BAA: __fopen_internal (iofopen.c:65)
+| ->01.14% (472B) 0x10AF9C: OQS_randombytes_system (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->01.14% (472B) 0x143B34: PQCLEAN_SPHINCSHARAKA128FSIMPLE_AESNI_crypto_sign_signature (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.14% (472B) 0x10C1FD: OQS_SIG_sign (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->01.14% (472B) 0x10A763: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.65% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  4      3,664,753           39,344           17,356            60       21,928
+  5      5,092,013           39,496           17,356            60       22,080
+  6      6,223,313           38,360           17,356            60       20,944
+  7      7,245,001           38,336           17,356            60       20,920
+  8      8,037,014           38,336           17,356            60       20,920
+  9      8,834,942           38,360           17,356            60       20,944
+ 10     10,078,651           38,336           17,356            60       20,920
+45.27% (17,356B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->44.57% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.70% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 11     10,700,273           38,360           17,356            60       20,944
+ 12     12,020,853           38,336           17,356            60       20,920
+ 13     12,852,782           38,360           17,356            60       20,944
+ 14     14,350,868           38,336           17,356            60       20,920
+ 15     15,183,287           38,360           17,356            60       20,944
+45.25% (17,356B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->44.55% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.70% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 16     15,849,011           38,360           17,356            60       20,944
+ 17     17,181,303           38,336           17,356            60       20,920
+ 18     18,346,827           38,336           17,356            60       20,920
+ 19     19,844,917           38,200           17,356            60       20,784
+ 20     20,979,466           38,360           17,356            60       20,944
+ 21     21,779,897           38,336           17,356            60       20,920
+ 22     22,847,299           38,336           17,356            60       20,920
+45.27% (17,356B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->44.57% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.70% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 23     24,181,000           38,336           17,356            60       20,920
+ 24     25,248,259           38,336           17,356            60       20,920
+ 25     26,048,850           38,336           17,356            60       20,920
+ 26     27,382,979           38,360           17,356            60       20,944
+ 27     28,183,719           38,336           17,356            60       20,920
+45.27% (17,356B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->44.57% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.70% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28     29,250,791           38,336           17,356            60       20,920
+ 29     30,318,384           38,360           17,356            60       20,944
+ 30     31,119,068           38,360           17,356            60       20,944
+ 31     32,453,221           38,360           17,356            60       20,944
+ 32     33,520,506           38,368           17,356            60       20,952
+45.24% (17,356B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->44.54% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.70% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 33     34,186,782           37,824           17,356            60       20,408
+ 34     35,186,716           38,336           17,356            60       20,920
+ 35     36,519,810           38,336           17,356            60       20,920
+ 36     37,852,776           38,336           17,356            60       20,920
+ 37     38,852,228           38,200           17,356            60       20,784
+ 38     39,519,024           37,920           17,356            60       20,504
+ 39     40,518,564           38,336           17,356            60       20,920
+ 40     41,518,004           38,360           17,356            60       20,944
+ 41     42,184,302           38,360           17,356            60       20,944
+ 42     43,183,850           38,360           17,356            60       20,944
+ 43     44,183,289           38,360           17,356            60       20,944
+ 44     44,849,575           38,360           17,356            60       20,944
+ 45     45,849,201           38,336           17,356            60       20,920
+ 46     46,515,503           38,336           17,356            60       20,920
+ 47     47,514,945           38,360           17,356            60       20,944
+ 48     48,847,964           36,856           17,356            60       19,440
+ 49     50,181,022           38,360           17,356            60       20,944
+45.25% (17,356B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->44.55% (17,088B) 0x10A6C2: main (in /home/cuserln1/work/test/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.70% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 50     50,802,656           38,360           17,356            60       20,944
+ 51     51,424,303           38,360           17,356            60       20,944
+ 52     52,046,145           38,336           17,356            60       20,920
+ 53     52,667,768           38,360           17,356            60       20,944
