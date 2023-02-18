@@ -1,12 +1,9 @@
 #!/bin/bash
+root_dir="/pqc/pqc-eval-tools"
+
 : '
 Performing setup of test suite
 '
-# Working 
-mkdir /pqc && cd /pqc && git clone https://github.com/crt2626/pqc-eval-tools.git
-cd /pqc/pqc-eval-tools/scripts
-chmod +x *.sh
-
 #Checking system type and building
 if [ "$(uname -m)" = "x86_64" ] && [ "$(uname -s)" = "Linux" ]; 
 then
@@ -28,7 +25,7 @@ fi
 # Creating unparsed results directory and clearing old results if present
 if [ -d "../up-results" ];
 then 
-    sudo rm -r ../up-results/* 
+    sudo rm -r ../up-results/
 else
     mkdir -p ../up-results/liboqs/speed-results && mkdir -p ../up-results/liboqs/mem-results/
     mkdir ../up-results/liboqs/mem-results/kem-mem-metrics/ && ../up-results/liboqs/mem-results/kem-mem-metrics/

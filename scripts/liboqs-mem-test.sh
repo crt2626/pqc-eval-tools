@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_dir="../../../"
+root_dir="/pqc/pqc-eval-tools"
 
 # Initial Setup
 if [ -d "../builds/x86-liboqs-linux" ]; 
