@@ -67,7 +67,7 @@ else
         build_filename="$root_dir/result-processing/$b_txt"
         echo "x86-linux-build" > $build_filename
 
-    elif [[ "$(uname -m)" = arm* ]]; 
+    elif [[ "$(uname -m)" = arm* || "$(uname -m)" == aarch* ]]; 
     then
         # ARM
         echo -e "ARM Linux Detected - creating relevant build\n"

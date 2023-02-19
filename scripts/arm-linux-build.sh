@@ -27,6 +27,7 @@ if grep -q "Raspberry Pi" /proc/device-tree/model; then
     fi
 
     #Enabling user access PMU
+    echo -e "\n Enabling ARM PMU\n"
     cd "$root_dir"/dependency-libs/pqax/enable_ccr
     make
     make install 
