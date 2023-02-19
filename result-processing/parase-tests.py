@@ -34,7 +34,7 @@ def get_algs():
             sig_algs.append(line)
 
 
-def speed_processing():
+def speed_processing(speed_file):
     """Importing and processing result files"""
     # Declaring initial variables
     kem_prefix = "test-kem-speed-"
@@ -61,3 +61,108 @@ def speed_processing():
             temp_df = temp_df.drop(0)
             filename_sig = type_dir + sig_prefix + str(file_count) + ".csv"
             temp_df.to_csv(filename_sig, index=False)
+
+
+fieldnames = ["maxBytes", "maxHeap", "extHeap", "maxStack"]
+
+def get_peak(mem_file, peak_metrics):
+    """Takes the current massif.out file and gets the peak memory metrics. 
+        It comes from the run_mem.py script found in OQS Profiling Project
+        https://github.com/open-quantum-safe/profiling"""
+
+    # Parsing function from OQS Profile Project
+    # Gets max memory metric from algorithm operation
+    peak = -1
+    with open(mem_file, "r") as lines:
+        for line in lines: 
+            if line.startswith(" Detailed snapshots: ["):
+                match = re.search(r"(\d+) \(peak\).*", line)
+                if match:
+                    peak = int(match.group(1))
+            if peak > 0:
+                if line.startswith('{: >3d}'.format(peak)): # remove "," and print all numbers except first:
+                    nl = line.replace(",", "")
+                    peak_metrics.extend(nl.split()[1:])
+                    # print(" ".join(res))
+    print(peak_metrics)
+    return peak_metrics
+
+
+def memory_processing(peak_metrics):
+    """Looping through all memory files and creating csv files"""
+
+    # Assigning directory varibales
+
+
+
+def mutiple_tests(num_machines):
+    """This function parases the results for multiple machines and stores them as csv files"""
+
+    # Declaring directory variables
+    results_dir = root_dir + "/results"
+    up_mem = root_dir + "/up-results/liboqs/mem-results/"
+    up_speed = root_dir + ""
+    liboqs_speed = results_dir + "/liboqs/speed-results/"
+
+
+
+
+
+
+def determine_test_type(multiple_machines):
+    """Getting a y/n response from the user if tests where conducted across multiple machines"""
+    prompt_flag =0
+
+    # Getting input from user and ensuring it is valid
+    while prompt_flag == 0:
+
+       response = input(prompt + " (y/n) ").strip().lower()
+
+       if response in {"y", "yes", "Yes"}:
+        prompt_flag = 1
+        multiple_machines = True
+
+       elif response in {"n", "no", "No"}:
+        prompt_flag = 1
+        multiple_machines = False
+
+       else:
+        print("Response must be y/n")
+
+    return multiple_machines
+
+# def get_machine_number (num_machines):
+#     """If multiple of machines are being tested, get the total number of machines"""
+
+#     prompt_flag = 0
+
+#     # Getting input from user and ensuring that it is valid
+#     while prompt_flag == 0:
+
+#         response = input(prompt, "Please enter the number of machines testsed - ")
+
+#         try:
+#             num_machines = int(input(prompt))
+
+
+
+def main():
+    """Main function for parsing the test results"""
+
+    # Determinig if the test was performed on multiple machines
+    multiple_machines = None
+    num_machines = 0
+    multiple_machines = determine_test_type(multiple_machines)
+
+    if multiple_machines:
+        num_machines = get_machine_number(num_machines)
+
+    #Parsing the results
+    if multiple_machines:
+
+        #Parsing for multiple machines
+        multiple_machines(num_machines)
+
+    else:
+        # Parsing for a single machine
+        single_machine()

@@ -109,7 +109,7 @@ cd "$root_dir"/scripts
 ./liboqs-mem-test.sh
 
 # CPU speed tests
-./liboqs-speed-test.sh
+./liboqs-speed.sh
 
 
 
