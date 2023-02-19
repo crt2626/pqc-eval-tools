@@ -178,6 +178,15 @@ def main():
     """Main function for parsing the test results"""
 
     # Getting the number of machines tested
-
+    prompt_flag = 0
     
-    process_tests(num_machines)
+    while prompt_flag == 0:
+        try:
+            machine_num = int(input("Enter the number of machines tested - "))
+            prompt_flag = 1
+        except ValueError:
+            print("Invlaid Input - Please enter a number! - ")
+
+    # Processing the results
+    process_tests(machine_num)
+    print(f"\nResults have been processed - CSV files can be found in the Results Directory\n")
