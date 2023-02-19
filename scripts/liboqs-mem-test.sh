@@ -12,10 +12,10 @@ then
     cd "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics && sudo rm *
     cd "$root_dir"/"$build_dir"/tests
 
-elif [ -d "$root_dir/builds/arm-linux-build" ];
+elif [ -d "$root_dir/builds/arm-liboqs-linux" ];
 then
   # Moving direcotory and clearing old results
-  build_dir="builds/arm-linux-build"
+  build_dir="builds/arm-liboqs-linux"
   cd "$root_dir"/"$build_dir"/mem-results/kem-mem-metrics && sudo rm *
   cd "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics && sudo rm *
   cd "$root_dir"/"$build_dir"/tests
