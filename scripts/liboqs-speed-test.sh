@@ -28,6 +28,7 @@ else
 fi
 
 # Performing both KEM and Digital Signature test
+cd "$root_dir"/"$build_dir"/tests
 ./full-alg-speed-test
 
 # Moving results
