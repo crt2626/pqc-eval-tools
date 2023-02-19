@@ -67,7 +67,7 @@ else
         build_filename="$root_dir/result-processing/$b_txt"
         echo "x86-linux-build" > $build_filename
 
-    elif [ "$(uname -m)" = arm* ]; 
+    elif [[ "$(uname -m)" = arm* ]]; 
     then
         # ARM
         echo -e "ARM Linux Detected - creating relevant build\n"
@@ -87,11 +87,11 @@ fi
 if [ -d "/pqc/pqc-eval-tools/up-results" ]; 
 then
     sudo rm -r "$root_dir"/up-results/
-    mkdir -p "$root_dir"/up-results/liboqs/speed-results
+    mkdir -p "$root_dir"/up-results/liboqs/speed-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics/ && mkdir -p "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
 else
-    mkdir -p "$root_dir"/up-results/liboqs/speed-results
+    mkdir -p "$root_dir"/up-results/liboqs/speed-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics/ && mkdir -p "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
 fi
@@ -123,7 +123,7 @@ if [ "$answer" == "yes" ];
 then
 
     # Creating directory name variables
-    machine_direc"machine-$machine_num"
+    machine_direc="machine-$machine_num"
 
     # Changing result directory names for liboqs
     mkdir -p "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
