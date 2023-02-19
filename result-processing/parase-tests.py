@@ -7,8 +7,6 @@ import matplotlib as plt
 import numpy as np
 import pandas as pd
 import re
-import subprocess
-import sys
 import os
 
 # Declaring gloabl
@@ -16,6 +14,7 @@ kem_algs = []
 sig_algs = []
 root_dir = "/pqc/pqc-eval-tools/"
 
+#***********************************************************************
 def get_algs():
     """Function for creating list of algorithms"""
 
@@ -31,6 +30,8 @@ def get_algs():
         for line in alg_file:
             sig_algs.append(line)
 
+
+#***********************************************************************
 def speed_processing(type_speed_dir, up_speed_dir):
     """Importing and processing result files"""
     # Declaring initial variables
@@ -56,8 +57,7 @@ def speed_processing(type_speed_dir, up_speed_dir):
         temp_df.to_csv(filename_sig, index=False)
 
 
-fieldnames = ["maxBytes", "maxHeap", "extHeap", "maxStack"]
-
+#***********************************************************************
 def get_peak(mem_file, peak_metrics):
     """Takes the current massif.out file and gets the peak memory metrics. 
         It comes from the run_mem.py script found in OQS Profiling Project
@@ -81,14 +81,64 @@ def get_peak(mem_file, peak_metrics):
     return peak_metrics
 
 
-def memory_processing(peak_metrics):
+#***********************************************************************
+def memory_processing(type_mem_dir, up_mem_dir):
     """Looping through all memory files and creating csv files"""
 
     # Assigning directory varibales
+    kem_dir = up_mem_dir + "kem-mem-metrics/"
+    sig_dir = up_mem_dir + "sig-mem-metrics/"
+    kem_file_prefix = "kem-mem-metrics-"
+    sig_file_prefix = "sig-mem-metrics-"
+    peak_metrics = []
+
+    # file placeholders
+    filednames = ["Algorithm", "Operation", "maxBytes", "maxHeap", "extHeap", "maxStack"]
+    kem_operations = ["Keygen", "Encaps", "Decaps"]
+    sig_operations = ["Keygen", "Sign", "Verify"]
+
+    # Looping throuhg each run count
+    for run_count in range(1,16,1):
+
+        # Creating temp dataframe
+        temp_df = pd.DataFrame(columns=filednames)
+        
+        #Looping throuhg kem algorithms
+        for kem_alg in kem_algs:
+
+            kem_up_filename_pre = kem_dir + kem_file_prefix
+
+            #Looping the operations and adding to temp dataframe 
+            for operation in range(0,3,1):
+                kem_up_filename = kem_up_filename_pre + "-" + kem_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
+                peak_metrics = get_peak(kem_up_filename, peak_metrics)
+                new_row = pd.DataFrame([[kem_alg, kem_operations[operation]] + peak_metrics], columns=filednames)
+                temp_df = temp_df.append(new_row, ignore_index=True)
+
+        # Outputing kem csv file for this run
+        kem_filename = type_mem_dir + "kem-mem-metrics-" + str(run_count) + ".csv"
+        temp_df.to_csv(kem_filename, index=False)
 
 
+        #Looping throuhg kem algorithms
+        for sig_alg in sig_algs:
 
-def mutiple_tests(num_machines):
+            sig_up_filename_pre = sig_dir + sig_file_prefix
+
+            #Looping the operations and adding to temp dataframe 
+            for operation in range(0,3,1):
+                sig_up_filename = sig_up_filename_pre + "-" + sig_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
+                peak_metrics = get_peak(sig_up_filename, peak_metrics)
+                new_row = pd.DataFrame([[sig_alg, sig_operations[operation]] + peak_metrics], columns=filednames)
+                temp_df = temp_df.append(new_row, ignore_index=True)
+
+        # Outputing digital signature csv file for this run
+        sig_filename = type_mem_dir + "sig-mem-metrics-" + str(run_count) + ".csv"
+        temp_df.to_csv(sig_filename, index=False)
+
+
+#***********************************************************************
+def process_tests(num_machines):
     """This function parases the results for multiple machines and stores them as csv files"""
 
     # Declaring directory variables
@@ -109,7 +159,7 @@ def mutiple_tests(num_machines):
 
         # Setting up directory path
         up_speed_dir = up_speed + type_name
-
+        up_mem_dir = up_mem + type_name
         # Speed result directories
         type_speed_dir = speed_dir + type_name
         os.makedirs(type_speed_dir)
@@ -118,73 +168,16 @@ def mutiple_tests(num_machines):
         type_mem_dir = mem_dir + type_name
         os.makedirs(type_mem_dir)
 
-        #Parsing speed for the number of types
+        #Parsing results
         speed_processing(type_speed_dir, up_speed_dir)
+        memory_processing(type_mem_dir, up_mem_dir)
 
 
-
-
-
-
-
-
-
-
-
-def determine_test_type(multiple_machines):
-    """Getting a y/n response from the user if tests where conducted across multiple machines"""
-    prompt_flag =0
-
-    # Getting input from user and ensuring it is valid
-    while prompt_flag == 0:
-
-       response = input(prompt + " (y/n) ").strip().lower()
-
-       if response in {"y", "yes", "Yes"}:
-        prompt_flag = 1
-        multiple_machines = True
-
-       elif response in {"n", "no", "No"}:
-        prompt_flag = 1
-        multiple_machines = False
-
-       else:
-        print("Response must be y/n")
-
-    return multiple_machines
-
-# def get_machine_number (num_machines):
-#     """If multiple of machines are being tested, get the total number of machines"""
-
-#     prompt_flag = 0
-
-#     # Getting input from user and ensuring that it is valid
-#     while prompt_flag == 0:
-
-#         response = input(prompt, "Please enter the number of machines testsed - ")
-
-#         try:
-#             num_machines = int(input(prompt))
-
-
-
+#***********************************************************************  
 def main():
     """Main function for parsing the test results"""
 
-    # Determinig if the test was performed on multiple machines
-    multiple_machines = None
-    num_machines = 0
-    multiple_machines = determine_test_type(multiple_machines)
+    # Getting the number of machines tested
 
-    if multiple_machines:
-        num_machines = get_machine_number(num_machines)
-
-    #Parsing the results
-    if multiple_machines:
-
-        #Parsing for multiple machines
-        multiple_machines(num_machines)
-
-    else:
-        # Parsing for a single machine
-        single_machine()
+    
+    process_tests(num_machines)
