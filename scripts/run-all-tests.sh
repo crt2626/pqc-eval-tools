@@ -1,6 +1,50 @@
 #!/bin/bash
+
+# Declaring directory variables
 root_dir="/pqc/pqc-eval-tools"
 b_txt="build-type.txt"
+
+#****************************************************************
+: '
+Getting if tests being done will compare mutliple machine
+'
+# Getting y/n input from user and stroing result
+while true; 
+do
+    read -p "Do you intened to compare the results agaisnt other machiens [y/n]?" response_1
+    case $response_1 in
+        [Yy]* ) answer="yes"; break;;
+        [Nn]* ) answer="no"; break;;
+        * ) echo "Please an";;
+    esac
+done
+
+echo -e "\n"
+
+# Getting the machine number from the user to be used when saving results
+if [ "$answer" == "yes" ]; 
+then
+    while true; 
+    do
+        read -p "What machine number would you like to assign to these results? " response_2
+        case $response_2 in
+
+            # Asking the user to enter a number
+            ''|*[!0-9]*) echo "Please enter a number."; 
+            continue;;
+
+            # If a number is entred by the user it is stored for later use
+            * ) machine_num="$response_2"; echo "Machine number set to $response_2."; 
+            break;;
+
+        esac
+    done
+else
+    # Using default value
+    echo -e "Using default name for saving results\n"
+fi
+
+#****************************************************************
 : '
 Performing setup of test suite
 '
@@ -60,5 +104,28 @@ cd "$root_dir"/scripts
 
 # CPU speed tests
 ./liboqs-speed-test.sh
+
+
+
+#****************************************************************
+: '
+Assigning machine number to result direcotries if requested by the user
+'
+#Checking if assinged number has been reuquested
+if [ "$answer" == "yes" ];
+then
+
+    # Creating directory name variables
+    machine_direc"machine-$machine_num"
+
+    # Changing result directory names for liboqs
+    mkdir -p "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
+    mkdir -p "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"
+    mv "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
+    mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
+    mv "$root_dir"/up-results/liboqs/speed-results/results "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
+
+
+
 
 ADD IN SECTION FOR ASKING IF THE USER IS TETSING ACROSS MULTPLE MACHINES AND A TYPE NUMBER
