@@ -12,7 +12,7 @@ then
     cd "$root_dir"/"$build_dir"/mem-results/sig-mem-metrics && sudo rm *
     cd "$root_dir"/"$build_dir"/tests
 
-elif [ -d "$root_dir/builds/arm-linux-build.sh" ];
+elif [ -d "$root_dir/builds/arm-linux-build" ];
 then
   # Moving direcotory and clearing old results
   build_dir="builds/arm-linux-build"

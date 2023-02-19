@@ -42,5 +42,5 @@ ninja install
 
 # Making directory for this build and moving
 cd .. 
-mv "$root_dir"/liboqs/"$build_dir" "$root_dir"/builds/.
+mv "$root_dir"/liboqs/"$build_dir" "$root_dir"/builds/
 cd "$root_dir"/scripts

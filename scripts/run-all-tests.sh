@@ -33,7 +33,7 @@ then
         case $response_2 in
 
             # Asking the user to enter a number
-            ''|*[!0-9]*) echo -e "\nlease enter a number\n"; 
+            ''|*[!0-9]*) echo -e "\nPlease enter a number\n"; 
             continue;;
 
             # If a number is entred by the user it is stored for later use
@@ -57,7 +57,7 @@ echo -e "Preparing Test Suite\n"
 # Checking if the build directories already exist
 if [ -d "/pqc/pqc-eval-tools/builds/x86-liboqs-linux" ] || [ -d "/pqc/pqc-eval-tools/builds/arm-liboqs-linux" ]; 
 then
-    echo -e "There is current build available - skipping build\n"
+    echo -e "There is a current build available - skipping build\n"
 else
     if [ "$(uname -m)" = "x86_64" ] && [ "$(uname -s)" = "Linux" ]; 
     then
@@ -77,7 +77,7 @@ else
 
     else
         # Unsupported system
-        echo "Unsupported System Detected - Manual Build Required!\n"
+        echo -e "Unsupported System Detected - Manual Build Required!\n"
         exit 1
     fi
 fi
