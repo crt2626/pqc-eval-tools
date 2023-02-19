@@ -3,8 +3,6 @@ by python"""
 
 """Importing modules and declaring Global Variables"""
 # Importing
-import matplotlib as plt
-import numpy as np
 import pandas as pd
 import re
 import os
