@@ -15,7 +15,6 @@ function download() {
         sudo apt install git -y
     fi
 
-
     # Function for setting up the repo
     sudo mkdir /pqc && cd /pqc && sudo git clone https://github.com/crt2626/pqc-eval-tools.git
     sudo chown -R $USER:$USER /pqc
