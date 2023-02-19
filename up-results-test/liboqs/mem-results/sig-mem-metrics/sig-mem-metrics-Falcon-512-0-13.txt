@@ -1,0 +1,189 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem Falcon-512 0
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+25.25^   #                                                                    
+     |   #                                                                    
+     |   #                                                                    
+     |   #                    :         :          ::       : ::   :  :::     
+     |   #:::@:::@::::::::::::::::@::@:::::::::::::: ::@@:::::: :::::::: :::::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     |   # ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+     | ::# ::@: :@: : : ::: : :: :@: @: :: ::: :: :: : @ :: ::: :: :: :: : :::
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   51.74
+
+Number of snapshots: 51
+ Detailed snapshots: [2 (peak), 6, 9, 20, 22, 34]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1      1,015,500            1,704                0             0        1,704
+  2      2,329,973           25,856            6,818            86       18,952
+26.37% (6,818B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->15.84% (4,096B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->15.84% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->15.84% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->15.84% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|       ->15.84% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|         ->15.84% (4,096B) 0x10AFB7: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|           ->15.84% (4,096B) 0x11F76A: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|             ->15.84% (4,096B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|               ->15.84% (4,096B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|                 
+->04.95% (1,281B) 0x10A4BD: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->03.47% (897B) 0x10A4B1: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.83% (472B) 0x4BB9BAA: __fopen_internal (iofopen.c:65)
+| ->01.83% (472B) 0x10AF9C: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->01.83% (472B) 0x11F76A: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     ->01.83% (472B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|       ->01.83% (472B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         
+->00.28% (72B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  3      2,936,315           21,560            2,474           102       18,984
+  4      4,027,212           21,560            2,474           102       18,984
+  5      5,069,236           21,560            2,474           102       18,984
+  6      5,894,750           21,560            2,474           102       18,984
+11.47% (2,474B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->05.94% (1,281B) 0x10A4BD: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->04.16% (897B) 0x10A4B1: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.04% (224B) 0x1ADF07: OQS_SHA3_shake256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->01.04% (224B) 0x11F772: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->01.04% (224B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     ->01.04% (224B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|       
+->00.33% (72B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  7      6,767,521           21,608            2,474           102       19,032
+  8      8,072,728           21,616            2,474           102       19,040
+  9      8,820,924           21,832            2,474           102       19,256
+11.33% (2,474B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->05.87% (1,281B) 0x10A4BD: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->04.11% (897B) 0x10A4B1: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.03% (224B) 0x1ADF07: OQS_SHA3_shake256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->01.03% (224B) 0x11F772: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->01.03% (224B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     ->01.03% (224B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|       
+->00.33% (72B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 10      9,738,177           21,664            2,474           102       19,088
+ 11     11,021,206           21,416            2,474           102       18,840
+ 12     12,436,022           21,416            2,474           102       18,840
+ 13     13,850,838           21,416            2,474           102       18,840
+ 14     14,667,078           21,416            2,474           102       18,840
+ 15     15,700,982           21,416            2,474           102       18,840
+ 16     16,912,748           21,944            2,474           102       19,368
+ 17     18,443,955           21,992            2,474           102       19,416
+ 18     19,449,574           21,784            2,474           102       19,208
+ 19     20,979,317           21,864            2,474           102       19,288
+ 20     21,662,054           21,864            2,474           102       19,288
+11.32% (2,474B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->05.86% (1,281B) 0x10A4BD: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->04.10% (897B) 0x10A4B1: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.02% (224B) 0x1ADF07: OQS_SHA3_shake256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->01.02% (224B) 0x11F772: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->01.02% (224B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     ->01.02% (224B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|       
+->00.33% (72B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 21     22,520,282           21,864            2,474           102       19,288
+ 22     23,635,941           21,808            2,474           102       19,232
+11.34% (2,474B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->05.87% (1,281B) 0x10A4BD: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->04.11% (897B) 0x10A4B1: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.03% (224B) 0x1ADF07: OQS_SHA3_shake256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->01.03% (224B) 0x11F772: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->01.03% (224B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     ->01.03% (224B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|       
+->00.33% (72B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 23     24,690,636           21,936            2,474           102       19,360
+ 24     25,714,139           21,992            2,474           102       19,416
+ 25     26,996,942           21,864            2,474           102       19,288
+ 26     28,035,571           21,808            2,474           102       19,232
+ 27     29,359,310           21,808            2,474           102       19,232
+ 28     29,889,599           21,936            2,474           102       19,360
+ 29     30,912,620           21,728            2,474           102       19,152
+ 30     32,210,547           21,808            2,474           102       19,232
+ 31     33,260,637           21,808            2,474           102       19,232
+ 32     34,638,058           22,200            2,474           102       19,624
+ 33     35,950,475           21,808            2,474           102       19,232
+ 34     37,089,261           21,808            2,474           102       19,232
+11.34% (2,474B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->05.87% (1,281B) 0x10A4BD: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->04.11% (897B) 0x10A4B1: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.03% (224B) 0x1ADF07: OQS_SHA3_shake256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->01.03% (224B) 0x11F772: PQCLEAN_FALCON512_AVX2_crypto_sign_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->01.03% (224B) 0x10C1C4: OQS_SIG_keypair (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     ->01.03% (224B) 0x10A4E0: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|       
+->00.33% (72B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 35     38,537,469           21,944            2,474           102       19,368
+ 36     39,929,466           21,784            2,474           102       19,208
+ 37     40,961,042           22,192            2,474           102       19,616
+ 38     41,648,947           21,832            2,474           102       19,256
+ 39     42,682,603           22,192            2,474           102       19,616
+ 40     43,752,278           21,776            2,474           102       19,200
+ 41     44,793,010           21,832            2,474           102       19,256
+ 42     46,181,734           22,192            2,474           102       19,616
+ 43     47,232,573           21,776            2,474           102       19,200
+ 44     48,632,876           22,192            2,474           102       19,616
+ 45     49,679,843           22,192            2,474           102       19,616
+ 46     50,738,562           21,832            2,474           102       19,256
+ 47     52,152,678           21,456            2,474           102       18,880
+ 48     52,934,681           21,456            2,474           102       18,880
+ 49     53,689,580           21,456            2,474           102       18,880
+ 50     54,252,570           21,456            2,474           102       18,880
