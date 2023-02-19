@@ -103,13 +103,14 @@ chmod +x *.sh
 : '
 Conducting liboqs benchmarking tests
 '
-cd "$root_dir"/scripts
 
 # Memory tests
+cd "$root_dir"/scripts
 ./liboqs-mem-test.sh
 
 # CPU speed tests
-./liboqs-speed.sh
+cd "$root_dir"/scripts
+./liboqs-speed-test.sh
 
 
 

@@ -12,14 +12,14 @@ if [ -d "$root_dir/builds/x86-liboqs-linux" ];
 then
     # Moving direcotory and clearing old results
     build_dir="builds/x86-liboqs-linux" 
-    cd "$root_dir"/"$build_dir"/results && sudo rm *
+    cd "$root_dir"/"$build_dir"/results && rm *
     cd "$root_dir"/"$build_dir"/tests
 
 elif [ -d "$root_dir/builds/arm-linux-build.sh" ];
 then
     # Moving direcotory and clearing old results
     build_dir="builds/arm-linux-build"
-    cd "$root_dir"/"$build_dir"/results && sudo rm *
+    cd "$root_dir"/"$build_dir"/results && rm *
     cd "$root_dir"/"$build_dir"/tests
 
 else
@@ -29,7 +29,7 @@ fi
 
 # Performing both KEM and Digital Signature test
 cd "$root_dir"/"$build_dir"/tests
-./full-alg-speed-test
+./full-alg-speed
 
 # Moving results
 mv "$root_dir"/"$build_dir"/results "$root_dir"/up-results/liboqs/speed-results/
