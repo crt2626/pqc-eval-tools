@@ -1,6 +1,3 @@
-"""This python script will parse the results files outputed by the bash scripts so that be viewed in a easier format or further pasresed 
-by python"""
-
 """Importing modules and declaring Global Variables"""
 # Importing
 import pandas as pd
@@ -11,8 +8,8 @@ import shutil
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
-root_dir = "/pqc/pqc-eval-tools/"
-
+#root_dir = "/pqc/pqc-eval-tools/"
+root_dir = "../"
 
 #***********************************************************************
 def get_algs():
@@ -36,7 +33,6 @@ def get_algs():
 #***********************************************************************
 def speed_processing(type_speed_dir, up_speed_dir):
     """Importing and processing result files"""
-
     # Declaring initial variables
     kem_prefix = "test-kem-speed-"
     sig_prefix = "test-sig-speed-"
@@ -87,7 +83,6 @@ def get_peak(mem_file, peak_metrics):
 #***********************************************************************
 def memory_processing(type_mem_dir, up_mem_dir):
     """Looping through all memory files and creating csv files"""
-
     # Assigning directory varibales
     kem_dir = up_mem_dir + "kem-mem-metrics/"
     sig_dir = up_mem_dir + "sig-mem-metrics/"
@@ -160,6 +155,7 @@ def process_tests(num_machines):
 
     # Declaring directory variables
     results_dir = root_dir + "results/"
+    #results_dir = "../results/"
     mem_dir = results_dir + "liboqs/" + "mem-results/"
     speed_dir = results_dir + "liboqs/" + "speed-results/"
 
