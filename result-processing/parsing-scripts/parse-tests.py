@@ -233,11 +233,7 @@ def process_tests(num_machines):
 def main():
     """Main function for parsing the test results"""
 
-    # Print script description
-    print(f"\n****************************************************************************************************************")
-    print(f"This script will parse the results produced from the automatic tests and create CSV files for data analytics.")
-    print(f"If tests have been carried out across multiple machines, please ensure all unparsed results are present.")
-    print(f"****************************************************************************************************************\n\n")
+    print("Preparing to Parse Results:\n")
 
     # Creating the algorithms list
     get_algs()
