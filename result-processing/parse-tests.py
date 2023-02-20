@@ -49,7 +49,7 @@ def speed_processing(type_speed_dir, up_speed_dir):
         temp_df.to_csv(filename_kem, index=False)
 
         # Formating digital signature files
-        filename_sig_pre = type_speed_dir + sig_prefix + str(file_count) + ".csv"
+        filename_sig_pre = up_speed_dir + sig_prefix + str(file_count) + ".csv"
         temp_df = pd.read_csv(filename_sig_pre, delimiter="|", index_col=False)
         temp_df = temp_df.drop(0)
         filename_sig = type_speed_dir + sig_prefix + str(file_count) + ".csv"
