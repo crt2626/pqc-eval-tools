@@ -147,24 +147,52 @@ def process_tests(num_machines):
     up_mem = root_dir + "/up-results/liboqs/mem-results/"
     up_speed = root_dir + "/up-results/liboqs/speed-results/"
 
-    # Making results direcotry structure
-    os.makedirs(mem_dir)
-    os.makedirs(speed_dir)
+    num_mach_range = num_machines + 1
 
-    for machine_num in num_machines:
+    try: 
+
+        # Making results direcotry structure
+        os.makedirs(mem_dir)
+        os.makedirs(speed_dir)
+    
+    except:
+
+        # Removing the previous results
+        os.rmdir(mem_dir)
+        os.rmdir(speed_dir)
+        os.makedirs(mem_dir)
+        os.makedirs(speed_dir)      
+
+
+    for machine_num in range(1, num_mach_range, 1):
 
         type_name = "machine-" + str(machine_num) + "/"
 
         # Setting up directory path
         up_speed_dir = up_speed + type_name
         up_mem_dir = up_mem + type_name
-        # Speed result directories
-        type_speed_dir = speed_dir + type_name
-        os.makedirs(type_speed_dir)
 
-        # Mem result directories
-        type_mem_dir = mem_dir + type_name
-        os.makedirs(type_mem_dir)
+        try: 
+            
+            # Speed result directories
+            type_speed_dir = speed_dir + type_name
+            os.makedirs(type_speed_dir)
+
+            # Mem result directories
+            type_mem_dir = mem_dir + type_name
+            os.makedirs(type_mem_dir)
+
+        except:
+
+            # Setting the directory variables
+            type_speed_dir = speed_dir + type_name
+            type_mem_dir = mem_dir + type_name
+
+            #Clearing the old results and making directories
+            os.rmdir(type_speed_dir)
+            os.rmdir(type_mem_dir)
+            os.makedirs(type_speed_dir)
+            os.makedirs(type_mem_dir)
 
         # Parsing results
         speed_processing(type_speed_dir, up_speed_dir)
