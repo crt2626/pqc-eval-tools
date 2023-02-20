@@ -227,10 +227,10 @@ def main():
     """Main function for parsing the test results"""
 
     # Print script description
-    print(f"\n****************************************************************************************************************\n")
-    print(f"This script will parse the results produced from the automatic tests and create CSV files for data analytics.\n")
-    print(f"If tests have been carried out across multiple machines, please ensure all unparsed results are present\n")
-    print(f"\n****************************************************************************************************************\n")
+    print(f"\n****************************************************************************************************************")
+    print(f"This script will parse the results produced from the automatic tests and create CSV files for data analytics.")
+    print(f"If tests have been carried out across multiple machines, please ensure all unparsed results are present.")
+    print(f"****************************************************************************************************************\n\n")
 
     # Creating the algorithms list
     get_algs()
@@ -246,8 +246,8 @@ def main():
             print("Invlaid Input - Please enter a number! - ")
 
     # Processing the results
-    process_tests(machine_num)
     print("Parsing results... ")
+    process_tests(machine_num)
     print(f"\nResults have been processed - CSV files can be found in the Results Directory\n")
 
 
