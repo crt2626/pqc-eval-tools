@@ -248,7 +248,7 @@ def main():
     # Processing the results
     print("Parsing results... ")
     process_tests(machine_num)
-    print(f"\nResults have been processed - CSV files can be found in the Results directory at the repo root\n")
+    print(f"\nResults have been processed - CSV files can be found in the Results Directory at the repo root\n")
 
 
 #***********************************************************************
