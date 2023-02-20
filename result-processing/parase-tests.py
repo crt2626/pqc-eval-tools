@@ -188,3 +188,8 @@ def main():
     # Processing the results
     process_tests(machine_num)
     print(f"\nResults have been processed - CSV files can be found in the Results Directory\n")
+
+
+#***********************************************************************
+if __name__ == "__main__":
+    main()
