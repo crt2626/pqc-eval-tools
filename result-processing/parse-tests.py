@@ -6,11 +6,12 @@ by python"""
 import pandas as pd
 import re
 import os
+import shutil
 
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
-root_dir = "/pqc/pqc-eval-tools"
+root_dir = "/pqc/pqc-eval-tools/"
 
 #***********************************************************************
 def get_algs():
@@ -158,10 +159,10 @@ def process_tests(num_machines):
     except:
 
         # Removing the previous results
-        os.rmdir(mem_dir)
-        os.rmdir(speed_dir)
+        shutil.rmtree(mem_dir)
+        shutil.rmtree(speed_dir)
         os.makedirs(mem_dir)
-        os.makedirs(speed_dir)      
+        os.makedirs(speed_dir)
 
 
     for machine_num in range(1, num_mach_range, 1):
@@ -189,8 +190,8 @@ def process_tests(num_machines):
             type_mem_dir = mem_dir + type_name
 
             #Clearing the old results and making directories
-            os.rmdir(type_speed_dir)
-            os.rmdir(type_mem_dir)
+            shutil.rmtree(type_speed_dir)
+            shutil.rmtree(type_mem_dir)
             os.makedirs(type_speed_dir)
             os.makedirs(type_mem_dir)
 
