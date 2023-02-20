@@ -5,7 +5,7 @@ root_dir="/pqc/pqc-eval-tools"
 build_dir="x86-liboqs-linux"
 
 # Check for and install required packages
-packages=(astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind)
+packages=(astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind python3-pip)
 not_installed=()
 for package in "${packages[@]}"; do
     if ! dpkg -s "$package" >/dev/null 2>&1; then
@@ -14,7 +14,7 @@ for package in "${packages[@]}"; do
 done
 if [[ ${#not_installed[@]} -ne 0 ]]; then
     sudo apt-get update
-    sudo apt-get install "${not_installed[@]}"
+    sudo apt-get install -y "${not_installed[@]}" 
 fi
 
 # Setting up build directory and building liboqs
