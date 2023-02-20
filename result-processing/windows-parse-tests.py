@@ -5,6 +5,8 @@ import re
 import os
 import shutil
 
+"""NEED TO FIX THE SEPERATORS SO THEY WORK FOR WINDOWS!!!!!"""
+
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
