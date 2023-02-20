@@ -153,7 +153,7 @@ def process_tests(num_machines):
 
     for machine_num in num_machines:
 
-        type_name = "type-" + str(machine_num) + "/"
+        type_name = "machine-" + str(machine_num) + "/"
 
         # Setting up directory path
         up_speed_dir = up_speed + type_name
