@@ -10,7 +10,7 @@ import os
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
-root_dir = "/pqc/pqc-eval-tools/"
+root_dir = "/pqc/pqc-eval-tools"
 
 #***********************************************************************
 def get_algs():
@@ -144,8 +144,8 @@ def process_tests(num_machines):
     mem_dir = results_dir + "liboqs/" + "mem-results/"
     speed_dir = results_dir + "liboqs/" + "speed-results/"
 
-    up_mem = root_dir + "/up-results/liboqs/mem-results/"
-    up_speed = root_dir + "/up-results/liboqs/speed-results/"
+    up_mem = root_dir + "up-results/liboqs/mem-results/"
+    up_speed = root_dir + "up-results/liboqs/speed-results/"
 
     num_mach_range = num_machines + 1
 
