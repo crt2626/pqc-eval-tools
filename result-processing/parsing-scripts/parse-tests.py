@@ -166,12 +166,11 @@ def process_tests(num_machines):
     results_dir = root_dir + "results/"
     mem_dir = results_dir + "liboqs/" + "mem-results/"
     speed_dir = results_dir + "liboqs/" + "speed-results/"
-
     up_mem = root_dir + "up-results/liboqs/mem-results/"
     up_speed = root_dir + "up-results/liboqs/speed-results/"
-
     num_mach_range = num_machines + 1
 
+    # Creating directory structure and remvoing previous results
     try: 
 
         # Making results direcotry structure
@@ -195,6 +194,7 @@ def process_tests(num_machines):
         up_speed_dir = up_speed + type_name
         up_mem_dir = up_mem + type_name
 
+        # Creating specifc result directories and clearing old results
         try: 
             
             # Speed result directories
@@ -225,6 +225,11 @@ def process_tests(num_machines):
 #***********************************************************************  
 def main():
     """Main function for parsing the test results"""
+
+    # Print script description
+    print(f"\n******************************************************************\n")
+    print(f"This script will parse the results produced from the automatic tests\n")
+    print(f"\n******************************************************************\n")
 
     # Creating the algorithms list
     get_algs()
