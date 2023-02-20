@@ -111,11 +111,15 @@ def memory_processing(type_mem_dir, up_mem_dir):
             for operation in range(0,3,1):
                 kem_up_filename = kem_up_filename_pre + "-" + kem_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
                 peak_metrics = get_peak(kem_up_filename, peak_metrics)
+                print(f"\npeak metrics variable - {peak_metrics}\n")
                 new_row = pd.DataFrame([[kem_alg, kem_operations[operation]] + peak_metrics], columns=filednames)
+                print(f"new row variable - {new_row}\n")
                 temp_df = temp_df.append(new_row, ignore_index=True)
+                print(f"data frame with appended row - {temp_df}\n")
 
         # Outputing kem csv file for this run
         kem_filename = type_mem_dir + "kem-mem-metrics-" + str(run_count) + ".csv"
+        print(f"Full data frame - {temp_df}\n")
         temp_df.to_csv(kem_filename, index=False)
 
 
@@ -127,7 +131,7 @@ def memory_processing(type_mem_dir, up_mem_dir):
             #Looping the operations and adding to temp dataframe 
             for operation in range(0,3,1):
                 sig_up_filename = sig_up_filename_pre + "-" + sig_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
-                peak_metrics = get_peak(sig_up_filename, peak_metrics)
+                peak_metrics = get_peak(sig_up_filename, peak_metrics)         
                 new_row = pd.DataFrame([[sig_alg, sig_operations[operation]] + peak_metrics], columns=filednames)
                 temp_df = temp_df.append(new_row, ignore_index=True)
 
