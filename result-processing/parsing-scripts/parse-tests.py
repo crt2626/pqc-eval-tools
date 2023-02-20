@@ -230,7 +230,7 @@ def main():
     print(f"\n******************************************************************\n")
     print(f"This script will parse the results produced from the automatic tests\n")
     print(f"and create CSV files for data analytics\n")
-    print(f"******************************************************************\n")
+    print(f"******************************************************************\n\n")
 
     # Creating the algorithms list
     get_algs()
@@ -247,6 +247,7 @@ def main():
 
     # Processing the results
     process_tests(machine_num)
+    print("Parsing results... ")
     print(f"\nResults have been processed - CSV files can be found in the Results Directory\n")
 
 
