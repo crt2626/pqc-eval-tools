@@ -1,0 +1,336 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem SPHINCS+-SHA256-128s-robust 2
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+14.52^         #                                                              
+     |         #                                                              
+     |         #                                                              
+     |         #  ::     :                   ::::   : ::   :           @  :   
+     |         #:::  : ::: ::@  ::           : :  : : :  : : :    :    @  ::  
+     |         #: : :: : : : @  :    :@@:::::: :  : : :  : : :::  :: : @ ::: :
+     |         #: : ::@: ::: @::: ::::@ ::: :: @ ::@::: @:::@:: :::::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |         #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     |   ::: @ #: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+     | ::: ::@:#: : ::@: ::: @: : ::::@ ::: :: @ ::@::: @:::@:: : :::::@::::::
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   16.27
+
+Number of snapshots: 61
+ Detailed snapshots: [6, 8 (peak), 13, 18, 25, 31, 35, 39, 43, 52]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        278,635            1,240                0             0        1,240
+  2        605,130            1,240                0             0        1,240
+  3        924,112            1,704                0             0        1,704
+  4      1,190,224            1,800                0             0        1,800
+  5      1,433,929            1,240                0             0        1,240
+  6      1,742,010            1,704                0             0        1,704
+00.00% (0B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  7      2,085,842            1,464                0             0        1,464
+  8      2,324,036           14,864           12,692            84        2,088
+85.39% (12,692B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->52.85% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->27.56% (4,096B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->27.56% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->27.56% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->27.56% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|       ->27.56% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|         ->27.56% (4,096B) 0x10AAF7: oqs_fload (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|           ->27.56% (4,096B) 0x10A5DA: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|             
+->03.18% (472B) 0x4BB9BAA: __fopen_internal (iofopen.c:65)
+| ->03.18% (472B) 0x10AACC: oqs_fload (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->03.18% (472B) 0x10A5DA: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     
+->01.80% (268B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  9      2,530,505           12,552            8,460           108        3,984
+ 10      2,999,900           12,744            8,460           108        4,176
+ 11      3,352,167           11,632            8,460           108        3,064
+ 12      3,615,966           12,488            8,460           108        3,920
+ 13      3,865,654           11,136            8,460           108        2,568
+75.97% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.55% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->03.02% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->02.16% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.08% (120B) 0x1AC9B8: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.08% (120B) 0x29A040: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_seed_state (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.08% (120B) 0x299970: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_initialize_hash_function (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.08% (120B) 0x16616D: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |       ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |         
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.08% (120B) 0x1ACA61: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.08% (120B) 0x1664CA: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_thash_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.08% (120B) 0x167BF2: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_wots_pk_from_sig (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.08% (120B) 0x1662BF: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |       
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.86% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.41% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 14      4,241,535           12,360            8,460           108        3,792
+ 15      4,510,571           12,744            8,460           108        4,176
+ 16      4,833,273           11,000            8,340            92        2,568
+ 17      5,209,511           12,616            8,460           108        4,048
+ 18      5,479,933           12,296            8,460           108        3,728
+68.80% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->63.89% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.73% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->01.95% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.95% (240B) in 3 places, all below massif's threshold (1.00%)
+| |   
+| ->00.78% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.18% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 19      5,910,422           10,952            8,292            84        2,576
+ 20      6,286,619           12,552            8,460           108        3,984
+ 21      6,693,730           10,856            8,292            84        2,480
+ 22      6,933,968           11,136            8,460           108        2,568
+ 23      7,235,319           11,088            8,340            92        2,656
+ 24      7,475,695           11,264            8,460           108        2,696
+ 25      7,776,942           11,264            8,460           108        2,696
+75.11% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->69.74% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.98% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->02.13% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.07% (120B) 0x1AC872: OQS_SHA2_sha256 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.07% (120B) 0x299FD7: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_mgf1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.07% (120B) 0x1664BF: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_thash_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.07% (120B) 0x167BF2: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_wots_pk_from_sig (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | | ->01.07% (120B) 0x1662BF: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | |   ->01.07% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | |     ->01.07% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | |       
+| | | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | | 
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.07% (120B) 0x1AC9B8: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.07% (120B) 0x29A040: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_seed_state (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.07% (120B) 0x299970: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_initialize_hash_function (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.07% (120B) 0x16616D: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.07% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |       ->01.07% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |         
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.85% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.38% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 26      8,198,626           11,264            8,460           108        2,696
+ 27      8,499,835           11,264            8,460           108        2,696
+ 28      8,740,787           11,264            8,460           108        2,696
+ 29      9,162,415           11,264            8,460           108        2,696
+ 30      9,402,025           12,680            8,460           108        4,112
+ 31      9,725,244           11,112            8,340            92        2,680
+75.05% (8,340B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.70% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.41% (268B) in 6 places, all below massif's threshold (1.00%)
+| 
+->01.94% (216B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+  ->01.08% (120B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+  | ->01.08% (120B) 0x1AC9B8: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | ->01.08% (120B) 0x29A040: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_seed_state (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | | ->01.08% (120B) 0x299970: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_initialize_hash_function (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |   ->01.08% (120B) 0x16616D: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |     ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |       ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |         
+  | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+  | | 
+  | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+  | 
+  ->00.86% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 32      9,940,821           12,680            8,460           108        4,112
+ 33     10,264,120           11,080            8,460           108        2,512
+ 34     10,479,412           12,616            8,460           108        4,048
+ 35     10,802,895           11,144            8,340            92        2,712
+74.84% (8,340B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.50% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.40% (268B) in 6 places, all below massif's threshold (1.00%)
+| 
+->01.94% (216B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+  ->01.08% (120B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+  | ->01.08% (120B) 0x1AC9B8: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | ->01.08% (120B) 0x29A040: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_seed_state (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | | ->01.08% (120B) 0x299970: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_initialize_hash_function (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |   ->01.08% (120B) 0x16616D: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |     ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |       ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+  | | |         
+  | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+  | | 
+  | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+  | 
+  ->00.86% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 36     11,018,486           12,680            8,460           108        4,112
+ 37     11,341,739           11,072            8,460           108        2,504
+ 38     11,557,138           12,744            8,460           108        4,176
+ 39     11,880,122           11,064            8,460           108        2,496
+76.46% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->71.01% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->03.04% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->02.17% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.08% (120B) 0x1AC9B8: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.08% (120B) 0x29A040: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_seed_state (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.08% (120B) 0x299970: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_initialize_hash_function (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.08% (120B) 0x16616D: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |       ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |         
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.08% (120B) 0x1ACA61: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.08% (120B) 0x1664CA: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_thash_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.08% (120B) 0x167BF2: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_wots_pk_from_sig (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.08% (120B) 0x1662BF: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |       
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.87% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.42% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 40     12,095,511           12,616            8,460           108        4,048
+ 41     12,418,990           11,112            8,340            92        2,680
+ 42     12,634,567           12,680            8,460           108        4,112
+ 43     12,957,810           11,080            8,460           108        2,512
+76.35% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.90% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->03.03% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->02.17% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.08% (120B) 0x1AC9B8: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.08% (120B) 0x29A040: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_seed_state (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.08% (120B) 0x299970: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_initialize_hash_function (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.08% (120B) 0x16616D: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |       ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | |         
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.08% (120B) 0x1ACA61: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.08% (120B) 0x1664CA: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_thash_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.08% (120B) 0x167BF2: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_wots_pk_from_sig (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.08% (120B) 0x1662BF: PQCLEAN_SPHINCSSHA256128SROBUST_AVX2_crypto_sign_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.08% (120B) 0x10C23D: OQS_SIG_verify (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.08% (120B) 0x10A670: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | | |       
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.87% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.42% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 44     13,173,085           12,616            8,460           108        4,048
+ 45     13,496,036           11,208            8,460           108        2,640
+ 46     13,926,944           11,136            8,460           108        2,568
+ 47     14,249,853           12,488            8,460           108        3,920
+ 48     14,572,815           11,264            8,460           108        2,696
+ 49     14,788,037           11,088            8,460           108        2,520
+ 50     14,994,519           11,264            8,460           108        2,696
+ 51     15,201,615           11,136            8,460           108        2,568
+ 52     15,408,190           12,680            8,460           108        4,112
+66.72% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->61.96% (7,856B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.65% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->01.89% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.89% (240B) in 3 places, all below massif's threshold (1.00%)
+| |   
+| ->00.76% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.11% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 53     15,614,908           12,488            8,460           108        3,920
+ 54     15,821,382           10,872            8,292            84        2,496
+ 55     16,028,292           11,264            8,460           108        2,696
+ 56     16,234,848           12,680            8,460           108        4,112
+ 57     16,441,548           12,488            8,460           108        3,920
+ 58     16,648,019           10,672            8,292            84        2,296
+ 59     16,854,877           11,136            8,460           108        2,568
+ 60     17,061,635           11,264            8,460           108        2,696

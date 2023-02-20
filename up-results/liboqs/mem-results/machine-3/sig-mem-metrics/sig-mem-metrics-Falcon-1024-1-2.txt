@@ -1,0 +1,175 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem Falcon-1024 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+89.01^                                   #                                    
+     |                                   #::::::::::::@::@:::::::::::@::::::::
+     |                          :::::::::#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+     |                          :: : :  :#::    : :: :@::@::::: :::::@::: ::::
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   6.306
+
+Number of snapshots: 62
+ Detailed snapshots: [13, 27 (peak), 36, 39, 51, 61]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        106,721            1,560                0             0        1,560
+  2        168,955            1,704                0             0        1,704
+  3        288,182            1,240                0             0        1,240
+  4        374,788            1,304                0             0        1,304
+  5        479,323            1,240                0             0        1,240
+  6        614,406            1,704                0             0        1,704
+  7        717,279            1,240                0             0        1,240
+  8        868,267            1,464                0             0        1,464
+  9      1,015,500            1,704                0             0        1,704
+ 10      1,115,957            1,704                0             0        1,704
+ 11      1,228,711            1,520                0             0        1,520
+ 12      1,343,553            1,464                0             0        1,464
+ 13      1,445,118            1,464                0             0        1,464
+00.00% (0B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 14      1,521,306            1,704                0             0        1,704
+ 15      1,661,546            1,464                0             0        1,464
+ 16      1,775,723            1,704                0             0        1,704
+ 17      1,864,402            1,800                0             0        1,800
+ 18      1,960,030            1,464                0             0        1,464
+ 19      2,103,036            1,704                0             0        1,704
+ 20      2,198,698            1,704                0             0        1,704
+ 21      2,294,206            1,520                0             0        1,520
+ 22      2,411,107           86,104            5,550            90       80,464
+ 23      2,571,191           86,216            5,550            90       80,576
+ 24      2,730,134           86,216            5,550            90       80,576
+ 25      2,909,345           86,216            5,550            90       80,576
+ 26      3,151,019           86,176            5,550            90       80,536
+ 27      3,277,705           91,144           10,118           114       80,912
+11.10% (10,118B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->04.49% (4,096B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->04.49% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->04.49% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->04.49% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|       ->04.49% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|         ->04.49% (4,096B) 0x10AFB7: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | ->04.49% (4,096B) 0x13407D: do_sign.constprop.0 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | | ->04.49% (4,096B) 0x134352: PQCLEAN_FALCON1024_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | |   ->04.49% (4,096B) 0x10C1FD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | |     ->04.49% (4,096B) 0x10A763: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|         | |       
+|         | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|         | 
+|         ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|         
+->02.53% (2,305B) 0x10A6A9: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.97% (1,793B) 0x10A69D: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.40% (1,280B) 0x10A6C2: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.71% (644B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28      3,350,480           86,632            5,774           114       80,744
+ 29      3,446,948           86,632            5,774           114       80,744
+ 30      3,869,499           86,376            5,774           114       80,488
+ 31      3,939,282           87,592            5,774           114       81,704
+ 32      4,053,254           87,592            5,774           114       81,704
+ 33      4,163,989           87,536            5,774           114       81,648
+ 34      4,317,912           88,064            5,774           114       82,176
+ 35      4,390,114           89,632            5,774           114       83,744
+ 36      4,488,686           89,528            5,774           114       83,640
+06.45% (5,774B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.57% (2,305B) 0x10A6A9: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.00% (1,793B) 0x10A69D: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.43% (1,280B) 0x10A6C2: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.44% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 37      4,545,855           89,632            5,774           114       83,744
+ 38      4,659,269           88,944            5,774           114       83,056
+ 39      4,772,207           89,600            5,774           114       83,712
+06.44% (5,774B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.57% (2,305B) 0x10A6A9: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.00% (1,793B) 0x10A69D: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.43% (1,280B) 0x10A6C2: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.44% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 40      4,842,613           89,296            5,774           114       83,408
+ 41      4,928,298           88,944            5,774           114       83,056
+ 42      5,028,372           89,608            5,774           114       83,720
+ 43      5,141,033           89,384            5,774           114       83,496
+ 44      5,218,301           88,064            5,774           114       82,176
+ 45      5,330,946           89,592            5,774           114       83,704
+ 46      5,445,164           89,320            5,774           114       83,432
+ 47      5,571,767           89,304            5,774           114       83,416
+ 48      5,670,705           89,528            5,774           114       83,640
+ 49      5,741,125           89,528            5,774           114       83,640
+ 50      5,798,302           89,296            5,774           114       83,408
+ 51      5,855,487           89,296            5,774           114       83,408
+06.47% (5,774B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.58% (2,305B) 0x10A6A9: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.01% (1,793B) 0x10A69D: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.43% (1,280B) 0x10A6C2: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->00.44% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 52      5,914,290           89,632            5,774           114       83,744
+ 53      5,971,464           88,248            5,774           114       82,360
+ 54      6,028,647           89,480            5,774           114       83,592
+ 55      6,141,555           87,592            5,774           114       81,704
+ 56      6,255,527           87,592            5,774           114       81,704
+ 57      6,314,583           87,536            5,774           114       81,648
+ 58      6,423,867           87,592            5,774           114       81,704
+ 59      6,482,242           87,592            5,774           114       81,704
+ 60      6,552,929           87,544            5,774           114       81,656
+ 61      6,611,821            2,768            2,377            39          352
+85.87% (2,377B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->83.27% (2,305B) 0x10A6A9: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.60% (72B) 0x12B4FD: OQS_SIG_falcon_1024_new (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.60% (72B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   
+->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+

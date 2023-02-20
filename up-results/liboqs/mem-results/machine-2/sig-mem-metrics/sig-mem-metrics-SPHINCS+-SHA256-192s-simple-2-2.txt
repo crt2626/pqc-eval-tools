@@ -1,0 +1,187 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem SPHINCS+-SHA256-192s-simple 2
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+22.73^            #                                                           
+     |            #                                                           
+     |            #@@::::::   :::::       :                               :   
+     |            #@ ::::: @::: :: ::::::::::::::::::::::::::@::::@:::::::::::
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: ::::
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     |            #@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+     | ::::::::@::#@ ::::: @: : :: :: ::: :: : : : : :: :::: @:: :@::: :: :::@
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   13.03
+
+Number of snapshots: 53
+ Detailed snapshots: [6, 8 (peak), 9, 15, 38, 42, 52]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        278,635            1,240                0             0        1,240
+  2        605,130            1,240                0             0        1,240
+  3        924,112            1,704                0             0        1,704
+  4      1,190,224            1,800                0             0        1,800
+  5      1,433,929            1,240                0             0        1,240
+  6      1,742,010            1,704                0             0        1,704
+00.00% (0B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  7      2,085,842            1,464                0             0        1,464
+  8      2,325,000           23,280           21,108            84        2,088
+90.67% (21,108B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->69.69% (16,224B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->17.59% (4,096B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->17.59% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->17.59% (4,096B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->17.59% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|       ->17.59% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|         ->17.59% (4,096B) 0x10AAF7: oqs_fload (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|           ->17.59% (4,096B) 0x10A5DA: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|             
+->02.03% (472B) 0x4BB9BAA: __fopen_internal (iofopen.c:65)
+| ->02.03% (472B) 0x10AACC: oqs_fload (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->02.03% (472B) 0x10A5DA: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     
+->01.36% (316B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  9      2,618,442           20,960           16,876           108        3,976
+80.52% (16,876B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->77.40% (16,224B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.60% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->01.15% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.15% (240B) in 3 places, all below massif's threshold (1.00%)
+| |   
+| ->00.46% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.51% (316B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 10      2,882,164           20,960           16,876           108        3,976
+ 11      3,057,966           20,960           16,876           108        3,976
+ 12      3,292,396           22,056           16,876           108        5,072
+ 13      3,468,211           22,056           16,876           108        5,072
+ 14      3,762,829           21,736           16,876           108        4,752
+ 15      4,086,736           20,304           16,876           108        3,320
+83.12% (16,876B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->79.91% (16,224B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.65% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->01.18% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.18% (240B) in 3 places, all below massif's threshold (1.00%)
+| |   
+| ->00.47% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.56% (316B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 16      4,292,520           20,216           16,876           108        3,232
+ 17      4,586,603           21,032           16,876           108        4,048
+ 18      4,939,496           21,032           16,876           108        4,048
+ 19      5,293,750           21,160           16,876           108        4,176
+ 20      5,530,825           20,304           16,876           108        3,320
+ 21      5,827,531           20,264           16,876           108        3,280
+ 22      6,124,274           20,128           16,756            92        3,280
+ 23      6,361,490           20,216           16,876           108        3,232
+ 24      6,601,072           20,304           16,876           108        3,320
+ 25      6,956,785           21,160           16,876           108        4,176
+ 26      7,193,817           20,304           16,876           108        3,320
+ 27      7,490,210           20,304           16,876           108        3,320
+ 28      7,786,604           20,304           16,876           108        3,320
+ 29      7,964,361           20,216           16,876           108        3,232
+ 30      8,242,695           20,304           16,876           108        3,320
+ 31      8,641,739           20,264           16,876           108        3,280
+ 32      8,941,386           20,304           16,876           108        3,320
+ 33      9,140,837           20,904           16,876           108        3,920
+ 34      9,539,822           20,216           16,876           108        3,232
+ 35      9,739,650           20,304           16,876           108        3,320
+ 36      9,939,164           20,904           16,876           108        3,920
+ 37     10,238,404           20,248           16,876           108        3,264
+ 38     10,438,427           20,304           16,876           108        3,320
+83.12% (16,876B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->79.91% (16,224B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.65% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->01.18% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.18% (240B) in 3 places, all below massif's threshold (1.00%)
+| |   
+| ->00.47% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.56% (316B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 39     10,637,857           20,904           16,876           108        3,920
+ 40     10,937,084           20,264           16,876           108        3,280
+ 41     11,236,773           20,304           16,876           108        3,320
+ 42     11,436,244           20,904           16,876           108        3,920
+80.73% (16,876B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->77.61% (16,224B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->01.61% (336B) 0x49E9349: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| ->01.15% (240B) 0x49CA548: EVP_DigestInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1)
+| | ->01.15% (240B) in 3 places, all below massif's threshold (1.00%)
+| |   
+| ->00.46% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.51% (316B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 43     11,735,405           20,240           16,876           108        3,256
+ 44     11,935,445           20,304           16,876           108        3,320
+ 45     12,134,917           20,904           16,876           108        3,920
+ 46     12,335,063           20,304           16,876           108        3,320
+ 47     12,534,577           20,904           16,876           108        3,920
+ 48     12,933,505           20,968           16,876           108        3,984
+ 49     13,133,404           20,152           16,756            92        3,304
+ 50     13,309,245           20,288           16,876           108        3,304
+ 51     13,485,522           20,304           16,876           108        3,320
+ 52     13,661,326           18,168           17,564            68          536
+96.68% (17,564B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->89.30% (16,224B) 0x10A58F: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->05.64% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->05.64% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->05.64% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->05.64% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->05.64% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->05.64% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->05.64% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->05.64% (1,024B) 0x10A687: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->01.74% (316B) in 6 places, all below massif's threshold (1.00%)
+  

@@ -1,0 +1,299 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem Falcon-512 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+47.71^    #                                                                   
+     |    #                    : ::  ::  : @   :@:::::  :  : ::               
+     |    #:::::::@@:::::::@::::@:::@::@:::@::::@:::@:::@:::@:::::::::::@:::::
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |    #: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+     |@:::#: :  : @ ::: : :@::::@:::@::@:::@::::@:::@:::@:::@::: : : :  @: : :
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   33.34
+
+Number of snapshots: 98
+ Detailed snapshots: [1, 7 (peak), 12, 19, 27, 33, 37, 45, 52, 62, 72, 82, 92]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        275,583            2,864                0             0        2,864
+00.00% (0B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  2        706,699            3,136                0             0        3,136
+  3      1,104,022            3,200                0             0        3,200
+  4      1,481,800            3,136                0             0        3,136
+  5      1,794,349            3,200                0             0        3,200
+  6      2,001,309           43,832            3,016            96       40,720
+  7      2,312,679           48,856            7,584           120       41,152
+15.52% (7,584B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->08.38% (4,096B) 0x4B70E23: _IO_file_doallocate (filedoalloc.c:101)
+| ->08.38% (4,096B) 0x4B8022F: _IO_doallocbuf (genops.c:347)
+|   ->08.38% (4,096B) 0x4B8022F: _IO_doallocbuf (genops.c:342)
+|     ->08.38% (4,096B) 0x4B7E37B: _IO_file_xsgetn (fileops.c:1288)
+|       ->08.38% (4,096B) 0x4B71EF7: fread (iofread.c:38)
+|         ->08.38% (4,096B) 0x10B2BF: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|         | ->08.38% (4,096B) 0x112827: do_sign.constprop.0 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|         | | ->08.38% (4,096B) 0x112AE7: PQCLEAN_FALCON512_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|         | |   ->08.38% (4,096B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|         | |     ->08.38% (4,096B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|         | |       
+|         | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|         | 
+|         ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|         
+->02.62% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.84% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.36% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.32% (644B) in 3 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  8      2,624,476           43,984            3,240           120       40,624
+  9      2,820,297           45,216            3,240           120       41,856
+ 10      3,873,157           45,008            3,240           120       41,648
+ 11      4,926,023           45,008            3,240           120       41,648
+ 12      5,978,889           45,008            3,240           120       41,648
+07.20% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.85% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.99% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.48% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.88% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 13      7,031,755           45,008            3,240           120       41,648
+ 14      7,502,857           45,008            3,240           120       41,648
+ 15      7,811,308           45,216            3,240           120       41,856
+ 16      8,864,168           45,008            3,240           120       41,648
+ 17      9,204,892           45,008            3,240           120       41,648
+ 18      9,819,881           45,168            3,240           120       41,808
+ 19     10,226,618           45,168            3,240           120       41,808
+07.17% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.84% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.99% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.47% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.88% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 20     10,533,504           45,328            3,240           120       41,968
+ 21     10,736,977           45,328            3,240           120       41,968
+ 22     11,069,070           45,648            3,240           120       42,288
+ 23     11,348,412           45,968            3,240           120       42,608
+ 24     11,798,630           46,128            3,240           120       42,768
+ 25     12,157,223           46,752            3,240           120       43,392
+ 26     12,383,502           46,128            3,240           120       42,768
+ 27     12,684,747           45,488            3,240           120       42,128
+07.12% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.82% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.97% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.46% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.87% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28     13,064,945           46,288            3,240           120       42,928
+ 29     13,297,662           46,720            3,240           120       43,360
+ 30     13,542,228           46,128            3,240           120       42,768
+ 31     14,013,771           46,448            3,240           120       43,088
+ 32     14,256,827           46,288            3,240           120       42,928
+ 33     14,669,540           45,328            3,240           120       41,968
+07.15% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.83% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.98% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.47% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.87% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 34     14,922,652           45,488            3,240           120       42,128
+ 35     15,353,216           46,448            3,240           120       43,088
+ 36     15,819,886           46,720            3,240           120       43,360
+ 37     16,059,160           46,288            3,240           120       42,928
+07.00% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.77% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.94% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.44% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.86% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 38     16,409,356           46,288            3,240           120       42,928
+ 39     16,641,874           46,288            3,240           120       42,928
+ 40     16,901,492           45,648            3,240           120       42,288
+ 41     17,152,194           46,448            3,240           120       43,088
+ 42     17,617,532           46,288            3,240           120       42,928
+ 43     17,853,572           45,968            3,240           120       42,608
+ 44     18,205,179           45,968            3,240           120       42,608
+ 45     18,443,073           46,448            3,240           120       43,088
+06.98% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.76% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.93% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.43% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.85% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 46     18,738,853           45,168            3,240           120       41,808
+ 47     19,138,605           45,168            3,240           120       41,808
+ 48     19,445,484           45,328            3,240           120       41,968
+ 49     19,802,435           45,488            3,240           120       42,128
+ 50     20,014,892           45,648            3,240           120       42,288
+ 51     20,211,708           46,752            3,240           120       43,392
+ 52     20,408,060           46,752            3,240           120       43,392
+06.93% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.74% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.92% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.42% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.85% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 53     20,603,984           46,720            3,240           120       43,360
+ 54     20,800,116           45,648            3,240           120       42,288
+ 55     20,996,107           46,288            3,240           120       42,928
+ 56     21,192,899           46,752            3,240           120       43,392
+ 57     21,388,737           46,448            3,240           120       43,088
+ 58     21,600,080           45,488            3,240           120       42,128
+ 59     21,809,788           45,648            3,240           120       42,288
+ 60     22,006,032           46,720            3,240           120       43,360
+ 61     22,202,276           46,448            3,240           120       43,088
+ 62     22,398,842           46,288            3,240           120       42,928
+07.00% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.77% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.94% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.44% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.86% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 63     22,609,210           45,648            3,240           120       42,288
+ 64     22,805,328           46,752            3,240           120       43,392
+ 65     23,001,997           46,720            3,240           120       43,360
+ 66     23,199,863           46,128            3,240           120       42,768
+ 67     23,399,644           45,808            3,240           120       42,448
+ 68     23,623,353           45,328            3,240           120       41,968
+ 69     23,876,465           45,488            3,240           120       42,128
+ 70     24,088,922           45,648            3,240           120       42,288
+ 71     24,286,066           46,448            3,240           120       43,088
+ 72     24,482,210           46,128            3,240           120       42,768
+07.02% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.78% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.94% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.44% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.86% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 73     24,678,173           46,720            3,240           120       43,360
+ 74     24,882,597           45,648            3,240           120       42,288
+ 75     25,079,703           46,128            3,240           120       42,768
+ 76     25,276,865           45,968            3,240           120       42,608
+ 77     25,473,435           45,968            3,240           120       42,608
+ 78     25,689,251           45,488            3,240           120       42,128
+ 79     25,899,900           45,648            3,240           120       42,288
+ 80     26,097,044           46,448            3,240           120       43,088
+ 81     26,300,289           45,808            3,240           120       42,448
+ 82     26,496,204           45,968            3,240           120       42,608
+07.05% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.79% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.95% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.45% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.86% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 83     26,692,106           45,648            3,240           120       42,288
+ 84     26,889,055           46,128            3,240           120       42,768
+ 85     27,085,405           46,752            3,240           120       43,392
+ 86     27,281,725           46,448            3,240           120       43,088
+ 87     27,480,464           45,648            3,240           120       42,288
+ 88     27,727,116           45,008            3,240           120       41,648
+ 89     28,962,274           45,008            3,240           120       41,648
+ 90     30,015,140           45,008            3,240           120       41,648
+ 91     31,068,006           45,008            3,240           120       41,648
+ 92     32,120,872           45,008            3,240           120       41,648
+07.20% (3,240B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->02.85% (1,281B) 0x10AAAB: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.99% (897B) 0x10AA9F: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->01.48% (666B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->00.88% (396B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 93     32,393,123           45,008            3,240           120       41,648
+ 94     32,592,481           45,008            3,240           120       41,648
+ 95     32,791,842           45,008            3,240           120       41,648
+ 96     33,876,703           45,008            3,240           120       41,648
+ 97     34,961,565           45,008            3,240           120       41,648

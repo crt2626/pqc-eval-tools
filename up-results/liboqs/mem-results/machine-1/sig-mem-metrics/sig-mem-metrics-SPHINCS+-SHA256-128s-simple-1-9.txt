@@ -1,0 +1,429 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem SPHINCS+-SHA256-128s-simple 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+14.13^#                                                                       
+     |#                                                                       
+     |#                                                                       
+     |#                                                                       
+     |#                                                                       
+     |#                                                                       
+     |#:::::::@@@:::::::::::::::::@:::::@:::::::@::::::::@::::@::::@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+     |#:: :: :@ @:::: ::: :::: :: @:: ::@: ::: :@:: ::: :@: ::@:: :@::::::@:::
+   0 +----------------------------------------------------------------------->Gi
+     0                                                                   6.629
+
+Number of snapshots: 62
+ Detailed snapshots: [1 (peak), 7, 8, 22, 27, 33, 40, 44, 48, 57]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1      1,970,623           14,472           12,692            84        1,696
+87.70% (12,692B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->54.28% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->28.30% (4,096B) 0x4B70E23: _IO_file_doallocate (filedoalloc.c:101)
+| ->28.30% (4,096B) 0x4B8022F: _IO_doallocbuf (genops.c:347)
+|   ->28.30% (4,096B) 0x4B8022F: _IO_doallocbuf (genops.c:342)
+|     ->28.30% (4,096B) 0x4B7E37B: _IO_file_xsgetn (fileops.c:1288)
+|       ->28.30% (4,096B) 0x4B71EF7: fread (iofread.c:38)
+|         ->28.30% (4,096B) 0x10AF23: oqs_fload (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|           ->28.30% (4,096B) 0x10AAFF: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|             
+->03.26% (472B) 0x4B718F7: __fopen_internal (iofopen.c:65)
+| ->03.26% (472B) 0x10AEFF: oqs_fload (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|   ->03.26% (472B) 0x10AAFF: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+|     
+->01.85% (268B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  2    146,600,167           10,632            8,460           108        2,064
+  3    290,206,251           10,632            8,460           108        2,064
+  4    458,850,773           10,568            8,460           108        2,000
+  5    593,022,128           10,648            8,460           108        2,080
+  6    719,302,249           10,744            8,460           108        2,176
+  7    853,475,551           10,680            8,460           108        2,112
+79.21% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.56% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.15% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.25% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.90% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.51% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  8  1,040,069,324           10,712            8,460           108        2,144
+78.98% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.34% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.14% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.24% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.90% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.50% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  9  1,177,896,567           10,696            8,460           108        2,128
+ 10  1,258,295,512           10,696            8,460           108        2,128
+ 11  1,373,150,842           10,600            8,460           108        2,032
+ 12  1,465,035,104           10,600            8,460           108        2,032
+ 13  1,597,897,777           10,496            8,340            92        2,064
+ 14  1,748,765,971           10,472            8,292            84        2,096
+ 15  1,839,288,055           10,744            8,460           108        2,176
+ 16  1,990,157,032           10,552            8,292            84        2,176
+ 17  2,110,852,425           10,648            8,460           108        2,080
+ 18  2,216,459,879           10,792            8,460           108        2,224
+ 19  2,367,329,571           10,744            8,460           108        2,176
+ 20  2,488,023,730           10,472            8,292            84        2,096
+ 21  2,669,066,583           10,744            8,460           108        2,176
+ 22  2,819,935,255           10,544            8,340            92        2,112
+79.10% (8,340B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->74.51% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->02.54% (268B) in 6 places, all below massif's threshold (1.00%)
+| 
+->02.05% (216B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+  ->01.14% (120B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+  | ->01.14% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+  | | ->01.14% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+  | | | ->01.14% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+  | | |   ->01.14% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+  | | |     ->01.14% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+  | | |       
+  | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+  | | 
+  | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+  | 
+  ->00.91% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 23  2,910,457,617           10,744            8,460           108        2,176
+ 24  3,061,335,556           10,744            8,460           108        2,176
+ 25  3,182,031,126           10,744            8,460           108        2,176
+ 26  3,302,726,594           10,744            8,460           108        2,176
+ 27  3,423,422,363           10,744            8,460           108        2,176
+78.74% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.12% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.13% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.23% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.89% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.49% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28  3,544,117,815           10,744            8,460           108        2,176
+ 29  3,664,813,684           10,744            8,460           108        2,176
+ 30  3,785,509,152           10,744            8,460           108        2,176
+ 31  3,880,222,394           10,744            8,460           108        2,176
+ 32  4,069,647,505           10,648            8,460           108        2,080
+ 33  4,164,360,627           10,744            8,460           108        2,176
+78.74% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.12% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.13% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.23% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.89% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.49% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 34  4,259,073,233           10,744            8,460           108        2,176
+ 35  4,448,498,067           10,544            8,340            92        2,112
+ 36  4,590,566,893           10,744            8,460           108        2,176
+ 37  4,732,635,743           10,744            8,460           108        2,176
+ 38  4,827,348,392           10,648            8,460           108        2,080
+ 39  4,969,417,655           10,744            8,460           108        2,176
+ 40  5,111,486,480           10,696            8,460           108        2,128
+79.09% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.45% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.14% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.24% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.90% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.51% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 41  5,206,199,616           10,744            8,460           108        2,176
+ 42  5,348,269,699           10,744            8,460           108        2,176
+ 43  5,442,982,204           10,696            8,460           108        2,128
+ 44  5,585,051,569           10,744            8,460           108        2,176
+78.74% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.12% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.13% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.23% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.89% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.49% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 45  5,679,764,181           10,744            8,460           108        2,176
+ 46  5,821,833,031           10,696            8,460           108        2,128
+ 47  5,963,902,444           10,744            8,460           108        2,176
+ 48  6,058,614,890           10,696            8,460           108        2,128
+79.09% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.45% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.14% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.24% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.90% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.51% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 49  6,153,328,002           10,744            8,460           108        2,176
+ 50  6,233,727,263           10,744            8,460           108        2,176
+ 51  6,314,126,359           10,744            8,460           108        2,176
+ 52  6,394,525,439           10,744            8,460           108        2,176
+ 53  6,474,925,115           10,744            8,460           108        2,176
+ 54  6,555,324,138           10,696            8,460           108        2,128
+ 55  6,635,723,095           10,744            8,460           108        2,176
+ 56  6,716,122,205           10,744            8,460           108        2,176
+ 57  6,796,521,353           10,744            8,460           108        2,176
+78.74% (8,460B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->73.12% (7,856B) 0x10AAC3: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| 
+->03.13% (336B) 0x49BEF63: CRYPTO_zalloc (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| ->02.23% (240B) 0x49A52A7: EVP_DigestInit_ex (in /usr/lib/aarch64-linux-gnu/libcrypto.so.1.1)
+| | ->01.12% (120B) 0x14F91B: OQS_SHA2_sha256_inc_init (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x1A6A37: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_seed_state (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x13368F: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |   ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |     ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | |       
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->01.12% (120B) 0x14F9FF: OQS_SHA2_sha256_inc_ctx_clone (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | ->01.12% (120B) 0x133B8B: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_thash_1 (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | ->01.12% (120B) 0x1345CF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_wots_gen_pk (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | | ->01.12% (120B) 0x1333F3: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |   ->01.12% (120B) 0x133DDB: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |     ->01.12% (120B) 0x134477: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |       ->01.12% (120B) 0x1337BF: PQCLEAN_SPHINCSSHA256128SSIMPLE_CLEAN_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |         ->01.12% (120B) 0x10C357: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |           ->01.12% (120B) 0x10AB4B: main (in /pqc/pqc-eval-tools/builds/arm-liboqs-linux/tests/test_sig_mem)
+| | | | |             
+| | | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | | 
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.89% (96B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.49% (268B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 58  6,876,920,301           10,696            8,460           108        2,128
+ 59  6,957,319,339           10,744            8,460           108        2,176
+ 60  7,037,719,055           10,744            8,460           108        2,176
+ 61  7,118,118,133           10,744            8,460           108        2,176
