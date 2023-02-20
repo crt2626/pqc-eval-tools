@@ -158,6 +158,12 @@ def memory_processing(type_mem_dir, up_mem_dir):
         temp_df.to_csv(sig_filename, index=False)
 
 
+#***********************************************************************  
+def gen_averages(type_speed_dir, type_mem_dir):
+    """Function for generating averages csv files for all tests"""
+
+    # Declaring directories
+
 #***********************************************************************
 def process_tests(num_machines):
     """This function parases the results for multiple machines and stores them as csv files"""
@@ -220,6 +226,7 @@ def process_tests(num_machines):
         # Parsing results
         speed_processing(type_speed_dir, up_speed_dir)
         memory_processing(type_mem_dir, up_mem_dir)
+        gen_averages(type_speed_dir, type_mem_dir)
 
 
 #***********************************************************************  
