@@ -119,11 +119,24 @@ cd "$root_dir"/scripts
 Assigning machine number to result direcotries if requested by the user
 '
 #Checking if assinged number has been reuquested
-if [ "$answer" == "yes" ];
+if [ $machine_num -gt 1 ];
 then
 
     # Creating directory name variables
     machine_direc="machine-$machine_num"
+
+    # Changing result directory names for liboqs
+    mkdir -p "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
+    mkdir -p "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"
+    mv "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
+    mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
+    mv "$root_dir"/up-results/liboqs/speed-results/results "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
+
+
+else
+
+    # Creating the deafault name variable
+    machine_direc="machine-1"
 
     # Changing result directory names for liboqs
     mkdir -p "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
