@@ -229,6 +229,7 @@ def main():
     # Print script description
     print(f"\n******************************************************************\n")
     print(f"This script will parse the results produced from the automatic tests\n")
+    print(f"and create CSV files for data analytics\n")
     print(f"\n******************************************************************\n")
 
     # Creating the algorithms list
