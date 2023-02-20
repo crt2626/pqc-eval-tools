@@ -162,7 +162,13 @@ def memory_processing(type_mem_dir, up_mem_dir):
 def gen_averages(type_speed_dir, type_mem_dir):
     """Function for generating averages csv files for all tests"""
 
-    # Declaring directories
+    # Declaring directories variables
+    kem_speed_file_prefix = type_speed_dir + "test-kem-speed-"
+    sig_speed_file_prefix = type_speed_dir + "test-sig-speed-"
+    kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
+    sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
+
+    
 
 #***********************************************************************
 def process_tests(num_machines):
