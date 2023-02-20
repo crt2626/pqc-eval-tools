@@ -17,15 +17,19 @@ root_dir = "../"
 def get_algs():
     """Function for creating list of algorithms"""
 
+    # Setting alg text file directories
+    kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
+    sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
+
     # Getting the kem algs
-    with open("algs/kem-algs-list.txt", "r") as kem_file:
+    with open(kem_algs_file, "r") as kem_file:
 
         for line in kem_file:
             line = line.strip()
             kem_algs.append(line)
     
     # Getting the digital siganture algorithms
-    with open("algs/sig-algs-list.txt", "r") as alg_file:
+    with open(sig_algs_file, "r") as alg_file:
 
         for line in alg_file:
             line = line.strip()
