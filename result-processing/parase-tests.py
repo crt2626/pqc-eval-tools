@@ -147,7 +147,7 @@ def process_tests(num_machines):
     up_mem = root_dir + "/up-results/liboqs/mem-results/"
     up_speed = root_dir + "/up-results/liboqs/speed-results/"
 
-    #Making results direcotry structure
+    # Making results direcotry structure
     os.makedirs(mem_dir)
     os.makedirs(speed_dir)
 
@@ -166,7 +166,7 @@ def process_tests(num_machines):
         type_mem_dir = mem_dir + type_name
         os.makedirs(type_mem_dir)
 
-        #Parsing results
+        # Parsing results
         speed_processing(type_speed_dir, up_speed_dir)
         memory_processing(type_mem_dir, up_mem_dir)
 
