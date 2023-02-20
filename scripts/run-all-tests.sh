@@ -146,3 +146,7 @@ else
     mv "$root_dir"/up-results/liboqs/speed-results/results "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
 
 fi
+#****************************************************************
+: '
+Requesting if the user would like to parse results now
+'
