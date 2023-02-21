@@ -51,14 +51,12 @@ def speed_processing(type_speed_dir, up_speed_dir):
         # Formating KEM files
         filename_kem_pre = up_speed_dir + kem_prefix + str(file_count) + ".csv"
         temp_df = pd.read_csv(filename_kem_pre, delimiter="|", index_col=False)
-        temp_df = temp_df.drop(0)
         filename_kem = type_speed_dir + kem_prefix + str(file_count) + ".csv"
         temp_df.to_csv(filename_kem, index=False)
 
         # Formating digital signature files
         filename_sig_pre = up_speed_dir + sig_prefix + str(file_count) + ".csv"
         temp_df = pd.read_csv(filename_sig_pre, delimiter="|", index_col=False)
-        temp_df = temp_df.drop(0)
         filename_sig = type_speed_dir + sig_prefix + str(file_count) + ".csv"
         temp_df.to_csv(filename_sig, index=False)
 
@@ -167,6 +165,31 @@ def gen_averages(type_speed_dir, type_mem_dir):
     sig_speed_file_prefix = type_speed_dir + "test-sig-speed-"
     kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
     sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
+
+    # Declaring dataframes and fieldnames
+    mem_fieldnames = ["Algorithm", "Operation", "intits", "maxBytes", "maxHeap", "extHeap", "maxStack"]
+    speed_fieldnames = ["Algorithm", "Operation", ""]
+    mem_avg = pd.DataFrame(columns=mem_fieldnames)
+    speed_avg = pd.DataFrame(columns=speed_fieldnames)
+
+    # Looping throuhg the kem algorithms
+    for kem_alg in kem_algs:
+
+        # Looping throuhg each run
+        for run_count in range (1,16,1):
+
+            # Creating filenames
+            kem_mem_filename = kem_mem_file_prefix + str(run_count) + ".csv"
+            kem_speed_filename = sig_mem_file_prefix + str(run_count) + ".csv"
+
+            # Loading current file into temp dataframe
+            temp_df = pd.read_csv(kem_mem_filename)
+            temp_df
+
+
+
+
+
 
     """****************************************************"""
     """MESSAGE DYLAN BACK ABOUT NUMBER AND ALSO ANDREW!!!!!"""
