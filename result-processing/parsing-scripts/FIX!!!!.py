@@ -168,6 +168,9 @@ def gen_averages(type_speed_dir, type_mem_dir):
     kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
     sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
 
+    """****************************************************"""
+    """MESSAGE DYLAN BACK ABOUT NUMBER AND ALSO ANDREW!!!!!"""
+    """****************************************************"""
     
 
 #***********************************************************************
