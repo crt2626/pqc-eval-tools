@@ -6,7 +6,7 @@ function download() {
     mkdir /pqc 
     cd /pqc
     git clone https://github.com/crt2626/pqc-eval-tools.git 
-    chown -R $USER:$USER /pqc/
+    chown -R $USER /pqc/
     chmod -R 755 /pqc
 
     cd /pqc/pqc-eval-tools/scripts
