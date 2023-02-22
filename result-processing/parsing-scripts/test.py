@@ -181,44 +181,6 @@ def memory_processing(type_mem_dir, up_mem_dir):
         temp_df.to_csv(sig_filename, index=False)
 
 
-#***********************************************************************  
-# def gen_averages(type_speed_dir, type_mem_dir):
-#     """Function for generating averages csv files for all tests"""
-
-#     # Declaring directories variables
-#     kem_speed_file_prefix = type_speed_dir + "test-kem-speed-"
-#     sig_speed_file_prefix = type_speed_dir + "test-sig-speed-"
-#     kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
-#     sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
-
-#     # Declaring dataframes and fieldnames
-#     mem_fieldnames = ["Algorithm", "Operation", "intits", "maxBytes", "maxHeap", "extHeap", "maxStack"]
-#     speed_fieldnames = ["Algorithm", "Operation", ""]
-#     mem_avg = pd.DataFrame(columns=mem_fieldnames)
-#     speed_avg = pd.DataFrame(columns=speed_fieldnames)
-    
-#     # Looping throuhg the kem algorithms
-#     for kem_alg in kem_algs:
-
-#         # Looping throuhg each run
-#         for run_count in range (1,16,1):
-
-#             # Creating filenames
-#             kem_mem_filename = kem_mem_file_prefix + str(run_count) + ".csv"
-#             kem_speed_filename = sig_mem_file_prefix + str(run_count) + ".csv"
-
-#             # Loading current file into temp dataframe
-#             temp_df = pd.read_csv(kem_mem_filename)
-#             temp_df = 
-
-
-
-
-#     """****************************************************"""
-#     """MESSAGE DYLAN BACK ABOUT NUMBER AND ALSO ANDREW!!!!!"""
-#     """****************************************************"""
-    
-
 #***********************************************************************
 def process_tests(num_machines):
     """This function parases the results for multiple machines and stores them as csv files"""
