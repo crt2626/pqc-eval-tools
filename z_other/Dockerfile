@@ -34,7 +34,7 @@ RUN apt-get update && \
     xsltproc \
     doxygen \ 
     git \ 
-    wget
+    wget 
 
 #Setting root password
 RUN echo 'root:password' | chpasswd
