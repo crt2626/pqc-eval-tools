@@ -11,11 +11,11 @@ from avg_gen import gen_averages
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
-#root_dir = "/pqc/pqc-eval-tools/"
+root_dir = "/pqc/pqc-eval-tools/"
 kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
-#root_dir = "/pqc/pqc-eval-tools/"
-root_dir = "../../"
+
+
 
 #***********************************************************************
 def get_algs():
