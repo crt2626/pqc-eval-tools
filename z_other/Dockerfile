@@ -42,7 +42,7 @@ WORKDIR /home/testuser
 # Clone the better liboqs (better cause of me, duh tots obvs #supieor_intelect #basic-bitch #) repository and build the library
 RUN wget https://github.com/crt2626/pqc-eval-tools/blob/main/setup.sh
 RUN chmod +x setup.sh
-RUN mkdir /pqc  && cd /pqc
+RUN mkdir /pqc && cd /pqc
 RUN git clone https://github.com/crt2626/pqc-eval-tools.git
 RUN chown -R $USER:$USER /pqc
 RUN chmod -R 755 /pqc
