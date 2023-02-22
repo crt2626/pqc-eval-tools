@@ -89,6 +89,21 @@ sig_algs=(
   "SPHINCS+-SHA256-192s-robust"
   "SPHINCS+-SHA256-192s-simple"
   "SPHINCS+-SHA256-256f-robust"
+  "SPHINCS+-SHA256-256f-simple"
+  "SPHINCS+-SHA256-256s-robust"
+  "SPHINCS+-SHA256-256s-simple"
+  "SPHINCS+-SHAKE256-128f-robust"
+  "SPHINCS+-SHAKE256-128f-simple"
+  "SPHINCS+-SHAKE256-128s-robust"
+  "SPHINCS+-SHAKE256-128s-simple"
+  "SPHINCS+-SHAKE256-192f-robust"
+  "SPHINCS+-SHAKE256-192f-simple"
+  "SPHINCS+-SHAKE256-192s-robust"
+  "SPHINCS+-SHAKE256-192s-simple"
+  "SPHINCS+-SHAKE256-256f-robust"
+  "SPHINCS+-SHAKE256-256f-simple"
+  "SPHINCS+-SHAKE256-256s-robust"
+  "SPHINCS+-SHAKE256-256s-simple" 
 )
 
 # Creating prefix varibles
