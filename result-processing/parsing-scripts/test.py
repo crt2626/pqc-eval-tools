@@ -254,6 +254,7 @@ def main():
 
     # Creating the algorithms list
     get_algs()
+    print("test")
 
     # Getting the number of machines tested
     prompt_flag = 0
