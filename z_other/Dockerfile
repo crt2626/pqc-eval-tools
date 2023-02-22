@@ -50,7 +50,9 @@ WORKDIR /home/testuser
 
 
 # Clone the better liboqs (better cause of me, duh tots obvs #supieor_intelect #basic-bitch #) repository and build the library
+RUN wget https://github.com/crt2626/pqc-eval-tools/blob/main/setup.sh
 RUN git clone --depth 1 --branch main https://github.com/crt2626/pqc-eval-tools.git
+
 
 WORKDIR /opt/liboqs
 RUN mkdir build && cd build && cmake .. ${LIBOQS_BUILD_DEFINES} -DCMAKE_INSTALL_PREFIX=${INSTALLDIR} && make ${MAKE_DEFINES} && make install
