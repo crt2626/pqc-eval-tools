@@ -15,6 +15,7 @@ RUN apt-get update && \
     python3-pytest \
     python3-pytest-xdist \
     python3-yaml \
+    python3-pip \
     sudo \
     unzip \
     valgrind \
