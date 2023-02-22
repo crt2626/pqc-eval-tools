@@ -11,8 +11,7 @@ sig_algs = []
 root_dir = "/pqc/pqc-eval-tools/"
 kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
-#root_dir = "/pqc/pqc-eval-tools/"
-root_dir = "../../"
+root_dir = "/pqc/pqc-eval-tools/"
 
 #***********************************************************************
 def get_algs():
@@ -43,7 +42,7 @@ def avg_mem(type_mem_dir):
     # Declaring directories variables
     kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
     sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
-    
+    print()
     # Declaring dataframes and fieldnames
     mem_fieldnames = ["Algorithm", "Operation", "intits", "maxBytes", "maxHeap", "extHeap", "maxStack"]
     kem_mem_avg = pd.DataFrame(columns=mem_fieldnames)
