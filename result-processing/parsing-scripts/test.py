@@ -21,19 +21,17 @@ def get_algs():
     kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
     sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
 
-    # # Getting the kem algs
+    # Getting the kem algs
     with open(kem_algs_file, "r") as kem_file:
 
         for line in kem_file:
-            alg = line.strip()
-            kem_algs.append(alg)
+            kem_algs.append(line.strip())
     
     # Getting the digital siganture algorithms
     with open(sig_algs_file, "r") as alg_file:
 
         for line in alg_file:
-            alg = line.strip()
-            sig_algs.append(alg)
+            sig_algs.append(line.strip())
 
 
 #***********************************************************************
