@@ -21,19 +21,19 @@ def get_algs():
     kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
     sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
 
-    # Getting the kem algs
+    # # Getting the kem algs
     with open(kem_algs_file, "r") as kem_file:
 
         for line in kem_file:
-            line = line.strip()
-            kem_algs.append(line)
+            alg = line.strip()
+            kem_algs.append(alg)
     
     # Getting the digital siganture algorithms
     with open(sig_algs_file, "r") as alg_file:
 
         for line in alg_file:
-            line = line.strip()
-            sig_algs.append(line)
+            alg = line.strip()
+            sig_algs.append(alg)
 
 
 #***********************************************************************
@@ -44,19 +44,42 @@ def speed_processing(type_speed_dir, up_speed_dir):
     kem_prefix = "test-kem-speed-"
     sig_prefix = "test-sig-speed-"
 
-
+    # Creating algorithm list to insert into new column
+    new_col_kem = [alg for alg in kem_algs for i in range(3)]
+    new_col_sig = [alg for alg in sig_algs for i in range(3)]
+    
+        
     # Reading the original csv files and formating
     for file_count in range(1,16,1):
 
-        # Formating KEM files
+        """Formating Kem Files"""
+        # Loading kem file into dataframe
         filename_kem_pre = up_speed_dir + kem_prefix + str(file_count) + ".csv"
         temp_df = pd.read_csv(filename_kem_pre, delimiter="|", index_col=False)
+
+        # Striping trailing spaces and removing algorithms from Operation
+        temp_df.columns = [col.strip() for col in temp_df.columns]
+        temp_df = temp_df.loc[~temp_df['Operation'].str.strip().isin(kem_algs)]
+        temp_df = temp_df.applymap(lambda val: val.strip() if isinstance(val, str) else val)
+
+        # Inserting new algorithm column and outputing formated csv
+        temp_df.insert(0, "Algorithm", new_col_kem)
         filename_kem = type_speed_dir + kem_prefix + str(file_count) + ".csv"
         temp_df.to_csv(filename_kem, index=False)
 
-        # Formating digital signature files
+
+        """Formating Digital Signature Files"""
+        # Loading kem file into dataframe and stiping trailing space in columns headers
         filename_sig_pre = up_speed_dir + sig_prefix + str(file_count) + ".csv"
         temp_df = pd.read_csv(filename_sig_pre, delimiter="|", index_col=False)
+
+        # Striping trailing spaces and removing algorithms from Operation
+        temp_df.columns = [col.strip() for col in temp_df.columns]
+        temp_df = temp_df.loc[~temp_df['Operation'].str.strip().isin(sig_algs)]
+        temp_df = temp_df.applymap(lambda val: val.strip() if isinstance(val, str) else val)
+
+        # Inserting new column and outputting formated csv
+        temp_df.insert(0, 'Algorithm', new_col_sig)
         filename_sig = type_speed_dir + sig_prefix + str(file_count) + ".csv"
         temp_df.to_csv(filename_sig, index=False)
 
