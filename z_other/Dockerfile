@@ -38,9 +38,20 @@ RUN apt-get update && \
 #Setting root password
 RUN echo 'root:password' | chpasswd
 
-# Clone the liboqs repository and build the library
-WORKDIR /opt
-RUN git clone --depth 1 --branch main https://github.com/open-quantum-safe/liboqs.git
+# create a user with root privileges
+RUN useradd --no-log-init --system --uid 1000 --create-home testuser
+
+# switch to the new user
+USER testuser
+
+# set working directory
+WORKDIR /home/testuser
+
+
+
+# Clone the better liboqs (better cause of me, duh tots obvs #supieor_intelect #basic-bitch #) repository and build the library
+RUN git clone --depth 1 --branch main https://github.com/crt2626/pqc-eval-tools.git
+
 WORKDIR /opt/liboqs
 RUN mkdir build && cd build && cmake .. ${LIBOQS_BUILD_DEFINES} -DCMAKE_INSTALL_PREFIX=${INSTALLDIR} && make ${MAKE_DEFINES} && make install
 
