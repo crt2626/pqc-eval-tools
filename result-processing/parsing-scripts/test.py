@@ -11,7 +11,10 @@ import shutil
 kem_algs = []
 sig_algs = []
 root_dir = "/pqc/pqc-eval-tools/"
-
+kem_operations = ["keygen", "encaps", "decaps"]
+sig_operations = ["keypair", "sign", "verify"]
+#root_dir = "/pqc/pqc-eval-tools/"
+root_dir = "../../"
 
 #***********************************************************************
 def get_algs():
@@ -21,7 +24,7 @@ def get_algs():
     kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
     sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
 
-    # Getting the kem algs
+    # # Getting the kem algs
     with open(kem_algs_file, "r") as kem_file:
 
         for line in kem_file:
