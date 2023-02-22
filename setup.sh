@@ -1,7 +1,4 @@
 #!/bin/bash
-: '
-Downloading and confiuring repo
-'
 
 function download() {
 
