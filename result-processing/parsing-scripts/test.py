@@ -124,8 +124,8 @@ def memory_processing(type_mem_dir, up_mem_dir):
 
     # file placeholders
     filednames = ["Algorithm", "Operation", "intits", "maxBytes", "maxHeap", "extHeap", "maxStack"]
-    kem_operations = ["Keygen", "Encaps", "Decaps"]
-    sig_operations = ["Keygen", "Sign", "Verify"]
+    kem_operations = ["keygen", "encaps", "decaps"]
+    sig_operations = ["keygen", "sign", "verify"]
 
     # Looping through each run count
     for run_count in range(1,16,1):
