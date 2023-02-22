@@ -65,7 +65,7 @@ def avg_mem(type_mem_dir):
 
 
         #Getting the avereages for each operation
-        temp_df1 = temp_df1.loc[temp_df1["Operation"].str.contains("Keygen")]
+        temp_df1 = temp_df1.loc[temp_df1["Operation"].str.contains("keygen")]
         print(temp_df1)
         break
 
