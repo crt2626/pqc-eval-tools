@@ -83,5 +83,5 @@ def gen_averages(type_speed_dir, type_mem_dir):
     get_algs()
 
     # Running average generation functions
-    avg_mem(type_speed_dir)
+    avg_mem(type_mem_dir)
     
