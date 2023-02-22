@@ -1,14 +1,5 @@
 FROM debian:bullseye
 
-# Default location where all binaries wind up:
-ARG INSTALLDIR=/opt/oqssa
-
-# liboqs build defines (https://github.com/open-quantum-safe/liboqs/wiki/Customizing-liboqs)
-ARG LIBOQS_BUILD_DEFINES=""
-
-# Define the degree of parallelism when building the image
-ARG MAKE_DEFINES="-j 8"
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # Get all software packages required for building liboqs
