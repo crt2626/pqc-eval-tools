@@ -192,7 +192,7 @@ def gen_averages(type_speed_dir, type_mem_dir):
     speed_fieldnames = ["Algorithm", "Operation", ""]
     mem_avg = pd.DataFrame(columns=mem_fieldnames)
     speed_avg = pd.DataFrame(columns=speed_fieldnames)
-
+    
     # Looping throuhg the kem algorithms
     for kem_alg in kem_algs:
 
@@ -205,7 +205,7 @@ def gen_averages(type_speed_dir, type_mem_dir):
 
             # Loading current file into temp dataframe
             temp_df = pd.read_csv(kem_mem_filename)
-            temp_df
+            temp_df 
 
 
 
