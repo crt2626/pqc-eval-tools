@@ -5,7 +5,7 @@ function download() {
     # Function for setting up the repo
     mkdir /pqc 
     cd /pqc
-    git clone https://github.com/crt2626/pqc-eval-tools.git
+    git clone https://github.com/crt2626/pqc-eval-tools.git 
     chown -R $USER:$USER /pqc
     chmod -R 755 /pqc
 
