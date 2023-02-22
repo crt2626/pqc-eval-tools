@@ -50,6 +50,5 @@ WORKDIR /home/testuser
 
 # Clone the better liboqs (better cause of me, duh tots obvs #supieor_intelect #basic-bitch #) repository and build the library
 RUN wget https://github.com/crt2626/pqc-eval-tools/blob/main/setup.sh
-RUN chomd +x setup.sh
+RUN chmod +x setup.sh
 RUN ./setup.sh
-
