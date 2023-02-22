@@ -33,7 +33,8 @@ RUN apt-get update && \
     python3 \
     xsltproc \
     doxygen \ 
-    git
+    git \ 
+    wget
 
 #Setting root password
 RUN echo 'root:password' | chpasswd
