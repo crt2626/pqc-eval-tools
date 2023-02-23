@@ -266,7 +266,7 @@ def process_tests(num_machines):
         # Parsing results
         speed_processing(type_speed_dir, up_speed_dir)
         memory_processing(type_mem_dir, up_mem_dir)
-        gen_averages(type_speed_dir, type_mem_dir)
+        gen_averages(type_speed_dir, type_mem_dir, root_dir)
 
 
 #***********************************************************************  

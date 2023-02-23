@@ -4,14 +4,14 @@ import pandas as pd
 import re
 import os
 import shutil
+import sys
 
 # Declaring gloabl variables
 kem_algs = []
 sig_algs = []
-root_dir = "/pqc/pqc-eval-tools/"
 kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
-root_dir = "/pqc/pqc-eval-tools/"
+root_dir = ""
 
 #***********************************************************************
 def get_algs():
@@ -40,9 +40,9 @@ def avg_mem(type_mem_dir):
     generating an avereage for all the runs"""
 
     # Declaring directories variables
-    kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
-    sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
-    print()
+    kem_mem_file_prefix = os.path.join(type_mem_dir, "kem-mem-metrics-")
+    sig_mem_file_prefix = os.path.join(type_mem_dir, "sig-mem-metrics-")
+
     # Declaring dataframes and fieldnames
     mem_fieldnames = ["Algorithm", "Operation", "intits", "maxBytes", "maxHeap", "extHeap", "maxStack"]
     kem_mem_avg = pd.DataFrame(columns=mem_fieldnames)
@@ -72,8 +72,12 @@ def avg_mem(type_mem_dir):
 
 
 #***********************************************************************  
-def gen_averages(type_speed_dir, type_mem_dir):
+def gen_averages(type_speed_dir, type_mem_dir, dir):
     """Function for generating averages csv files for all tests"""
+
+    # Setting root directory
+    global root_dir 
+    root_dir = dir
 
     # Declaring directories variables
     # kem_speed_file_prefix = type_speed_dir + "test-kem-speed-"
@@ -82,8 +86,9 @@ def gen_averages(type_speed_dir, type_mem_dir):
     # sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
 
 
+
     # setup
-    get_algs()
+    get_algs(root_dir)
 
     # Running average generation functions
     avg_mem(type_mem_dir)
