@@ -155,7 +155,7 @@ def memory_processing(type_mem_dir, up_mem_dir):
         #Looping throuhg kem algorithms
         for kem_alg in kem_algs:
 
-            kem_up_filename_pre = os.path.join(kem_dir, kem_file_prefix)
+            kem_up_filename_pre = os.path.join(kem_dir,kem_file_prefix)
 
             #Looping the operations and adding to temp dataframe 
             for operation in range(0,3,1):

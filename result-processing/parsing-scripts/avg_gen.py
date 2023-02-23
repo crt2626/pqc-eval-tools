@@ -64,28 +64,21 @@ def avg_mem(type_mem_dir):
             temp_df1 = pd.concat([temp_df2, temp_df1], ignore_index=True, sort=False)
 
         #Getting the avereages for each operation
-
         for operation in kem_operations:
+            
+            # Getting a list of the operation metric averages 
             temp_df3 = temp_df1.loc[temp_df1["Operation"].str.contains(operation)]
-            keygen_averages = temp_df3.mean()
-            print(keygen_averages)
-        break
+            temp_df3 = temp_df3[mem_fieldnames[2:]]
+            temp_df3 = (temp_df3.mean(axis=0)).to_frame()
+            row = temp_df3.iloc[:, 0].to_list()
 
+            #Creating new row and exporting to main memory average dataframe
+            row.insert(0, kem_alg)
+            row.insert(1,operation)
+            kem_mem_avg.loc[len(kem_mem_avg)] = row
 
-
-# import pandas as pd
-
-# # Select only the numeric columns and calculate the average
-# keygen_averages = keygen_df.select_dtypes(include=['int', 'float']).mean()
-
-# # Create a new DataFrame with the same structure as keygen_df
-# averages_df = pd.DataFrame(columns=keygen_df.columns)
-
-# # Set the average values in the new DataFrame
-# averages_df.loc[0] = keygen_averages
-
-# # Print the new DataFrame
-# print(averages_df)
+    csv_name = os.path.join(type_mem_dir,"kem-avg.csv")
+    kem_mem_avg.to_csv(csv_name, index=False)
 
 #***********************************************************************  
 def gen_averages(type_speed_dir, type_mem_dir, dir):
