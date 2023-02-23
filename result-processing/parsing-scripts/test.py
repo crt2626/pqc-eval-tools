@@ -26,7 +26,7 @@ def get_system_type() :
     if sys.platform == "win32":
 
         system_type = "win"
-        root_dir = r"..\\..\\"
+        root_dir = r"..\\.."
 
     else:
         system_type = "linux"
