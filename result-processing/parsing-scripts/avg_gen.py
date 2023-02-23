@@ -71,10 +71,10 @@ def avg_mem(type_mem_dir):
             
             # Getting a list of the operation metric averages 
             operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation)]
-            operation_avergae = operation_avergae[mem_fieldnames[2:]]
+            operation_average = operation_average[mem_fieldnames[2:]]
 
             # Calcualting Averages
-            operation_avergae = (operation_average.mean(axis=0)).to_frame()
+            operation_average = (operation_average.mean(axis=0)).to_frame()
 
             #Creating new row and exporting to main kem memory average dataframe
             row = operation_average.iloc[:, 0].to_list()
@@ -101,12 +101,13 @@ def avg_mem(type_mem_dir):
             temp_df = temp_df.loc[temp_df["Algorithm"].str.contains(sig_alg)]
             combined_operations = pd.concat([temp_df, combined_operations], ignore_index=True, sort=False)
         
-        
+
         # Getting the averages for each operation
         for operation in sig_operations:
 
             # Creating a list of the operation metric averages
             operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation)]
+            print(operation_average)
             operation_average = operation_average[mem_fieldnames[2:]]
 
             # Calculating averages
