@@ -14,9 +14,7 @@ kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
 kem_algs = []
 sig_algs = []
-root_dir = ""
 system_type = ""
-
 
 #***********************************************************************
 def get_system_type() :
