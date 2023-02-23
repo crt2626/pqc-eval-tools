@@ -10,13 +10,12 @@ import sys
 from avg_gen import gen_averages
 
 # Declaring gloabl
-kem_algs = []
-sig_algs = []
-#root_dir = "/pqc/pqc-eval-tools/"
-root_dir = ""
-system_type = ""
 kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
+kem_algs = []
+sig_algs = []
+root_dir = ""
+system_type = ""
 
 
 #***********************************************************************
@@ -39,12 +38,8 @@ def get_system_type() :
 #***********************************************************************
 def get_algs():
     """Function for creating list of algorithms"""
-    global kem_algs, sig_algs
 
     # Setting alg text file directories
-    kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
-    sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
-
     kem_algs_file = os.path.join(root_dir, "result-processing", "algs", "kem-algs-list.txt")
     sig_algs_file = os.path.join(root_dir, "result-processing", "algs", "sig-algs-list.txt")
 
@@ -64,8 +59,6 @@ def get_algs():
 #***********************************************************************
 def speed_processing(type_speed_dir, up_speed_dir):
     """Importing and processing result files"""
-
-    global kem_algs, sig_algs
 
     # Declaring initial variables
     kem_prefix = "test-kem-speed-"
@@ -211,11 +204,11 @@ def process_tests(num_machines):
     """This function parases the results for multiple machines and stores them as csv files"""
 
     # Declaring directory variables
-    results_dir = root_dir + "results/"
-    mem_dir = results_dir + "liboqs/" + "mem-results/"
-    speed_dir = results_dir + "liboqs/" + "speed-results/"
-    up_mem = root_dir + "up-results/liboqs/mem-results/"
-    up_speed = root_dir + "up-results/liboqs/speed-results/"
+    results_dir = os.path.join(root_dir, "results")
+    mem_dir = os.path.join(results_dir, "liboqs", "mem-results")
+    speed_dir = os.path.join(results_dir, "liboqs", "speed-results")
+    up_mem = os.path.join(root_dir, "up-results", "liboqs", "mem-results")
+    up_speed = os.path.join(root_dir, "up-results", "liboqs", "speed-results")
     num_mach_range = num_machines + 1
 
     # Creating directory structure and remvoing previous results
@@ -236,28 +229,28 @@ def process_tests(num_machines):
 
     for machine_num in range(1, num_mach_range, 1):
 
-        type_name = "machine-" + str(machine_num) + "/"
+        type_name = "machine-" + str(machine_num)
 
         # Setting up directory path
-        up_speed_dir = up_speed + type_name
-        up_mem_dir = up_mem + type_name
+        up_speed_dir = os.path.join(up_speed, type_name)
+        up_mem_dir = os.path.join(up_mem, type_name)
 
         # Creating specifc result directories and clearing old results
         try: 
             
             # Speed result directories
-            type_speed_dir = speed_dir + type_name
+            type_speed_dir = os.path.join(speed_dir, type_name)
             os.makedirs(type_speed_dir)
 
             # Mem result directories
-            type_mem_dir = mem_dir + type_name
+            type_mem_dir = os.path.join(mem_dir, type_name)
             os.makedirs(type_mem_dir)
 
         except:
 
             # Setting the directory variables
-            type_speed_dir = speed_dir + type_name
-            type_mem_dir = mem_dir + type_name
+            type_speed_dir = os.path.join(speed_dir, type_name)
+            type_mem_dir = os.path.join(mem_dir, type_name)
 
             #Clearing the old results and making directories
             shutil.rmtree(type_speed_dir)
@@ -275,15 +268,10 @@ def process_tests(num_machines):
 def main():
     """Main function for parsing the test results"""
 
+    # Setting up the script
     print("Preparing to Parse Results:\n")
-    # Creating the algorithms list
     get_system_type()
     get_algs()
-
-
-    print(system_type)
-    print(root_dir)
-
 
     # Getting the number of machines tested
     prompt_flag = 0

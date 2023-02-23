@@ -39,12 +39,9 @@ def get_system_type() :
 #***********************************************************************
 def get_algs():
     """Function for creating list of algorithms"""
-    global kem_algs, sig_algs
+
 
     # Setting alg text file directories
-    kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
-    sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
-
     kem_algs_file = os.path.join(root_dir, "result-processing", "algs", "kem-algs-list.txt")
     sig_algs_file = os.path.join(root_dir, "result-processing", "algs", "sig-algs-list.txt")
 
