@@ -107,7 +107,8 @@ def avg_mem(type_mem_dir):
 
             # Creating a list of the operation metric averages
             operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation, regex=False)]
-            print(operation_average)
+            """Testing for issue with 0 maxHeap"""
+            # print(operation_average)
             operation_average = operation_average[mem_fieldnames[2:]]
 
             # Calculating averages
@@ -119,13 +120,114 @@ def avg_mem(type_mem_dir):
             row.insert(1, operation)
             sig_mem_avg.loc[len(sig_mem_avg)] = row
 
-        
-    
+
     # Exporting average csv files
     kem_csv_name = os.path.join(type_mem_dir, "kem-mem-avg.csv")
     kem_mem_avg.to_csv(kem_csv_name, index=False)
     sig_csv_name = os.path.join(type_mem_dir, "sig-mem-avg.csv")
     sig_mem_avg.to_csv(sig_csv_name, index=False)
+
+
+#***********************************************************************  
+def avg_speed(type_speed_dir):
+    """Taking in the provided machine mem results and 
+    generating an avereage for all the runs"""
+
+    #fieldnames = [['Algorithm', 'Operation', 'Iterations', 'Total time (s)', 'Time (us): mean', 'pop. stdev', 'High-prec time (ns): mean', 'pop. stdev.1']]
+
+    # Declaring directory variables
+    kem_filename_prefix = os.path.join(type_speed_dir, "test-kem-speed-")
+    sig_filename_prefix = os.path.join(type_speed_dir, "test-sig-speed-")
+    speed_fieldnames = []
+
+    # getting fieldnames throuhg first fille
+    test_filename = "test-kem-speed-1.csv"
+    test_filename = os.path.join(type_speed_dir, test_filename)
+
+    # Loading test file into dataframe and getting headers into list
+    check_df = pd.read_csv(test_filename)
+    speed_fieldnames = check_df.columns.to_list()
+
+    # Setting output dataframe headers
+    kem_speed_avg = pd.DataFrame(columns=speed_fieldnames)
+    sig_speed_avg = pd.DataFrame(columns=speed_fieldnames)
+
+
+    """Calculating KEM Averages"""
+    # Looping through kem algorithms
+    for kem_alg in kem_algs:
+
+        # Creating combined averages dataframe
+        combined_operations = pd.DataFrame(columns=speed_fieldnames)
+
+        # Looping through run files
+        for run_count in range(1,16,1):
+
+            # Setting filename and reading csv into dataframe
+            kem_filename = kem_filename_prefix + str(run_count) + ".csv"
+            temp_df = pd.read_csv(kem_filename)
+
+            # Getting the algorithm operations across all files into one
+            temp_df = temp_df.loc[temp_df["Algorithm"].str.contains(kem_alg, regex=False)]
+            combined_operations = pd.concat([temp_df, combined_operations], ignore_index=True, sort=False)
+        
+        # Getting the average for each operation
+        for operation in kem_operations:
+
+            # Creating a list of operation metric averages
+            operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation, regex=False)]
+            operation_average = operation_average[speed_fieldnames[2:]]
+
+            # Calculating Average
+            operation_average = (operation_average.mean(axis=0)).to_frame()
+
+            # Creating new row and exporting to main kem speed average dataframe
+            row = operation_average.iloc[:, 0].to_list()
+            row.insert(0, kem_alg)
+            row.insert(1, operation)
+            kem_speed_avg.loc[len(kem_speed_avg)] = row
+
+
+    """Calculating Digital Signature Averages"""
+    # Looping through sig algorithms
+    for sig_alg in sig_algs:
+
+        # Creating combined averages dataframe
+        combined_operations = pd.DataFrame(columns=speed_fieldnames)
+
+        # Looping through run files
+        for run_count in range(1,16,1):
+
+            # Setting filename and reading csv into dataframe
+            sig_filename = sig_filename_prefix + str(run_count) + ".csv"
+            temp_df = pd.read_csv(sig_filename)
+
+            # Getting the algorithm operations across all files into one
+            temp_df = temp_df.loc[temp_df["Algorithm"].str.contains(sig_alg, regex=False)]
+            combined_operations = pd.concat([temp_df, combined_operations], ignore_index=True, sort=False)
+        
+        # Getting the average for each operation
+        for operation in sig_operations:
+
+            # Creating a list of operation metric averages
+            operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation, regex=False)]
+            operation_average = operation_average[speed_fieldnames[2:]]
+
+            # Calculating Average
+            operation_average = (operation_average.mean(axis=0)).to_frame()
+
+            # Creating new row and exporting to main digital signature speed average dataframe
+            row = operation_average.iloc[:, 0].to_list()
+            row.insert(0, sig_alg)
+            row.insert(1, operation)
+            sig_speed_avg.loc[len(sig_speed_avg)] = row
+
+
+    # Exporting average csv files
+    kem_csv_name = os.path.join(type_speed_dir, "kem-speed-avg.csv")
+    kem_speed_avg.to_csv(kem_csv_name, index=False)
+    sig_csv_name = os.path.join(type_speed_dir, "sig-mem-avg.csv")
+    sig_speed_avg.to_csv(sig_csv_name, index=False)
 
 
 #***********************************************************************  
@@ -149,4 +251,5 @@ def gen_averages(type_speed_dir, type_mem_dir, dir):
 
     # Running average generation functions
     avg_mem(type_mem_dir)
+    avg_speed(type_speed_dir)
     

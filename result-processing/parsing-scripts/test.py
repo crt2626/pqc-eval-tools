@@ -181,7 +181,7 @@ def memory_processing(type_mem_dir, up_mem_dir):
                 peak_metrics = get_peak(kem_up_filename, peak_metrics)
                 new_row.extend([kem_alg, kem_operations[operation]])
                 new_row.extend(peak_metrics)
-                print(peak_metrics)
+                #print(peak_metrics)
                 
                 temp_df.loc[len(temp_df)] = new_row
 
@@ -195,7 +195,7 @@ def memory_processing(type_mem_dir, up_mem_dir):
         temp_df.to_csv(kem_filename, index=False)
 
 
-        #Looping throuhg kem algorithms
+        #Looping throuhg sig algorithms
         for sig_alg in sig_algs:
 
             sig_up_filename_pre = os.path.join(sig_dir, sig_file_prefix)
