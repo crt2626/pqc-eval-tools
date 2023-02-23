@@ -63,12 +63,12 @@ def avg_mem(type_mem_dir):
             temp_df2 = temp_df2.loc[temp_df2["Algorithm"].str.contains(kem_alg)]
             temp_df1 = pd.concat([temp_df2, temp_df1], ignore_index=True, sort=False)
 
-
         #Getting the avereages for each operation
         for operation in kem_operations:
-            temp_df1 = temp_df1.loc[temp_df1["Operation"].str.contains(operation)]
-            print(temp_df1)
-
+            temp_df3 = temp_df1.loc[temp_df1["Operation"].str.contains(operation)]
+            temp_df3 = temp_df3.mean()
+            print(temp_df3)
+        break
 
 
 #***********************************************************************  
