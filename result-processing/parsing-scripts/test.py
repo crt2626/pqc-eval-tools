@@ -9,14 +9,6 @@ import shutil
 import sys
 from avg_gen import gen_averages
 
-# Checking system type and setting
-if sys.platform == "Windows": 
-    system_type = "win"
-else:
-    system_type = "linux"
-
-
-
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
