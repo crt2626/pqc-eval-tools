@@ -68,7 +68,7 @@ def avg_mem(type_mem_dir):
         for operation in kem_operations:
             temp_df3 = temp_df1.loc[temp_df1["Operation"].str.contains(operation)]
             keygen_averages = temp_df3.select_dtypes(include=['int', 'float']).mean()
-            print(temp_df3)
+            print(keygen_averages)
         break
 
 
