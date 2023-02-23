@@ -13,6 +13,7 @@ from avg_gen import gen_averages
 kem_algs = []
 sig_algs = []
 #root_dir = "/pqc/pqc-eval-tools/"
+root_dir = ""
 kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
 system_type = ""
