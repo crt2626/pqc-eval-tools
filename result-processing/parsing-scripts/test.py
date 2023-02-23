@@ -74,7 +74,8 @@ def speed_processing(type_speed_dir, up_speed_dir):
 
         """Formating Kem Files"""
         # Loading kem file into dataframe
-        filename_kem_pre = up_speed_dir + kem_prefix + str(file_count) + ".csv"
+        filename_kem_pre = kem_prefix + str(file_count) + ".csv"
+        filename_kem_pre = os.path.join(up_speed_dir, filename_kem_pre)
         temp_df = pd.read_csv(filename_kem_pre, delimiter="|", index_col=False)
 
         # Striping trailing spaces and removing algorithms from Operation
@@ -84,13 +85,14 @@ def speed_processing(type_speed_dir, up_speed_dir):
 
         # Inserting new algorithm column and outputing formated csv
         temp_df.insert(0, "Algorithm", new_col_kem)
-        filename_kem = type_speed_dir + kem_prefix + str(file_count) + ".csv"
+        filename_kem = kem_prefix + str(file_count) + ".csv"
+        filename_kem = os.path.join(type_speed_dir, filename_kem)
         temp_df.to_csv(filename_kem, index=False)
-
 
         """Formating Digital Signature Files"""
         # Loading kem file into dataframe and stiping trailing space in columns headers
-        filename_sig_pre = up_speed_dir + sig_prefix + str(file_count) + ".csv"
+        filename_sig_pre = sig_prefix + str(file_count) + ".csv"
+        filename_sig_pre = os.path.join(up_speed_dir, filename_sig_pre)
         temp_df = pd.read_csv(filename_sig_pre, delimiter="|", index_col=False)
 
         # Striping trailing spaces and removing algorithms from Operation
@@ -100,7 +102,8 @@ def speed_processing(type_speed_dir, up_speed_dir):
 
         # Inserting new column and outputting formated csv
         temp_df.insert(0, 'Algorithm', new_col_sig)
-        filename_sig = type_speed_dir + sig_prefix + str(file_count) + ".csv"
+        filename_sig = sig_prefix + str(file_count) + ".csv"
+        filename_sig = os.path.join(type_speed_dir, filename_sig)
         temp_df.to_csv(filename_sig, index=False)
 
 
@@ -133,8 +136,8 @@ def memory_processing(type_mem_dir, up_mem_dir):
     """Looping through all memory files and creating csv files"""
 
     # Assigning directory varibales
-    kem_dir = up_mem_dir + "kem-mem-metrics/"
-    sig_dir = up_mem_dir + "sig-mem-metrics/"
+    kem_dir = up_mem_dir + "kem-mem-metrics"
+    sig_dir = up_mem_dir + "sig-mem-metrics"
     kem_file_prefix = "kem-mem-metrics"
     sig_file_prefix = "sig-mem-metrics"
     new_row = []
@@ -153,7 +156,7 @@ def memory_processing(type_mem_dir, up_mem_dir):
         #Looping throuhg kem algorithms
         for kem_alg in kem_algs:
 
-            kem_up_filename_pre = kem_dir + kem_file_prefix
+            kem_up_filename_pre = os.path.join(kem_dir + kem_file_prefix)
 
             #Looping the operations and adding to temp dataframe 
             for operation in range(0,3,1):
@@ -171,14 +174,15 @@ def memory_processing(type_mem_dir, up_mem_dir):
                 new_row.clear()
 
         # Outputing kem csv file for this run
-        kem_filename = type_mem_dir + "kem-mem-metrics-" + str(run_count) + ".csv"
+        kem_end = "kem-mem-metrics-" + str(run_count) + ".csv"
+        kem_filename = os.path.join(type_mem_dir, kem_end)
         temp_df.to_csv(kem_filename, index=False)
 
 
         #Looping throuhg kem algorithms
         for sig_alg in sig_algs:
 
-            sig_up_filename_pre = sig_dir + sig_file_prefix
+            sig_up_filename_pre = os.path.join(sig_dir, sig_file_prefix)
 
             #Looping the operations and adding to temp dataframe 
             for operation in range(0,3,1):
@@ -195,7 +199,8 @@ def memory_processing(type_mem_dir, up_mem_dir):
                 new_row.clear()
 
         # Outputing digital signature csv file for this run
-        sig_filename = type_mem_dir + "sig-mem-metrics-" + str(run_count) + ".csv"
+        sig_end = "sig-mem-metrics-" + str(run_count) + ".csv"
+        sig_filename = os.path.join(type_mem_dir, sig_end)
         temp_df.to_csv(sig_filename, index=False)
 
 
