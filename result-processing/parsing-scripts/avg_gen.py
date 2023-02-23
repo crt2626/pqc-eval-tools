@@ -119,7 +119,8 @@ def avg_mem(type_mem_dir):
             row.insert(1, operation)
             sig_mem_avg.loc[len(sig_mem_avg)] = row
 
-
+        break
+    
     # Exporting average csv files
     kem_csv_name = os.path.join(type_mem_dir, "kem-mem-avg.csv")
     kem_mem_avg.to_csv(kem_csv_name, index=False)
