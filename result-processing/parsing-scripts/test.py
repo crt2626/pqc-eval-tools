@@ -21,7 +21,7 @@ def get_system_type() :
     """Function for checking the system type and setting root_dir path"""
 
     # Checking and storing system type
-    if sys.platform == "Windows":
+    if sys.platform == "win32":
 
         system_type = "win"
         root_dir = r"..\\..\\"
