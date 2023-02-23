@@ -6,15 +6,37 @@ import pandas as pd
 import re
 import os
 import shutil
+import sys
 from avg_gen import gen_averages
+
+# Checking system type and setting
+if sys.platform == "Windows": 
+    system_type = "win"
+else:
+    system_type = "linux"
+
+
 
 # Declaring gloabl
 kem_algs = []
 sig_algs = []
-root_dir = "/pqc/pqc-eval-tools/"
+#root_dir = "/pqc/pqc-eval-tools/"
 kem_operations = ["keygen", "encaps", "decaps"]
 sig_operations = ["keypair", "sign", "verify"]
+system_type = ""
 
+def get_system_type() :
+    """Function for checking the system type and setting root_dir path"""
+
+    # Checking and storing system type
+    if sys.platform == "Windows":
+
+        system_type = "win"
+        root_dir = r"..\\..\\"
+
+    else:
+        system_type = "linux"
+        root_dir = "/pqc/pqc-eval-tools"
 
 
 #***********************************************************************
@@ -253,6 +275,7 @@ def main():
     print("Preparing to Parse Results:\n")
 
     # Creating the algorithms list
+    get_system_type()
     get_algs()
 
     # Getting the number of machines tested
