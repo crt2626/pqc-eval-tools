@@ -67,9 +67,25 @@ def avg_mem(type_mem_dir):
 
         for operation in kem_operations:
             temp_df3 = temp_df1.loc[temp_df1["Operation"].str.contains(operation)]
+            keygen_averages = temp_df3.select_dtypes(include=['int', 'float']).mean()
             print(temp_df3)
         break
 
+
+
+import pandas as pd
+
+# Select only the numeric columns and calculate the average
+keygen_averages = keygen_df.select_dtypes(include=['int', 'float']).mean()
+
+# Create a new DataFrame with the same structure as keygen_df
+averages_df = pd.DataFrame(columns=keygen_df.columns)
+
+# Set the average values in the new DataFrame
+averages_df.loc[0] = keygen_averages
+
+# Print the new DataFrame
+print(averages_df)
 
 #***********************************************************************  
 def gen_averages(type_speed_dir, type_mem_dir, dir):
