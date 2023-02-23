@@ -18,8 +18,8 @@ def get_algs():
     """Function for creating list of algorithms"""
 
     # Setting alg text file directories
-    kem_algs_file = root_dir + "result-processing/algs/kem-algs-list.txt"
-    sig_algs_file = root_dir + "result-processing/algs/sig-algs-list.txt"
+    kem_algs_file = os.path.join(root_dir, "result-processing", "algs", "kem-algs-list.txt")
+    sig_algs_file = os.path.join(root_dir, "result-processing", "algs", "sig-algs-list.txt")
 
     # # Getting the kem algs
     with open(kem_algs_file, "r") as kem_file:
@@ -88,7 +88,7 @@ def gen_averages(type_speed_dir, type_mem_dir, dir):
 
 
     # setup
-    get_algs(root_dir)
+    get_algs()
 
     # Running average generation functions
     avg_mem(type_mem_dir)

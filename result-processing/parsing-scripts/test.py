@@ -15,6 +15,7 @@ sig_operations = ["keypair", "sign", "verify"]
 kem_algs = []
 sig_algs = []
 system_type = ""
+root_dir = ""
 
 #***********************************************************************
 def get_system_type() :
@@ -26,7 +27,7 @@ def get_system_type() :
     if sys.platform == "win32":
 
         system_type = "win"
-        root_dir = r"...."
+        root_dir = r"..\.."
 
     else:
         system_type = "linux"
@@ -134,8 +135,8 @@ def memory_processing(type_mem_dir, up_mem_dir):
     """Looping through all memory files and creating csv files"""
 
     # Assigning directory varibales
-    kem_dir = up_mem_dir + "kem-mem-metrics"
-    sig_dir = up_mem_dir + "sig-mem-metrics"
+    kem_dir = os.path.join(up_mem_dir, "kem-mem-metrics")
+    sig_dir = os.path.join(up_mem_dir, "sig-mem-metrics")
     kem_file_prefix = "kem-mem-metrics"
     sig_file_prefix = "sig-mem-metrics"
     new_row = []
@@ -154,13 +155,14 @@ def memory_processing(type_mem_dir, up_mem_dir):
         #Looping throuhg kem algorithms
         for kem_alg in kem_algs:
 
-            kem_up_filename_pre = os.path.join(kem_dir + kem_file_prefix)
+            kem_up_filename_pre = os.path.join(kem_dir, kem_file_prefix)
 
             #Looping the operations and adding to temp dataframe 
             for operation in range(0,3,1):
 
                 # Parsing metrics and adding results to dataframe row
                 kem_up_filename = kem_up_filename_pre + "-" + kem_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
+
                 peak_metrics = get_peak(kem_up_filename, peak_metrics)
                 new_row.extend([kem_alg, kem_operations[operation]])
                 new_row.extend(peak_metrics)
