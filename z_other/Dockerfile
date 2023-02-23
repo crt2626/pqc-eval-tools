@@ -1,3 +1,12 @@
+# Build and access comands
+# Build:
+# docker build -t *name-of-image* *dockerfile filepath*
+# docker build -t test ./
+#Run:
+# run docker machine in interactive mode, specicey to use bash shell
+#docker run -it /bin/bash 
+#*********************************************************************
+
 FROM debian:bullseye
 
 ENV DEBIAN_FRONTEND noninteractive
