@@ -98,7 +98,7 @@ def avg_mem(type_mem_dir):
             temp_df = pd.read_csv(sig_mem_filename)
 
             # Geting the algorithm operations across all files into one
-            temp_df = temp_df.loc[temp_df["Algorithm"].str.contains(sig_alg)]
+            temp_df = temp_df.loc[temp_df["Algorithm"].str.contains(sig_alg, regex=False)]
             combined_operations = pd.concat([temp_df, combined_operations], ignore_index=True, sort=False)
         
 
@@ -106,7 +106,7 @@ def avg_mem(type_mem_dir):
         for operation in sig_operations:
 
             # Creating a list of the operation metric averages
-            operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation)]
+            operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation, regex=False)]
             print(operation_average)
             operation_average = operation_average[mem_fieldnames[2:]]
 
@@ -119,7 +119,7 @@ def avg_mem(type_mem_dir):
             row.insert(1, operation)
             sig_mem_avg.loc[len(sig_mem_avg)] = row
 
-        break
+        
     
     # Exporting average csv files
     kem_csv_name = os.path.join(type_mem_dir, "kem-mem-avg.csv")

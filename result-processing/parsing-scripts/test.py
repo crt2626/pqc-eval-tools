@@ -114,20 +114,35 @@ def get_peak(mem_file, peak_metrics):
 
     # Parsing function from OQS Profile Project
     # Gets max memory metric from algorithm operation
-    peak = -1
     with open(mem_file, "r") as lines:
+        peak = -1
         for line in lines: 
             if line.startswith(" Detailed snapshots: ["):
-                match = re.search(r"(\d+) \(peak\).*", line)
+                match=re.search("\d+ \(peak\).*", line)
                 if match:
-                    peak = int(match.group(1))
-            if peak > 0:
+                    peak = int(match.group(0).split()[0])
+            if (peak > 0):
                 if line.startswith('{: >3d}'.format(peak)): # remove "," and print all numbers except first:
                     nl = line.replace(",", "")
-                    peak_metrics.extend(nl.split()[1:])
-                    # print(" ".join(res))
+                    peak_metrics = nl.split()
+                    del peak_metrics[0]
+                    #print(" ".join(res))
+                    return peak_metrics
 
-    return peak_metrics
+    # peak = -1
+    # with open(mem_file, "r") as lines:
+    #     for line in lines: 
+    #         if line.startswith(" Detailed snapshots: ["):
+    #             match = re.search(r"(\d+) \(peak\).*", line)
+    #             if match:
+    #                 peak = int(match.group(1))
+    #         if peak > 0:
+    #             if line.startswith('{: >3d}'.format(peak)): # remove "," and print all numbers except first:
+    #                 nl = line.replace(",", "")
+    #                 peak_metrics.extend(nl.split()[1:])
+    #                 # print(" ".join(res))
+
+    # return peak_metrics
 
 
 #***********************************************************************
@@ -166,6 +181,7 @@ def memory_processing(type_mem_dir, up_mem_dir):
                 peak_metrics = get_peak(kem_up_filename, peak_metrics)
                 new_row.extend([kem_alg, kem_operations[operation]])
                 new_row.extend(peak_metrics)
+                print(peak_metrics)
                 
                 temp_df.loc[len(temp_df)] = new_row
 
