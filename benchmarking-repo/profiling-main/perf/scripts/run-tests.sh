@@ -21,14 +21,14 @@ python3 run_mem.py test_kem_mem && mv test_kem_mem.json results/mem_kem.json
 python3 run_mem.py test_sig_mem && mv test_sig_mem.json results/mem_sig.json
 
 echo "Starting openssl speed tests..."
-./openssl-test.sh
+#./openssl-test.sh
 
 # About 1100 tests: Multiply with test runtime set by second parameter:
 echo "Starting openssl handshake tests..."
-python3 handshakes.py /opt/oqssa 1
+#python3 handshakes.py /opt/oqssa 1
 
 echo "Starting ref tests..."
-./liboqs-test.sh -ref
+#./liboqs-test.sh -ref
 echo "Exchanging oqs lib..."
 cp /opt/oqssa/oqs-ref/lib/liboqs.so.0.* /opt/oqssa/lib/
 if [ $? -ne 0 ]; then
