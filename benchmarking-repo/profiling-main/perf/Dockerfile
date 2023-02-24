@@ -15,7 +15,7 @@ ARG OPENSSL_BUILD_DEFINES="-DOQS_DEFAULT_GROUPS=p384_kyber768:X25519:kyber768:ne
 ARG SIG_ALG="dilithium2"
 
 # Define the degree of parallelism when building the image; leave the number away only if you know what you are doing
-ARG MAKE_DEFINES="-j 2"
+ARG MAKE_DEFINES="-j 15"
 
 # Define main performance architecture(s)
 ARG PERF_ARCH_X64="skylake-avx512"
