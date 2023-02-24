@@ -116,12 +116,22 @@ def get_peak(mem_file, peak_metrics):
     # Gets max memory metric from algorithm operation
     with open(mem_file, "r") as lines:
         peak = -1
-        for line in lines: 
+        for line in lines:
+            print(line)
             if line.startswith(" Detailed snapshots: ["):
                 match=re.search("\d+ \(peak\).*", line)
                 if match:
                     peak = int(match.group(0).split()[0])
+       
             if (peak > 0):
+                #test
+                if peak == "0":
+                    print(peak, type(peak))
+                    if isinstance(peak,str):
+                        print("is string", peak, type(peak))
+
+                #end test
+
                 if line.startswith('{: >3d}'.format(peak)): # remove "," and print all numbers except first:
                     nl = line.replace(",", "")
                     peak_metrics = nl.split()
@@ -205,7 +215,8 @@ def memory_processing(type_mem_dir, up_mem_dir):
 
                 # Parsing metrics and adding results to dataframe row
                 sig_up_filename = sig_up_filename_pre + "-" + sig_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
-                peak_metrics = get_peak(sig_up_filename, peak_metrics)   
+                peak_metrics = get_peak(sig_up_filename, peak_metrics)
+                #print(peak_metrics)
                 new_row.extend((sig_alg, sig_operations[operation]))
                 new_row.extend(peak_metrics)
                 temp_df.loc[len(temp_df)] = new_row
