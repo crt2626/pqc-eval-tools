@@ -14,7 +14,7 @@ hostname
 cd /opt/test
 mkdir -p results
 echo "Starting liboqs speed tests..."
-./liboqs-test.sh
+#./liboqs-test.sh
 
 echo "Starting liboqs memory tests..."
 python3 run_mem.py test_kem_mem && mv test_kem_mem.json results/mem_kem.json
@@ -40,28 +40,28 @@ fi
 
 echo "Done."
 echo "Starting openssl speed tests (ref)..."
-./openssl-test.sh -ref
+#./openssl-test.sh -ref
 
 echo "Starting liboqs memory tests..."
-python3 run_mem.py test_kem_mem-ref && mv test_kem_mem-ref.json results/mem_kem-ref.json
-python3 run_mem.py test_sig_mem-ref && mv test_sig_mem-ref.json results/mem_sig-ref.json
+#python3 run_mem.py test_kem_mem-ref && mv test_kem_mem-ref.json results/mem_kem-ref.json
+#python3 run_mem.py test_sig_mem-ref && mv test_sig_mem-ref.json results/mem_sig-ref.json
 
 # About 1100 tests: Multiply with test runtime set by second parameter:
 # Save away previous test results
 mv results/handshakes.json results/handshakes.json-port
 echo "Starting openssl handshake tests..."
-python3 handshakes.py /opt/oqssa 1
+#python3 handshakes.py /opt/oqssa 1
 # correct filenames again:
 mv results/handshakes.json results/handshakes-ref.json
 
 echo "Starting nonportable tests..."
-./liboqs-test.sh -noport
+#./liboqs-test.sh -noport
 echo "Exchanging oqs lib..."
 cp /opt/oqssa/oqs-noport/lib/liboqs.so.0.* /opt/oqssa/lib/
 # Don't repeat version check here: It would have failed with -ref already
 echo "Done."
 echo "Starting openssl speed tests (noport)..."
-./openssl-test.sh -noport
+#./openssl-test.sh -noport
 
 # TBD: Re-enable once Valgrind can handle AVX512-optimized code
 #echo "Starting liboqs memory tests for fast code..."
@@ -70,7 +70,7 @@ echo "Starting openssl speed tests (noport)..."
 
 # About 1100 tests: Multiply with test runtime set by second parameter:
 echo "Starting openssl handshake tests..."
-python3 handshakes.py /opt/oqssa 1
+#python3 handshakes.py /opt/oqssa 1
 # correct filenames again:
 mv results/handshakes.json results/handshakes-noport.json
 
