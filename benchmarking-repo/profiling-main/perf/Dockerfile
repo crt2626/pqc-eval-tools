@@ -138,5 +138,4 @@ RUN chmod gou+rwx /opt/oqssa/lib && chmod gou+rwx /opt/oqssa/lib/*
 
 USER oqs
 WORKDIR /opt/test
-CMD ["/opt/test/run-tests.sh"]
-STOPSIGNAL SIGTERM
+#CMD ["/opt/test/run-tests.sh"]
