@@ -232,9 +232,9 @@ static void print_oqs_configuration(void) {
 	// printf("AES:              OpenSSL\n");
 #else
 	AES_C_OR_NI_OR_ARM(
-	    // printf("AES:              C\n"),
-	    // printf("AES:              NI\n"),
-	    // printf("AES:              C and ARM CRYPTO extensions\n")
+	    printf("AES:              C\n"),
+	    printf("AES:              NI\n"),
+	    printf("AES:              C and ARM CRYPTO extensions\n")
 	);
 #endif
 #if defined(OQS_USE_SHA2_OPENSSL)
