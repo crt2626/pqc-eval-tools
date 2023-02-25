@@ -20,13 +20,14 @@ function dependency_install() {
 function download() {
 
     # Function for setting up the repo
+    mkdir /pqc
     mkdir -p /pqc/output 
     cd /pqc
     git clone https://github.com/crt2626/pqc-docker
     cd /pqc/pqc-docker
     git clone https://github.com/open-quantum-safe/liboqs.git
-    chown -R $USER /pqc/
-    chmod -R 755 /pqc
+    sudo chown -R $USER /pqc/
+    sudo chmod -R 755 /pqc
 
     cd /pqc/pqc-eval-tools/scripts
     chmod +x /pqc/pqc-eval-tools/*.sh
