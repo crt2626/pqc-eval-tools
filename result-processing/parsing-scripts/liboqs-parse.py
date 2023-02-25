@@ -21,7 +21,6 @@ root_dir = ""
 def get_system_type() :
     """Function for checking the system type and setting root_dir path"""
     global root_dir, system_type
-    print(root_dir)
 
     # Checking and storing system type
     if sys.platform == "win32":
@@ -117,7 +116,6 @@ def get_peak(mem_file, peak_metrics):
     with open(mem_file, "r") as lines:
         peak = -1
         for line in lines:
-            print(line)
             if line.startswith(" Detailed snapshots: ["):
                 match=re.search("\d+ \(peak\).*", line)
                 if match:
@@ -169,7 +167,6 @@ def memory_processing(type_mem_dir, up_mem_dir):
                 peak_metrics = get_peak(kem_up_filename, peak_metrics)
                 new_row.extend([kem_alg, kem_operations[operation]])
                 new_row.extend(peak_metrics)
-                #print(peak_metrics)
                 
                 temp_df.loc[len(temp_df)] = new_row
 
@@ -194,7 +191,6 @@ def memory_processing(type_mem_dir, up_mem_dir):
                 # Parsing metrics and adding results to dataframe row
                 sig_up_filename = sig_up_filename_pre + "-" + sig_alg + "-" + str(operation) + "-" + str(run_count) + ".txt"
                 peak_metrics = get_peak(sig_up_filename, peak_metrics)
-                #print(peak_metrics)
                 new_row.extend((sig_alg, sig_operations[operation]))
                 new_row.extend(peak_metrics)
                 temp_df.loc[len(temp_df)] = new_row
