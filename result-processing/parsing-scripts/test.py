@@ -124,14 +124,7 @@ def get_peak(mem_file, peak_metrics):
                     peak = int(match.group(0).split()[0])
        
             if (peak > 0):
-                #test
-                if peak == "0":
-                    print(peak, type(peak))
-                    if isinstance(peak,str):
-                        print("is string", peak, type(peak))
-
-                #end test
-
+                
                 if line.startswith('{: >3d}'.format(peak)): # remove "," and print all numbers except first:
                     nl = line.replace(",", "")
                     peak_metrics = nl.split()
