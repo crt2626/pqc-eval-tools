@@ -108,9 +108,9 @@ Conducting liboqs benchmarking tests
 cd "$root_dir"/scripts
 ./liboqs-mem-test.sh
 
-# CPU speed tests
-cd "$root_dir"/scripts
-./liboqs-speed-test.sh
+# # CPU speed tests
+# cd "$root_dir"/scripts
+# ./liboqs-speed-test.sh
 
 
 
