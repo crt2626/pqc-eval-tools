@@ -191,8 +191,8 @@ int main(int argc, char **argv) {
 
 	freeopen("/dev/null", "w", stdout);
 	print_system_info();
-	freopen("/dev/tty", "w", stdout)
-	
+	freopen("/dev/tty", "w", stdout);
+
 	char *alg_name = argv[1];
 	if (!OQS_KEM_alg_is_enabled(alg_name)) {
 		printf("KEM algorithm %s not enabled!\n", alg_name);
