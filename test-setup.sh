@@ -42,7 +42,7 @@ function build() {
     mv build /pqc/pqc-docker
 
     # Moving python test script executables folder
-    cp /pqc/pqc-docker/scripts/run_mem.py /pqc/pqc-docker/build
+    cp /pqc/pqc-docker/scripts/run_mem.py /pqc/pqc-docker/build/tests
     cd ~/
 }
 
