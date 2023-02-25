@@ -189,9 +189,9 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	freopen("/dev/null", "w", stdout);
+	//freopen("/dev/null", "w", stdout);
 	print_system_info();
-	freopen("/dev/tty", "w", stdout);
+	//freopen("/dev/tty", "w", stdout);
 
 	char *alg_name = argv[1];
 	if (!OQS_KEM_alg_is_enabled(alg_name)) {
