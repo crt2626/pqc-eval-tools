@@ -210,6 +210,7 @@ int main(int argc, char **argv) {
 		fprintf(stderr, "Usage: test_kem algname\n");
 		fprintf(stderr, "  algname: ");
 		for (size_t i = 0; i < OQS_KEM_algs_length; i++) {
+			
 			if (i > 0) {
 				fprintf(stderr, ", ");
 			}
