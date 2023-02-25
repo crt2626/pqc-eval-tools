@@ -283,7 +283,7 @@
 // 	// printf("\n");
 // }
 
-// static void print_system_info(void) {
+ static void print_system_info(void) {
 // 	// printf("Configuration info\n");
 // 	// printf("==================\n");
 // 	//print_platform_info();
@@ -291,4 +291,4 @@
 // 	//print_oqs_configuration();
 // 	//print_cpu_extensions();
 // 	// printf("\n");
-// }
+}

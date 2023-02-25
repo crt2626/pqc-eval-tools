@@ -194,7 +194,7 @@ int main(int argc, char* argv[]) {
     }
 
     //Printing out system information and running test notice to terminla
-    print_system_info();
+    //print_system_info();
     printf("\n************************************************\n");
     printf("Running KEM and Digital Signature CPU Speed Tests\n");
     printf("************************************************\n");
