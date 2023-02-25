@@ -32,9 +32,9 @@ function dependency_install() {
 }
 
 # Checking if the directory is already there
-if [ -d "/pqc" ];
+if [ -d "/pqc/pqc-eval-tools" ];
 then 
-    rm -r /pqc
+    rm -r /pqc/pqc-eval-tools
     download
     dependency_install
 else

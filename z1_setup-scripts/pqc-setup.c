@@ -15,7 +15,7 @@ void download() {
     system("chown -R $USER /pqc/");
     system("chmod -R 755 /pqc");
     chdir("/pqc/pqc-eval-tools/scripts");
-    system("chmod +x /pqc/pqc-eval-tools/scripts*.sh");
+    system("chmod +x /pqc/pqc-eval-tools/scripts/*.sh");
 }
 
 void dependency_install() {
@@ -49,7 +49,7 @@ int main() {
     }
     else {
         //Removing previous install
-        system("rm -r /pqc");
+        system("rm -r /pqc/pqc-eval-tools");
     }
     download();
     dependency_install();
