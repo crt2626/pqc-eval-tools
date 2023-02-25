@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/*Global Variables*/
+//Directory Paths
+char root_dir[5] = "/pqc";
+char make_dir_cmd[265] = ""
+
 void download() {
     // Function for setting up the repo
     system("sudo mkdir /pqc");
@@ -30,8 +35,20 @@ void dependency_install() {
 }
 
 int main() {
-    // Checking if the directory is already there
-    if (access("/pqc", F_OK) == 0) {
+
+    //Declaring command variable
+
+    // Checking for pqc root directory
+    if (access(root_dir, F_OK) == 0) {
+
+        //Creating directory if not present
+        snprintf(cmd, sizeof(cmd), "sudo mkdir %s", root_dir);
+        system(cmd);
+        memset(cmd, 0, sizeof(cmd));
+
+    }
+    else {
+        //Removing previous install
         system("rm -r /pqc");
     }
     download();
