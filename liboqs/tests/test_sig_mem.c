@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	//print_system_info();
+	print_system_info();
 
 	char *alg_name = argv[1];
 	if (!OQS_SIG_alg_is_enabled(alg_name)) {
