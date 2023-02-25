@@ -7,7 +7,7 @@
 #include <oqs/oqs.h>
 #include <unistd.h>
 #include "ds_benchmark.h"
-//#include "system_info.c"
+#include "system_info.c"
 
 //Checking to see if it has been specified that a pi is being used and whether the PMU has been activated
 #if defined(OQS_USE_RASPBERRY_PI)
@@ -194,7 +194,7 @@ int main(int argc, char* argv[]) {
     }
 
     //Printing out system information and running test notice to terminla
-    //print_system_info();
+    print_system_info();
     printf("\n************************************************\n");
     printf("Running KEM and Digital Signature CPU Speed Tests\n");
     printf("************************************************\n");
