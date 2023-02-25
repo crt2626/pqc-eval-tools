@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	freeopen("/dev/null", "w", stdout);
+	freopen("/dev/null", "w", stdout);
 	print_system_info();
 	freopen("/dev/tty", "w", stdout);
 
