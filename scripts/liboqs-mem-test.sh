@@ -123,34 +123,34 @@ echo -e "Performing Memory Tests:-\n"
 echo -e "***************************\n\n"
 run_count=1
 # Performing the memorry tests 15 times each
-# for run_count in {1..15}
-# do
-    # echo -e "Memory Test Run - $run_count\n\n"
+for run_count in {1..15}
+do
+    echo -e "Memory Test Run - $run_count\n\n"
     
-    # echo -e "KEM Memory Tests\n"
-    # # KEM memory tests
-    # for kem_alg in "${kem_algs[@]}"
-    # do
-    #     # Testing memory metrics for each operation
-    #     for operation_1 in {0..2}
-    #     do
-    #         # Getting operation string and outputing to terminal
-    #         op_kem_str=${op_kem[operation_1]}
-    #         echo -e "$kem_alg - $op_kem_str Test\n"
+    echo -e "KEM Memory Tests\n"
+    # KEM memory tests
+    for kem_alg in "${kem_algs[@]}"
+    do
+        # Testing memory metrics for each operation
+        for operation_1 in {0..2}
+        do
+            # Getting operation string and outputing to terminal
+            op_kem_str=${op_kem[operation_1]}
+            echo -e "$kem_alg - $op_kem_str Test\n"
 
-    #         # Running valgrind and outputing metrics
-    #         valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
-    #         filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
-    #         ms_print massif.out > $filename
-    #         rm massif.out
-    #         echo -e "\n"
+            # Running valgrind and outputing metrics
+            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
+            filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
+            ms_print massif.out > $filename
+            rm massif.out
+            echo -e "\n"
 
-    #     done
+        done
 
-    #     # Clearing the tmp direcotry
-    #     cd ./tmp && rm * && cd ../
+        # Clearing the tmp direcotry
+        cd ./tmp && rm * && cd ../
 
-    # done
+    done
 
     echo -e "\nDigital Signature Memory Tests\n"
     # Digital signature memory tests
@@ -176,7 +176,7 @@ run_count=1
         cd ./tmp && rm * && cd ../
     done
 
-# done
+done
 
 echo -e "\nMemory Tests Comeplete\n"
 
