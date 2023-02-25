@@ -121,7 +121,7 @@ Performing memory tests
 echo -e "***************************\n"
 echo -e "Performing Memory Tests:-\n"
 echo -e "***************************\n\n"
-
+run_count=1
 # Performing the memorry tests 15 times each
 # for run_count in {1..15}
 # do
