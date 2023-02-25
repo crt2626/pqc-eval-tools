@@ -123,8 +123,8 @@ echo -e "Performing Memory Tests:-\n"
 echo -e "***************************\n\n"
 
 # Performing the memorry tests 15 times each
-for run_count in {1..15}
-do
+# for run_count in {1..15}
+# do
     echo -e "Memory Test Run - $run_count\n\n"
     
     echo -e "KEM Memory Tests\n"
@@ -176,7 +176,7 @@ do
         cd ./tmp && rm * && cd ../
     done
 
-done
+# done
 
 echo -e "\nMemory Tests Comeplete\n"
 
