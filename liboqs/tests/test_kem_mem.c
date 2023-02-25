@@ -7,7 +7,7 @@
 
 #include <oqs/oqs.h>
 
-//#include "system_info.c"
+#include "system_info.c"
 #include "tmp_store.c"
 
 /* Displays hexadecimal strings */
@@ -189,7 +189,7 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	//print_system_info();
+	print_system_info();
 
 	char *alg_name = argv[1];
 	if (!OQS_KEM_alg_is_enabled(alg_name)) {
