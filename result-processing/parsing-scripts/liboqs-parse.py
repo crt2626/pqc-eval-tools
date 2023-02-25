@@ -132,21 +132,6 @@ def get_peak(mem_file, peak_metrics):
                     #print(" ".join(res))
                     return peak_metrics
 
-    # peak = -1
-    # with open(mem_file, "r") as lines:
-    #     for line in lines: 
-    #         if line.startswith(" Detailed snapshots: ["):
-    #             match = re.search(r"(\d+) \(peak\).*", line)
-    #             if match:
-    #                 peak = int(match.group(1))
-    #         if peak > 0:
-    #             if line.startswith('{: >3d}'.format(peak)): # remove "," and print all numbers except first:
-    #                 nl = line.replace(",", "")
-    #                 peak_metrics.extend(nl.split()[1:])
-    #                 # print(" ".join(res))
-
-    # return peak_metrics
-
 
 #***********************************************************************
 def memory_processing(type_mem_dir, up_mem_dir):
