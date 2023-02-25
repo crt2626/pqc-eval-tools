@@ -32,6 +32,9 @@ void dependency_install() {
             system(command);
         }
     }
+
+    system("pip install pandas");
+    system("pip install matplotlib");
 }
 
 int main() {
