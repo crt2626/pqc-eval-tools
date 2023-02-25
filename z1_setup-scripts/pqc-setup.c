@@ -40,7 +40,7 @@ void dependency_install() {
 int main() {
 
     //Declaring command variable
-
+    char cmd[256]
     // Checking for pqc root directory
     if (access(root_dir, F_OK) == 0) {
 
