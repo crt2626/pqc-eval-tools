@@ -7,7 +7,7 @@ import re
 import os
 import shutil
 import sys
-from avg_gen import gen_averages
+#from avg_gen import gen_averages
 
 # Declaring gloabl
 kem_operations = ["keygen", "encaps", "decaps"]

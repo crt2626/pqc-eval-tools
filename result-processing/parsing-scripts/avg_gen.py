@@ -107,8 +107,6 @@ def avg_mem(type_mem_dir):
 
             # Creating a list of the operation metric averages
             operation_average = combined_operations.loc[combined_operations["Operation"].str.contains(operation, regex=False)]
-            """Testing for issue with 0 maxHeap"""
-            # print(operation_average)
             operation_average = operation_average[mem_fieldnames[2:]]
 
             # Calculating averages
@@ -226,7 +224,7 @@ def avg_speed(type_speed_dir):
     # Exporting average csv files
     kem_csv_name = os.path.join(type_speed_dir, "kem-speed-avg.csv")
     kem_speed_avg.to_csv(kem_csv_name, index=False)
-    sig_csv_name = os.path.join(type_speed_dir, "sig-mem-avg.csv")
+    sig_csv_name = os.path.join(type_speed_dir, "sig-speed-avg.csv")
     sig_speed_avg.to_csv(sig_csv_name, index=False)
 
 
@@ -237,15 +235,7 @@ def gen_averages(type_speed_dir, type_mem_dir, dir):
     # Setting root directory
     global root_dir 
     root_dir = dir
-
-    # Declaring directories variables
-    # kem_speed_file_prefix = type_speed_dir + "test-kem-speed-"
-    # sig_speed_file_prefix = type_speed_dir + "test-sig-speed-"
-    # kem_mem_file_prefix = type_mem_dir + "kem-mem-metrics-"
-    # sig_mem_file_prefix = type_mem_dir + "sig-mem-metrics-"
-
-
-
+    
     # setup
     get_algs()
 
