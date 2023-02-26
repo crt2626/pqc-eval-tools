@@ -36,7 +36,8 @@ function dependency_install() {
 # Checking if the directory is already there
 if [ -d "/pqc/" ];
 then 
-    rm -r /pqc/
+    cd /pqc
+    sudo rm -r pqc-docker && sudo rm -r pqc-eval-tools
     download
     dependency_install
 else
