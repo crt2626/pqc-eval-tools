@@ -22,6 +22,7 @@ then
 
 fi
 
+#**********************************************************
 : '
 Creating needed variables and arrays
 '

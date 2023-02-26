@@ -32,7 +32,7 @@ cd "$root_dir"/"$build_dir"/tests
 ./full-alg-speed
 
 # Moving results
-mv "$root_dir"/"$build_dir"/results "$root_dir"/up-results/liboqs/speed-results/
+mv "$root_dir"/"$build_dir"/results/ "$root_dir"/up-results/liboqs/speed-results/
 mkdir -p "$root_dir"/"$build_dir"/results
 cd "$root_dir"/scripts
 #****************************************************************

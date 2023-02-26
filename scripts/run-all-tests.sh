@@ -2,7 +2,6 @@
 
 # Declaring directory variables
 root_dir="/pqc/pqc-eval-tools"
-b_txt="build-type.txt"
 
 #****************************************************************
 : '
@@ -144,6 +143,27 @@ else
     mv "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/speed-results/results/* "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
+
+    # Getting y/n input from user and stroing result
+    while true; 
+    do
+        read -p "As you are only testing one machine, would you like to parse the results now? - " parse_response
+        case $parse_response in
+
+            [Yy]* ) parse_answer="yes"; break;;
+
+            [Nn]* ) parse_answer="no"; break;;
+
+            * ) echo -e "\nPlease answer y/n\n";;
+        esac
+    done
+
+    if [ "$parse_answer" == "yes" ];
+    then
+        # Calling python parsing script
+        cd "$root_dir"/result-processing/parsing-scripts
+        python3 liboqs-parse.py
+    fi
 
 fi
 #****************************************************************
