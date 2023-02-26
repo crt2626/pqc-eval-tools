@@ -36,7 +36,7 @@ function dependency_install() {
 # Checking if the directory is already there
 if [ -d "/pqc/" ];
 then 
-    sudo rm -r /pqc/
+    rm -r /pqc/
     download
     dependency_install
 else
