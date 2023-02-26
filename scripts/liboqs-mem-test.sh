@@ -164,9 +164,8 @@ do
             echo -e "$sig_alg - $op_sig_str Test\n"
 
             # Running valgrind and outputing metrics
-            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2"
             filename="$sig_mem_prefix-$sig_alg-$operation_2-$run_count.txt"
-            ms_print massif.out > $filename
+            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_sig_mem "$sig_alg" "$operation_2" | ms_print massif.out > $filename
             rm massif.out
             echo -e "\n"
 
