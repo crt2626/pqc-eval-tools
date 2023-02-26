@@ -55,7 +55,8 @@ static OQS_STATUS kem_speed_wrapper(const char *method_name, uint64_t duration, 
 
     //Printing the Algorithm Info
     if (printInfo) {
-		printf("public key bytes: %zu, ciphertext bytes: %zu, secret key bytes: %zu, shared secret key bytes: %zu, NIST level: %d, IND-CCA: %s\n", kem->length_public_key, kem->length_ciphertext, kem->length_secret_key, kem->length_shared_secret, kem->claimed_nist_level, kem->ind_cca ? "Y" : "N");
+		printf("public key bytes: %zu, ciphertext bytes: %zu, secret key bytes: %zu, shared secret key bytes: %zu, NIST level: %d, IND-CCA: %s\n", kem->length_public_key, 
+        kem->length_ciphertext, kem->length_secret_key, kem->length_shared_secret, kem->claimed_nist_level, kem->ind_cca ? "Y" : "N");
 	}
 
 	//Cleaing up after perfoming the operations 
@@ -167,6 +168,7 @@ int print_algs(void) {
 
     return 0;
 }
+/*-------------------------------------------------------------------------------*/
 
 /*The main fucntion of the testing code */
 int main(int argc, char* argv[]) {
@@ -193,13 +195,14 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    //Printing out system information and running test notice to terminla
+    //Printing out system information and running test notice to terminal
     print_system_info();
     printf("\n************************************************\n");
     printf("Running KEM and Digital Signature CPU Speed Tests\n");
     printf("************************************************\n");
 
     /*Performing the Kem Algorithm Tests*/
+
     //Looping throuhg all the kem algorithms based on the specified number of runs
     for (int z = 0; z <= 14; z++) {
 
@@ -244,7 +247,7 @@ int main(int argc, char* argv[]) {
 
         fclose(stdout);
         fflush(stdout);
-
+        /*---------------------------------------*/
     }
 
     return 0;
