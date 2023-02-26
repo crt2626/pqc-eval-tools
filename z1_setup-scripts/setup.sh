@@ -3,11 +3,11 @@
 function download() {
 
     # Function for setting up the repo
-    mkdir /pqc 
-    cd /pqc
-    git clone https://github.com/crt2626/pqc-eval-tools.git 
-    chown -R $USER /pqc/
-    chmod -R 755 /pqc
+    sudo mkdir /pqc && cd /pqc
+    git clone https://github.com/crt2626/pqc-eval-tools.git
+    git clone https://github.com/crt2626/pqc-docker.git
+    sudo chown -R $USER /pqc/
+    sudo chmod -R 755 /pqc
     chmod +x /pqc/pqc-eval-tools/scripts/*.sh && chmod +x /pqc/pqc-eval-tools/result-processing/parsing-scripts/*.py
     
 }
@@ -26,6 +26,10 @@ function dependency_install() {
         apt-get update
         apt-get install -y "${not_installed[@]}"
     fi
+
+    # Installing needed python modules
+    pip install pandas
+    pip install matplotlib
 
 }
 
