@@ -284,11 +284,11 @@ static void print_oqs_configuration(void) {
 }
 
  static void print_system_info(void) {
-	//printf("Configuration info\n");
-	//printf("==================\n");
-	//print_platform_info();
-	//print_compiler_info();
-	//print_oqs_configuration();
-	//print_cpu_extensions();
-	//printf("\n");
+	printf("Configuration info\n");
+	printf("==================\n");
+	print_platform_info();
+	print_compiler_info();
+	print_oqs_configuration();
+	print_cpu_extensions();
+	printf("\n");
 }
