@@ -3,7 +3,6 @@
 # Declaring directory variables
 root_dir="/pqc/pqc-eval-tools"
 
-
 #****************************************************************
 : '
 Getting if tests being done will compare mutliple machine

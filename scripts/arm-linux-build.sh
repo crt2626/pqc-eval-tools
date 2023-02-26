@@ -36,9 +36,7 @@ fi
 
 # Setting up directory and building liboqs
 cd "$root_dir"/liboqs && mkdir "$build_dir" && cd "$build_dir"
-cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./
-ninja -j 4
-ninja install
+cmake -GNinja OQS_SPEED_USE_ARM .. -DCMAKE_INSTALL_PREFIX=./ && ninja -j 4 && ninja install
 
 # Making directory for this build and moving
 cd .. 
