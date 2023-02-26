@@ -139,7 +139,7 @@ do
             echo -e "$kem_alg - $op_kem_str Test\n"
 
             # Running valgrind and outputing metrics
-            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1"
+            valgrind --tool=massif --stacks=yes --massif-out-file=massif.out ./test_kem_mem "$kem_alg" "$operation_1" > /dev/null
             filename="$kem_mem_prefix-$kem_alg-$operation_1-$run_count.txt"
             ms_print massif.out > $filename
             rm massif.out

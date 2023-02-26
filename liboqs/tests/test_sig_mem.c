@@ -123,7 +123,7 @@ static OQS_STATUS sig_test_correctness(const char *method_name, SIG_OPS op) {
 			goto err;
 		}
 
-		printf("verification passes as expected\n");
+		//printf("verification passes as expected\n");
 		ret = OQS_SUCCESS;
 		goto cleanup;
 
@@ -168,9 +168,9 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-	freopen("/dev/null", "w", stdout);
+
 	print_system_info();
-	freopen("/dev/tty", "w", stdout);
+
 
 	char *alg_name = argv[1];
 	if (!OQS_SIG_alg_is_enabled(alg_name)) {
