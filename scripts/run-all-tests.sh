@@ -2,7 +2,7 @@
 
 # Declaring directory variables
 root_dir="/pqc/pqc-eval-tools"
-b_txt="build-type.txt"
+
 
 #****************************************************************
 : '
