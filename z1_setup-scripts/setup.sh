@@ -4,6 +4,7 @@ function download() {
 
     # Function for setting up the repo
     sudo mkdir /pqc && cd /pqc
+    sudo chown -R $USER /pqc
     git clone https://github.com/crt2626/pqc-eval-tools.git
     git clone https://github.com/crt2626/pqc-docker.git
     sudo chown -R $USER /pqc/
