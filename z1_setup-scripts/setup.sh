@@ -8,7 +8,7 @@ function download() {
     git clone https://github.com/crt2626/pqc-eval-tools.git 
     chown -R $USER /pqc/
     chmod -R 755 /pqc
-
+    chmod -R +x /pqc/pqc-eval-tools/*.sh && chmod -R +x /pqc/pqc-eval-tools/*.py
     cd /pqc/pqc-eval-tools/scripts
     chmod +x /pqc/pqc-eval-tools/*.sh
 
