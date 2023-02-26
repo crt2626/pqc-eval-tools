@@ -34,9 +34,9 @@ function dependency_install() {
 }
 
 # Checking if the directory is already there
-if [ -d "/pqc/pqc-eval-tools" ];
+if [ -d "/pqc/" ];
 then 
-    rm -r /pqc/pqc-eval-tools
+    sudo rm -r /pqc/
     download
     dependency_install
 else
