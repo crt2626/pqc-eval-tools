@@ -1,0 +1,191 @@
+--------------------------------------------------------------------------------
+Command:            ./test_kem_mem FrodoKEM-640-AES 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+121.8^                                                         ######         
+     |                                   :::::::::::::@:::::@::#              
+     |                                   ::::: :::::::@:: ::@::#              
+     |                                   ::::: :::::::@:: ::@::#              
+     |                                   ::::: :::::::@:: ::@::#              
+     |                        @@         ::::: :::::::@:: ::@::#              
+     |                       :@ :::::::::::::: :::::::@:: ::@::#     :::::::@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+     |                       :@ :::  :  :::::: :::::::@:: ::@::#     :     :@:
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   7.085
+
+Number of snapshots: 61
+ Detailed snapshots: [12, 19, 37, 42, 45 (peak), 53]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        168,843            1,240                0             0        1,240
+  2        287,550            1,240                0             0        1,240
+  3        445,309            1,704                0             0        1,704
+  4        540,555            1,464                0             0        1,464
+  5        672,346            1,240                0             0        1,240
+  6        770,620            1,464                0             0        1,464
+  7        893,012            1,464                0             0        1,464
+  8      1,082,257            1,792                0             0        1,792
+  9      1,259,088            1,464                0             0        1,464
+ 10      1,386,389            1,704                0             0        1,704
+ 11      1,525,894            1,560                0             0        1,560
+ 12      1,665,553            1,704                0             0        1,704
+00.00% (0B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 13      1,766,871            1,704                0             0        1,704
+ 14      1,868,141            1,784                0             0        1,784
+ 15      1,982,107            1,464                0             0        1,464
+ 16      2,077,158            1,464                0             0        1,464
+ 17      2,229,281            1,464                0             0        1,464
+ 18      2,416,811           92,416           40,568            80       51,768
+ 19      2,562,481           98,248           44,912            80       53,256
+45.71% (44,912B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->20.24% (19,888B) 0x10AB02: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->09.89% (9,720B) 0x10AB0E: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->09.79% (9,616B) 0x10AAF6: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->05.21% (5,120B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->05.21% (5,120B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->05.21% (5,120B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->04.17% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|     | ->04.17% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|     |   ->04.17% (4,096B) 0x10B537: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+|     |   | ->04.17% (4,096B) 0x1129A8: OQS_KEM_frodokem_640_aes_encaps (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+|     |   |   ->04.17% (4,096B) 0x10AB97: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+|     |   |     
+|     |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     |   
+|     ->01.04% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|       ->01.04% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|         ->01.04% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|           ->01.04% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|             ->01.04% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+|               
+->00.58% (568B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 20      2,684,228           92,368           40,568            80       51,720
+ 21      2,808,088           92,368           40,568            80       51,720
+ 22      2,900,983           92,368           40,568            80       51,720
+ 23      3,229,890           92,112           40,344            56       51,712
+ 24      3,547,360           92,112           40,344            56       51,712
+ 25      3,655,106          123,160           40,520            64       82,576
+ 26      3,771,962          123,160           40,520            64       82,576
+ 27      3,888,818          123,160           40,520            64       82,576
+ 28      4,005,674          123,160           40,520            64       82,576
+ 29      4,122,530          123,160           40,520            64       82,576
+ 30      4,239,386          123,160           40,520            64       82,576
+ 31      4,356,242          123,160           40,520            64       82,576
+ 32      4,473,098          123,160           40,520            64       82,576
+ 33      4,589,954          123,160           40,520            64       82,576
+ 34      4,677,596          123,160           40,520            64       82,576
+ 35      4,784,164          123,168           40,520            64       82,584
+ 36      4,901,020          123,168           40,520            64       82,584
+ 37      5,017,876          123,168           40,520            64       82,584
+32.90% (40,520B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->16.15% (19,888B) 0x10AB02: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->07.89% (9,720B) 0x10AB0E: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->07.81% (9,616B) 0x10AAF6: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->01.05% (1,296B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 38      5,134,732          123,168           40,520            64       82,584
+ 39      5,251,588          123,168           40,520            64       82,584
+ 40      5,368,444          123,168           40,520            64       82,584
+ 41      5,485,300          123,168           40,520            64       82,584
+ 42      5,602,156          123,168           40,520            64       82,584
+32.90% (40,520B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->16.15% (19,888B) 0x10AB02: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->07.89% (9,720B) 0x10AB0E: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->07.81% (9,616B) 0x10AAF6: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->01.05% (1,296B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 43      5,719,012          123,168           40,520            64       82,584
+ 44      5,835,868          123,168           40,520            64       82,584
+ 45      5,921,624          124,752           40,520            64       84,168
+32.48% (40,520B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->15.94% (19,888B) 0x10AB02: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->07.79% (9,720B) 0x10AB0E: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->07.71% (9,616B) 0x10AAF6: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->01.04% (1,296B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 46      6,547,236           92,120           40,344            56       51,720
+ 47      6,561,520           92,176           40,344            56       51,776
+ 48      7,151,644           92,120           40,344            56       51,720
+ 49      7,235,714           92,416           40,568            80       51,768
+ 50      7,252,586           92,416           40,568            80       51,768
+ 51      7,269,458           92,416           40,568            80       51,768
+ 52      7,286,330           92,416           40,568            80       51,768
+ 53      7,303,202           92,416           40,568            80       51,768
+43.90% (40,568B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->21.52% (19,888B) 0x10AB02: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->10.52% (9,720B) 0x10AB0E: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->10.41% (9,616B) 0x10AAF6: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+| 
+->01.11% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->01.11% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->01.11% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->01.11% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->01.11% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->01.11% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->01.11% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->01.11% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_kem_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.35% (320B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 54      7,320,074           92,416           40,568            80       51,768
+ 55      7,336,946           92,416           40,568            80       51,768
+ 56      7,353,818           92,416           40,568            80       51,768
+ 57      7,370,690           92,416           40,568            80       51,768
+ 58      7,395,175           92,080           40,344            56       51,680
+ 59      7,409,460           45,568           44,912            80          576
+ 60      7,429,603           40,752           40,344            56          352

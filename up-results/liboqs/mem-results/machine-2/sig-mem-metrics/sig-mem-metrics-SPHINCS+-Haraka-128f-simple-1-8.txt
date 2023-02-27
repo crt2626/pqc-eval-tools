@@ -1,0 +1,259 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem SPHINCS+-Haraka-128f-simple 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+41.55^   #                                                                    
+     |   #: ::                                                                
+     |   #::: :::::::::@@::@::::::::::@::::::: :::::::::::::::@@::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+     |   #::: :::::::::@ ::@: :::::: :@:: ::::::: :: :: :: :::@ ::::@::::::@::
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   50.14
+
+Number of snapshots: 70
+ Detailed snapshots: [3 (peak), 17, 20, 29, 48, 55, 65]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        990,824            1,704                0             0        1,704
+  2      1,533,673            1,464                0             0        1,464
+  3      2,360,075           42,544           22,948            92       19,504
+53.94% (22,948B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->40.17% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->12.03% (5,120B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->12.03% (5,120B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->12.03% (5,120B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->09.63% (4,096B) 0x4BC5A2B: _IO_file_xsgetn (fileops.c:1288)
+|     | ->09.63% (4,096B) 0x4BBA11E: fread (iofread.c:38)
+|     |   ->09.63% (4,096B) 0x10B397: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |   | ->09.63% (4,096B) 0x143F14: PQCLEAN_SPHINCSHARAKA128FSIMPLE_AESNI_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |   | | ->09.63% (4,096B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |   | |   ->09.63% (4,096B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |   | |     
+|     |   | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     |   | 
+|     |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     |   
+|     ->02.41% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|       ->02.41% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|         ->02.41% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|           ->02.41% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|             ->02.41% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|               
+->01.11% (472B) 0x4BB9BAA: __fopen_internal (iofopen.c:65)
+| ->01.11% (472B) 0x10B37C: OQS_randombytes_system (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->01.11% (472B) 0x143F14: PQCLEAN_SPHINCSHARAKA128FSIMPLE_AESNI_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->01.11% (472B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->01.11% (472B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.63% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  4      3,044,225           40,504           18,380            68       22,056
+  5      3,872,486           40,144           18,380            68       21,696
+  6      4,436,814           40,368           18,380            68       21,920
+  7      5,097,097           40,528           18,380            68       22,080
+  8      6,231,122           39,368           18,380            68       20,920
+  9      7,026,464           39,368           18,380            68       20,920
+ 10      7,537,323           39,368           18,380            68       20,920
+ 11      8,363,983           39,392           18,380            68       20,944
+ 12      8,987,995           39,400           18,380            68       20,952
+ 13      9,701,900           39,392           18,380            68       20,944
+ 14     10,683,000           39,392           18,380            68       20,944
+ 15     11,306,981           39,368           18,380            68       20,920
+ 16     12,109,587           39,400           18,380            68       20,952
+ 17     13,014,992           39,368           18,380            68       20,920
+46.69% (18,380B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->43.41% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.60% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.60% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.60% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.60% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.60% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.60% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.68% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 18     14,222,243           39,368           18,380            68       20,920
+ 19     15,277,972           39,368           18,380            68       20,920
+ 20     16,031,913           39,400           18,380            68       20,952
+46.65% (18,380B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->43.37% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.60% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.60% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.60% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.60% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.60% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.60% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.68% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 21     16,635,504           39,392           18,380            68       20,944
+ 22     17,691,442           39,392           18,380            68       20,944
+ 23     18,747,891           39,392           18,380            68       20,944
+ 24     19,351,001           39,392           18,380            68       20,944
+ 25     20,106,814           39,392           18,380            68       20,944
+ 26     20,712,638           39,368           18,380            68       20,920
+ 27     21,620,965           39,232           18,380            68       20,784
+ 28     22,831,099           39,392           18,380            68       20,944
+ 29     23,587,502           39,392           18,380            68       20,944
+46.66% (18,380B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->43.38% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.60% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.60% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.60% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.60% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.60% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.60% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.68% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 30     24,343,936           39,392           18,380            68       20,944
+ 31     25,555,168           39,368           18,380            68       20,920
+ 32     26,462,807           39,392           18,380            68       20,944
+ 33     27,220,056           39,368           18,380            68       20,920
+ 34     27,825,624           39,368           18,380            68       20,920
+ 35     28,733,370           38,952           18,380            68       20,504
+ 36     29,641,824           37,856           18,380            68       19,408
+ 37     30,246,969           39,392           18,380            68       20,944
+ 38     31,154,891           39,368           18,380            68       20,920
+ 39     32,366,075           39,392           18,380            68       20,944
+ 40     33,274,059           39,368           18,380            68       20,920
+ 41     34,484,830           39,392           18,380            68       20,944
+ 42     35,392,756           39,368           18,380            68       20,920
+ 43     36,604,545           39,392           18,380            68       20,944
+ 44     37,815,433           39,368           18,380            68       20,920
+ 45     39,025,793           39,392           18,380            68       20,944
+ 46     39,631,110           39,368           18,380            68       20,920
+ 47     40,539,202           39,368           18,380            68       20,920
+ 48     41,144,373           39,392           18,380            68       20,944
+46.66% (18,380B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->43.38% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.60% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.60% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.60% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.60% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.60% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.60% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.68% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 49     42,354,676           37,888           18,380            68       19,440
+ 50     42,865,539           39,392           18,380            68       20,944
+ 51     43,376,668           39,368           18,380            68       20,920
+ 52     43,887,527           39,368           18,380            68       20,920
+ 53     44,398,387           39,400           18,380            68       20,952
+ 54     44,909,255           39,392           18,380            68       20,944
+ 55     45,420,115           38,848           18,380            68       20,400
+47.31% (18,380B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->43.99% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.64% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.64% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.64% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.64% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.64% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.64% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.64% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.64% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.69% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 56     45,930,983           39,392           18,380            68       20,944
+ 57     46,441,865           39,392           18,380            68       20,944
+ 58     46,952,724           39,392           18,380            68       20,944
+ 59     47,463,592           39,232           18,380            68       20,784
+ 60     47,974,483           39,392           18,380            68       20,944
+ 61     48,485,361           39,368           18,380            68       20,920
+ 62     48,996,738           39,368           18,380            68       20,920
+ 63     49,507,614           39,392           18,380            68       20,944
+ 64     50,018,473           39,392           18,380            68       20,944
+ 65     50,529,367           39,392           18,380            68       20,944
+46.66% (18,380B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->43.38% (17,088B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.60% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.60% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.60% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.60% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.60% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.60% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.60% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->00.68% (268B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 66     51,040,226           39,400           18,380            68       20,952
+ 67     51,551,088           39,368           18,380            68       20,920
+ 68     52,061,947           39,368           18,380            68       20,920
+ 69     52,572,826           39,392           18,380            68       20,944
