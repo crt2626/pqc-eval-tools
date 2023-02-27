@@ -1,0 +1,301 @@
+--------------------------------------------------------------------------------
+Command:            ./test_sig_mem SPHINCS+-SHAKE256-192s-simple 1
+Massif arguments:   --stacks=yes --massif-out-file=massif.out
+ms_print arguments: massif.out
+--------------------------------------------------------------------------------
+
+
+    KB
+40.50^#                                                                       
+     |#  :::   :::::::::                                                      
+     |#::: ::::: : : :: ::::::@:::::::@::::::@:::@:::::::::::@:::::@::::::::::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+     |#: : ::  : : : :: :: :::@: : :: @:: :: @:  @::: :: ::: @: :: @:: :::: ::
+   0 +----------------------------------------------------------------------->Gi
+     0                                                                   6.841
+
+Number of snapshots: 50
+ Detailed snapshots: [1 (peak), 16, 21, 26, 28, 37, 41]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1      2,392,705           41,472           18,396           108       22,968
+44.36% (18,396B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->39.12% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.47% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.47% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.47% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.47% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.47% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.47% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.47% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.47% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->02.01% (832B) 0x2F3B12: OQS_SHA3_shake256_x4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.01% (832B) 0x2D6902: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_prf_addrx4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   ->02.01% (832B) 0x2D5B53: fors_gen_leafx4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   | ->02.01% (832B) 0x2D70C1: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehashx4_FORS_HEIGHT (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   |   ->02.01% (832B) 0x2D60F9: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_fors_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   |     ->02.01% (832B) 0x19AC67: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   |       ->02.01% (832B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   |         ->02.01% (832B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|   |           
+|   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   
+->00.76% (316B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  2    105,392,865           39,328           17,564            68       21,696
+  3    341,264,787           39,472           17,564            68       21,840
+  4    569,101,241           40,424           18,396           108       21,920
+  5    713,948,906           39,328           17,564            68       21,696
+  6    950,638,446           40,568           18,396           108       22,064
+  7  1,176,989,370           40,424           18,396           108       21,920
+  8  1,403,340,505           40,568           18,396           108       22,064
+  9  1,592,754,168           39,408           17,564            68       21,776
+ 10  1,726,169,886           40,568           18,396           108       22,064
+ 11  1,878,651,299           38,456           18,396           108       19,952
+ 12  1,973,960,440           38,456           18,396           108       19,952
+ 13  2,145,506,313           38,456           18,396           108       19,952
+ 14  2,259,876,503           38,456           18,396           108       19,952
+ 15  2,412,362,851           38,456           18,396           108       19,952
+ 16  2,541,969,622           38,456           18,396           108       19,952
+47.84% (18,396B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->42.19% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.66% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.66% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.66% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.66% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.66% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.66% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->02.16% (832B) 0x2F3B12: OQS_SHA3_shake256_x4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.16% (832B) 0x2D6AB2: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_thashx4_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->02.16% (832B) 0x19C030: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_wots_gen_pk (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->02.16% (832B) 0x19A87D: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->02.16% (832B) 0x19B389: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     ->02.16% (832B) 0x19BD5A: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |       ->02.16% (832B) 0x19ACF9: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |         ->02.16% (832B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |           ->02.16% (832B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |             
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.82% (316B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 17  2,650,602,064           37,488           17,564            68       19,856
+ 18  2,831,662,704           38,432           18,396           108       19,928
+ 19  3,012,728,047           38,440           18,396           108       19,936
+ 20  3,157,579,548           38,456           18,396           108       19,952
+ 21  3,266,216,914           38,160           17,788           108       20,264
+46.61% (17,788B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->42.52% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.68% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.68% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.68% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.68% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.68% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.68% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.68% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.68% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->01.42% (540B) in 8 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 22  3,411,062,838           38,440           18,396           108       19,936
+ 23  3,555,905,809           38,456           18,396           108       19,952
+ 24  3,700,754,351           38,440           18,396           108       19,936
+ 25  3,809,388,510           38,440           18,396           108       19,936
+ 26  3,990,447,165           38,456           18,396           108       19,952
+47.84% (18,396B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->42.19% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.66% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.66% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.66% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.66% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.66% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.66% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->02.16% (832B) 0x2F3B12: OQS_SHA3_shake256_x4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.16% (832B) 0x2D6AB2: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_thashx4_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->02.16% (832B) 0x19C030: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_wots_gen_pk (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->02.16% (832B) 0x19A87D: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->02.16% (832B) 0x19B389: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     ->02.16% (832B) 0x19BD5A: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |       ->02.16% (832B) 0x19ACF9: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |         ->02.16% (832B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |           ->02.16% (832B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |             
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.82% (316B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 27  4,171,505,256           38,456           18,396           108       19,952
+ 28  4,402,747,819           38,312           18,396           108       19,808
+48.02% (18,396B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->42.35% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.67% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.67% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.67% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.67% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.67% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.67% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.67% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.67% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->02.17% (832B) 0x2F3B12: OQS_SHA3_shake256_x4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.17% (832B) 0x2D6902: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_prf_addrx4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->02.17% (832B) 0x19BFC8: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_wots_gen_pk (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->02.17% (832B) 0x19A87D: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->02.17% (832B) 0x19B389: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     ->02.17% (832B) 0x19BD5A: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |       ->02.17% (832B) 0x19ACF9: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |         ->02.17% (832B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |           ->02.17% (832B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |             
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.82% (316B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 29  4,525,350,142           38,456           18,396           108       19,952
+ 30  4,647,960,366           38,456           18,396           108       19,952
+ 31  4,770,562,735           38,456           18,396           108       19,952
+ 32  4,954,473,233           38,456           18,396           108       19,952
+ 33  5,077,078,975           38,456           18,396           108       19,952
+ 34  5,260,990,172           38,456           18,396           108       19,952
+ 35  5,383,594,171           37,360           17,564            68       19,728
+ 36  5,506,196,106           37,368           17,564            68       19,736
+ 37  5,628,804,548           38,456           18,396           108       19,952
+47.84% (18,396B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->42.19% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.66% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.66% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.66% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.66% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.66% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.66% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->02.16% (832B) 0x2F3B12: OQS_SHA3_shake256_x4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.16% (832B) 0x2D6AB2: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_thashx4_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->02.16% (832B) 0x19C030: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_wots_gen_pk (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->02.16% (832B) 0x19A87D: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->02.16% (832B) 0x19B389: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     ->02.16% (832B) 0x19BD5A: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |       ->02.16% (832B) 0x19ACF9: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |         ->02.16% (832B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |           ->02.16% (832B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |             
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.82% (316B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 38  5,751,414,947           38,456           18,396           108       19,952
+ 39  5,935,322,928           38,456           18,396           108       19,952
+ 40  6,119,231,562           38,456           18,396           108       19,952
+ 41  6,241,836,460           38,456           18,396           108       19,952
+47.84% (18,396B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->42.19% (16,224B) 0x10AAD3: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| 
+->02.66% (1,024B) 0x4BB913B: _IO_file_doallocate (filedoalloc.c:101)
+| ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:347)
+|   ->02.66% (1,024B) 0x4BC7A4F: _IO_doallocbuf (genops.c:342)
+|     ->02.66% (1,024B) 0x4BC6BF7: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|     | ->02.66% (1,024B) 0x4BC5CDD: _IO_new_file_xsputn (fileops.c:1244)
+|     |   ->02.66% (1,024B) 0x4BC5CDD: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|     |     ->02.66% (1,024B) 0x4BBB6C7: puts (ioputs.c:40)
+|     |       ->02.66% (1,024B) 0x10A42B: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+|     |         
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->02.16% (832B) 0x2F3B12: OQS_SHA3_shake256_x4 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| ->02.16% (832B) 0x2D6AB2: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_thashx4_1 (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | ->02.16% (832B) 0x19C030: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_wots_gen_pk (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | | ->02.16% (832B) 0x19A87D: wots_gen_leaf (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |   ->02.16% (832B) 0x19B389: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |     ->02.16% (832B) 0x19BD5A: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_treehash_TREE_HEIGHT (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |       ->02.16% (832B) 0x19ACF9: PQCLEAN_SPHINCSSHAKE256192SSIMPLE_AVX2_crypto_sign_signature (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |         ->02.16% (832B) 0x10C5DD: OQS_SIG_sign (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |           ->02.16% (832B) 0x10AB74: main (in /pqc/pqc-eval-tools/builds/x86-liboqs-linux/tests/test_sig_mem)
+| | |             
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.82% (316B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 42  6,364,439,105           37,440           17,564            68       19,808
+ 43  6,487,048,508           38,456           18,396           108       19,952
+ 44  6,670,956,601           37,368           17,564            68       19,736
+ 45  6,793,566,805           38,456           18,396           108       19,952
+ 46  6,916,169,905           38,456           18,396           108       19,952
+ 47  7,038,771,856           37,360           17,564            68       19,728
+ 48  7,222,678,002           38,456           18,396           108       19,952
+ 49  7,345,284,362           38,456           18,396           108       19,952

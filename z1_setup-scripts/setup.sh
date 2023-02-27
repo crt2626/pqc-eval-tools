@@ -28,8 +28,8 @@ function dependency_install() {
         fi
     done
     if [[ ${#not_installed[@]} -ne 0 ]]; then
-        apt-get update
-        apt-get install -y "${not_installed[@]}"
+        sudo apt-get update
+        sudo apt-get install -y "${not_installed[@]}"
     fi
 
     # Installing needed python modules
