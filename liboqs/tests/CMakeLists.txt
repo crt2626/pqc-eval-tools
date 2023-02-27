@@ -88,11 +88,9 @@ target_link_libraries(test_kem_mem PRIVATE ${API_TEST_DEPS})
 
 add_executable(speed_kem speed_kem.c)
 target_link_libraries(speed_kem PRIVATE ${API_TEST_DEPS})
-target_link_libraries(speed_kem PRIVATE ${API_TEST_DEPS} Threads::Threads)
 
 add_executable(full-alg-speed full-alg-speed.c)
 target_link_libraries(full-alg-speed PRIVATE ${API_TEST_DEPS})
-target_link_libraries(full-alg-speed PRIVATE ${API_TEST_DEPS} Threads::Threads)
 
 # SIG API tests
 add_executable(example_sig example_sig.c)
