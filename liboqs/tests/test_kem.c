@@ -162,13 +162,21 @@ err:
 	ret = OQS_ERROR;
 
 cleanup:
-	if (kem != NULL) {
+	if (secret_key) {
 		OQS_MEM_secure_free(secret_key - sizeof(magic_t), kem->length_secret_key + 2 * sizeof(magic_t));
+	}
+	if (shared_secret_e) {
 		OQS_MEM_secure_free(shared_secret_e - sizeof(magic_t), kem->length_shared_secret + 2 * sizeof(magic_t));
+	}
+	if (shared_secret_d) {
 		OQS_MEM_secure_free(shared_secret_d - sizeof(magic_t), kem->length_shared_secret + 2 * sizeof(magic_t));
 	}
-	OQS_MEM_insecure_free(public_key - sizeof(magic_t));
-	OQS_MEM_insecure_free(ciphertext - sizeof(magic_t));
+	if (public_key) {
+		OQS_MEM_insecure_free(public_key - sizeof(magic_t));
+	}
+	if (ciphertext) {
+		OQS_MEM_insecure_free(ciphertext - sizeof(magic_t));
+	}
 	OQS_KEM_free(kem);
 
 	return ret;
@@ -210,7 +218,6 @@ int main(int argc, char **argv) {
 		fprintf(stderr, "Usage: test_kem algname\n");
 		fprintf(stderr, "  algname: ");
 		for (size_t i = 0; i < OQS_KEM_algs_length; i++) {
-			
 			if (i > 0) {
 				fprintf(stderr, ", ");
 			}

@@ -92,7 +92,7 @@ static void print_platform_info(void) {
     stmt_c
 #endif
 
-// /* Display all active CPU extensions: */
+/* Display all active CPU extensions: */
 static void print_cpu_extensions(void) {
 #if defined(OQS_DIST_BUILD)
 	printf("CPU exts active: ");
@@ -283,7 +283,7 @@ static void print_oqs_configuration(void) {
 	printf("\n");
 }
 
- static void print_system_info(void) {
+static void print_system_info(void) {
 	printf("Configuration info\n");
 	printf("==================\n");
 	print_platform_info();

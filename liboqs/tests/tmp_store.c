@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 #include <sys/stat.h>
 
-#define OQS_STORE_DIR "./tmp"
+#define OQS_STORE_DIR "tmp"
 #define OQS_STORE_PREFIX "/oqs-temp-file-"
 #define MAXPATHLEN 128
 
@@ -24,7 +24,6 @@ static OQS_STATUS oqs_fstore(const char *fname, const char *mname, uint8_t *data
 	strcat(fpath, OQS_STORE_PREFIX);
 	strcat(fpath, mname);
 	strcat(fpath, fname);
-
 	FILE *fp = fopen(fpath, "wb");
 	if (!fp) {
 		fprintf(stderr, "Couldn't open %s for writing.\n", fpath);
@@ -43,7 +42,6 @@ static OQS_STATUS oqs_fload(const char *fname, const char *mname, uint8_t *data,
 	strcat(fpath, OQS_STORE_PREFIX);
 	strcat(fpath, mname);
 	strcat(fpath, fname);
-
 	FILE *fp = fopen(fpath, "rb");
 	if (!fp) {
 		fprintf(stderr, "Couldn't open %s for reading.\n", fpath);
