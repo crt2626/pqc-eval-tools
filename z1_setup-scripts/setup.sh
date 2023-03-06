@@ -4,17 +4,13 @@ function download() {
 
     # Function for setting up the repo
     sudo mkdir /pqc && cd /pqc
-    sudo chown -R $USER /pqc
+    sudo chown -R $USER /pqc && sudo chmod -R 755 /pqc
     git clone https://github.com/crt2626/pqc-eval-tools.git
     git clone https://github.com/crt2626/pqc-docker.git
-    sudo chown -R $USER /pqc/
-    sudo chmod -R 755 /pqc
+    sudo chown -R $USER /pqc/ && sudo chmod -R 755 /pqc
     chmod +x /pqc/pqc-eval-tools/scripts/*.sh && chmod +x /pqc/pqc-eval-tools/result-processing/parsing-scripts/*.py
-    mkdir -p /pqc/output 
-    mkdir -p /pqc/output/op1
-    mkdir -p /pqc/output/op2
-    mkdir -p /pqc/output/op3
-    
+    mkdir -p /pqc/output && mkdir -p /pqc/output/op1 && mkdir -p /pqc/output/op2 && mkdir -p /pqc/output/op3
+     
 }
 
 function dependency_install() {
