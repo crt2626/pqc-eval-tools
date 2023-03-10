@@ -89,7 +89,7 @@ then
     mkdir -p "$root_dir"/up-results/liboqs/speed-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics/ && mkdir -p "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics/
-    echo "0" > backup.flag
+
 else
     mkdir -p "$root_dir"/up-results/liboqs/speed-results/
     mkdir -p "$root_dir"/up-results/liboqs/mem-results/
@@ -97,7 +97,7 @@ else
     
 fi
 
-# Setting the backup flag
+# Setting the backup flag to not ready
 echo "0" > "$root_dir"/up-results/backup.flag
 
 # configuring scripts
@@ -171,6 +171,10 @@ else
     fi
 
 fi
+
+# Setting backup flag as ready
+echo "1" > "$root_dir"/up-results/backup.flag
+
 #****************************************************************
 : '
 Requesting if the user would like to parse results now
