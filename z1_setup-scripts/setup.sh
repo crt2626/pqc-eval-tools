@@ -10,6 +10,7 @@ function download() {
     sudo chown -R $USER /pqc/ && sudo chmod -R 755 /pqc
     chmod +x /pqc/pqc-eval-tools/scripts/*.sh && chmod +x /pqc/pqc-eval-tools/result-processing/parsing-scripts/*.py
     mkdir -p /pqc/output && mkdir -p /pqc/output/op1 && mkdir -p /pqc/output/op2 && mkdir -p /pqc/output/op3
+    echo "0" > /pqc/pqc-eval-tools/backup.flag
      
 }
 
