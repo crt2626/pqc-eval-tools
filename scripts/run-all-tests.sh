@@ -98,7 +98,7 @@ else
 fi
 
 # Setting the backup flag to not ready
-echo "0" > "$root_dir"/up-results/backup.flag
+echo "0" > "$root_dir"/backup.flag
 
 # configuring scripts
 chmod +x *.sh
@@ -173,7 +173,7 @@ else
 fi
 
 # Setting backup flag as ready
-echo "1" > "$root_dir"/up-results/backup.flag
+echo "1" > "$root_dir"/backup.flag
 
 #****************************************************************
 : '
