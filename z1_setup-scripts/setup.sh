@@ -47,4 +47,7 @@ else
     dependency_install
 fi
 
+# Setting backup flag
+echo "0" > /pqc/pqc-eval-tools/backup.flag
+
 echo -e "\nRepo has been setup in the /pqc directory\n"
