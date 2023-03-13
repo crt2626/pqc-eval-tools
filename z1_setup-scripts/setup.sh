@@ -10,6 +10,10 @@ function download() {
     chmod +x /pqc/pqc-eval-tools/scripts/*.sh && chmod +x /pqc/pqc-eval-tools/result-processing/parsing-scripts/*.py
     mkdir -p /pqc/output && mkdir -p /pqc/output/op1 && mkdir -p /pqc/output/op2 && mkdir -p /pqc/output/op3
     echo "0" > /pqc/pqc-eval-tools/backup.flag
+
+    # Clearing up-results that were pulled from repo 
+    cd /pqc && sudo rm -r up-results
+    mkdir up-results
      
 }
 
