@@ -3,8 +3,7 @@
 function download() {
 
     # Function for setting up the repo
-    sudo mkdir /pqc && cd /pqc
-    sudo chown -R $USER /pqc && sudo chmod -R 755 /pqc
+    cd /pqc
     git clone https://github.com/crt2626/pqc-eval-tools.git
     git clone https://github.com/crt2626/pqc-docker.git
     sudo chown -R $USER /pqc/ && sudo chmod -R 755 /pqc
@@ -43,6 +42,8 @@ then
     download
     dependency_install
 else
+    sudo mkdir /pqc && cd /pqc
+    sudo chown -R $USER /pqc && sudo chmod -R 755 /pqc
     download
     dependency_install
 fi
