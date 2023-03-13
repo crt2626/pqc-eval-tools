@@ -137,7 +137,7 @@ then
     mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/speed-results/results "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
 
-    # Creating "mach-spec" directory and compressing "up-results" directory
+    # Creating backup directory and compressing "up-results" directory
     mkdir -p "$root_dir"/mach-spec
     tar_filename="$machine_num"-up-results.tar.gz
     tar -czvf "$root_dir"/mach-spec/"$tar_filename" "$root_dir"/up-results
@@ -157,7 +157,7 @@ else
     mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/speed-results/results/* "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
 
-    # Creating "mach-spec" directory and compressing "up-results" directory
+    # Creating backup directory and compressing "up-results" directory
     mkdir -p "$root_dir"/mach-spec
     tar_filename="$machine_num"-up-results.tar.gz
     tar -czvf "$root_dir"/mach-spec/"$tar_filename" "$root_dir"/up-results
