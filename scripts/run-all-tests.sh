@@ -142,9 +142,6 @@ then
     tar_filename="$machine_num"-up-results.tar.gz
     tar -czvf "$root_dir"/mach-spec/"$tar_filename" "$root_dir"/up-results
 
-
-
-
 else
 
     # Creating the deafault name variable
