@@ -2,6 +2,7 @@
 
 # Declaring directory variables
 root_dir="/pqc/pqc-eval-tools"
+device_name=$(hostname)
 
 #****************************************************************
 : '
