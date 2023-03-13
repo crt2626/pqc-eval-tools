@@ -136,6 +136,11 @@ then
     mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/speed-results/results "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
 
+    # Creating "mach-spec" directory and copying files recursively
+    mkdir -p "$root_dir"/mach-spec
+    cp -r "$root_dir"/up-results/liboqs/speed-results/"$machine_direc" "$root_dir"/mach-spec/
+    cp -r "$root_dir"/up-results/liboqs/mem-results/"$machine_direc" "$root_dir"/mach-spec/
+
 
 else
 
@@ -148,6 +153,12 @@ else
     mv "$root_dir"/up-results/liboqs/mem-results/kem-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/mem-results/sig-mem-metrics "$root_dir"/up-results/liboqs/mem-results/"$machine_direc"/
     mv "$root_dir"/up-results/liboqs/speed-results/results/* "$root_dir"/up-results/liboqs/speed-results/"$machine_direc"
+
+    # Creating "mach-spec" directory and copying files recursively
+    mkdir -p "$root_dir"/mach-spec
+    cp -r "$root_dir"/up-results/liboqs/speed-results/"$machine_direc" "$root_dir"/mach-spec/
+    cp -r "$root_dir"/up-results/liboqs/mem-results/"$machine_direc" "$root_dir"/mach-spec/
+
 
     # Getting y/n input from user and stroing result
     while true; 
